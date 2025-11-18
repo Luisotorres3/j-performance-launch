@@ -1,46 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-training.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Performance Training"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background"></div>
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Transform Your Body,
-            <br />
-            <span className="text-primary">Unlock Your Potential</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            J Performance Systems delivers personalized training, nutrition guidance, and performance optimization to help you achieve your peak physical form.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="text-lg shadow-glow animate-glow-pulse">
-              <Link to="/training-plans">Start Your Transformation</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="text-lg">
-              <Link to="/contact">Contact Me</Link>
-            </Button>
+    <section className="bg-white py-20 md:py-32">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+        {/* Image Placeholder */}
+        <div className="order-1 md:order-2 animate-fade-in">
+          <div className="w-full max-w-md mx-auto aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+            <span className="text-gray-500">Placeholder para tu foto</span>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary rounded-full"></div>
+        {/* Content */}
+        <div className="order-2 md:order-1 text-center md:text-left animate-fade-in">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+            Eleva tu Rendimiento
+          </h1>
+          <p className="text-lg text-blue-800 font-semibold mb-6">
+            Texto para el subtítulo o una frase llamativa.
+          </p>
+          <p className="text-base text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
+            Aquí puedes añadir una pequeña descripción personal. Este es un texto de ejemplo que puedes sustituir fácilmente para explicar quién eres, tu filosofía de entrenamiento y cómo ayudas a tus clientes a alcanzar sus metas.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Link to="/contact">Comienza tu transformación</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

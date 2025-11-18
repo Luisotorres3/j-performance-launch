@@ -8,23 +8,23 @@ const Navigation = () => {
   const location = useLocation();
 
   const links = [
-    { to: "/", label: "Home" },
-    { to: "/training-plans", label: "Training Plans" },
-    { to: "/packs", label: "Packs" },
-    { to: "/blog", label: "Blog" },
-    { to: "/reviews", label: "Reviews" },
-    { to: "/contact", label: "Contact" },
+    { to: "/", label: "Inicio" },
+    { to: "/planes", label: "Planes" },
+    { to: "/ahorra", label: "Ahorra" },
+    { to: "/actualizate", label: "Actualízate" },
+    { to: "/opiniones", label: "Opiniones" },
+    { to: "/contacto", label: "Contacto" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-foreground">
-            <span className="text-primary">J</span> Performance Systems
+          <Link to="/" className="text-2xl font-bold text-gray-900">
+            <span className="text-blue-600">J</span> Performance System
           </Link>
 
           {/* Desktop Navigation */}
@@ -33,21 +33,21 @@ const Navigation = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.to) ? "text-primary" : "text-muted-foreground"
+                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                  isActive(link.to) ? "text-blue-600" : "text-gray-500"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild size="sm">
-              <Link to="/contact">Get Started</Link>
+            <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Link to="/contact">Empezar ahora</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-gray-900"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -62,17 +62,17 @@ const Navigation = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(link.to) ? "text-primary" : "text-muted-foreground"
+                  className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                    isActive(link.to) ? "text-blue-600" : "text-gray-500"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button asChild size="sm" className="w-full">
+              <Button asChild size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
-                  Get Started
+                  Empezar ahora
                 </Link>
               </Button>
             </div>
