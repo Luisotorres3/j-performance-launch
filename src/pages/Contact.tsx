@@ -104,8 +104,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Ubicación</h3>
                     <p className="text-muted-foreground">
-                      Madrid, España<br />
-                      Coaching online disponible a nivel mundial
+                      Andalucía, España<br />
+                      Online
                     </p>
                   </div>
                 </div>

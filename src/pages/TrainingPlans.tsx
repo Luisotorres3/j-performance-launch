@@ -2,7 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const TrainingPlans = () => {
   const plans = [
@@ -65,6 +67,28 @@ const TrainingPlans = () => {
   ];
 
   const [period, setPeriod] = useState<'mensual'|'trimestral'|'semestral'>('mensual');
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [visiblePlan, setVisiblePlan] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const elements = Array.from(document.querySelectorAll('.plan-card')) as HTMLElement[];
+    if (elements.length === 0) return;
+
+    const options: IntersectionObserverInit = { root: null, rootMargin: '0px', threshold: [0.25, 0.5, 0.75] };
+    const observer = new IntersectionObserver((entries) => {
+      // choose the entry with largest intersectionRatio
+      const visibleEntries = entries.filter(e => e.isIntersecting);
+      if (visibleEntries.length === 0) return;
+      visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      const top = visibleEntries[0];
+      const title = top.target.getAttribute('data-title');
+      if (title) setVisiblePlan(title);
+    }, options);
+
+    elements.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -113,13 +137,44 @@ const TrainingPlans = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
             {plans.map((plan, index) => (
-              <div key={index} className="animate-slide-up h-full" style={{ animationDelay: `${index * 0.1}s` }}>
-                <PricingCard {...plan} selectedPeriod={period} className="h-full" />
+              <div
+                key={index}
+                role="button"
+                tabIndex={0}
+                data-title={plan.title}
+                onClick={() => setSelectedPlan(plan.title)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedPlan(plan.title); }}
+                className={`plan-card animate-slide-up h-full cursor-pointer ${selectedPlan === plan.title ? 'ring-2 ring-primary rounded-lg' : ''}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                aria-pressed={selectedPlan === plan.title}
+              >
+                <PricingCard {...plan} selectedPeriod={period} className="h-full" showCTA={false} />
               </div>
             ))}
           </div>
+
+          <div className="mt-8 text-center">
+            <div className="max-w-md mx-auto">
+              <Button asChild size="lg" className="w-full" disabled={!selectedPlan}>
+                <Link to={selectedPlan ? `/contact?plan=${encodeURIComponent(selectedPlan)}` : '#'} className={`${!selectedPlan ? 'pointer-events-none' : ''}`}>
+                  {selectedPlan ? `Empieza ya — ${selectedPlan}` : 'Elige un plan'}
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile floating CTA for the plan currently in view while scrolling */}
+          {visiblePlan && (
+            <div className="fixed left-1/2 -translate-x-1/2 bottom-4 z-50 md:hidden">
+              <Button asChild size="lg" className="px-6">
+                <Link to={`/contact?plan=${encodeURIComponent(visiblePlan)}`}>
+                  Empieza — {visiblePlan}
+                </Link>
+              </Button>
+            </div>
+          )}
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-4">¿No sabes qué plan es el indicado para ti?</p>

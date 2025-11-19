@@ -14,9 +14,10 @@ interface PricingCardProps {
   features: string[];
   popular?: boolean;
   className?: string;
+  showCTA?: boolean;
 }
 
-const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, className = "" }: PricingCardProps) => {
+const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, className = "", showCTA = true }: PricingCardProps) => {
   return (
     <div
       className={`relative bg-card p-8 rounded-lg border flex flex-col ${
@@ -62,9 +63,11 @@ const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, 
         ))}
       </ul>
 
-      <Button asChild className="w-full mt-auto" size="lg">
-        <Link to="/contact">Empieza ya</Link>
-      </Button>
+      {showCTA && (
+        <Button asChild className="w-full mt-auto" size="lg">
+          <Link to="/contact">Empieza ya</Link>
+        </Button>
+      )}
     </div>
   );
 };

@@ -9,8 +9,18 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
+import React, { useEffect, useState } from "react";
+import { ChevronUp } from "lucide-react";
 
 const Index = () => {
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.pageYOffset > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const testimonios = [
     {
       name: "Carlos M.",
@@ -122,7 +132,7 @@ const Index = () => {
       <ClientsCarousel clients={clients} />
 
       {/* CTA Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-section-alt">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
@@ -144,6 +154,15 @@ const Index = () => {
       </section>
 
       <Footer />
+      {showTop && (
+        <button
+          aria-label="Ir arriba"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed right-6 bottom-6 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow hover:scale-105 transition-transform"
+        >
+          <ChevronUp className="w-5 h-5" />
+        </button>
+      )}
     </div>
   );
 };
