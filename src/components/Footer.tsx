@@ -23,9 +23,6 @@ const Footer = () => {
               <Link to="/planes" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Planes de entrenamiento
               </Link>
-              <Link to="/packs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Packs Ahorro
-              </Link>
               <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Blog
               </Link>

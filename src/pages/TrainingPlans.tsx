@@ -1,8 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PricingCard from "@/components/PricingCard";
+import PackCard from "@/components/PackCard";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 
 const TrainingPlans = () => {
   const plans = [
@@ -113,10 +113,10 @@ const TrainingPlans = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {plans.map((plan, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <PricingCard {...plan} selectedPeriod={period} />
+              <div key={index} className="animate-slide-up h-full" style={{ animationDelay: `${index * 0.1}s` }}>
+                <PricingCard {...plan} selectedPeriod={period} className="h-full" />
               </div>
             ))}
           </div>
@@ -126,6 +126,97 @@ const TrainingPlans = () => {
             <a href="/contacto" className="text-primary hover:underline font-semibold">
               Contacta conmigo para una consulta gratuita →
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Packs section merged from Packs.tsx */}
+      <section className="pt-32 pb-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold mb-6">
+              Packs especiales de <span className="text-primary">3 meses</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                title: "Pack 3 Meses Básico",
+                originalPrice: 135,
+                price: 100,
+                savings: 35,
+                gift: "500 g Proteína Premium",
+                features: [
+                  "3 meses del plan Básico",
+                  "Incluye todas las características del plan Básico",
+                  "Programa de entrenamiento personalizado",
+                  "Seguimiento semanal del progreso",
+                  "Guías de nutrición",
+                  "Soporte por correo electrónico",
+                ],
+              },
+              {
+                title: "Pack 3 Meses Avanzado",
+                originalPrice: 225,
+                price: 190,
+                savings: 35,
+                gift: "2 kg Proteína Premium (~45€ valor)",
+                features: [
+                  "3 meses del plan Avanzado",
+                  "Incluye todas las características del plan Avanzado",
+                  "Entrenamiento y nutrición avanzada",
+                  "Llamadas por video quincenales",
+                  "Soporte prioritario",
+                  "Panel de rendimiento",
+                ],
+              },
+              {
+                title: "Pack 3 Meses Élite",
+                originalPrice: 270,
+                price: 235,
+                savings: 35,
+                gift: "2 kg Proteína Premium + 500 g Creatina",
+                features: [
+                  "3 meses del plan Élite",
+                  "Incluye todas las características premium",
+                  "Consultas semanales",
+                  "Análisis biomecánico",
+                  "Soporte 24/7",
+                  "Seguimiento de composición corporal",
+                  "Orientación sobre suplementos",
+                ],
+              },
+            ].map((pack, index) => (
+              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <PackCard {...pack} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 max-w-3xl mx-auto bg-muted p-8 rounded-lg border border-border">
+            <h3 className="text-2xl font-bold mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start gap-3">
+                <span className="text-primary font-bold">•</span>
+                <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary font-bold">•</span>
+                <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary font-bold">•</span>
+                <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary font-bold">•</span>
+                <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

@@ -9,11 +9,12 @@ interface PackCardProps {
   savings: number;
   gift: string;
   features: string[];
+  className?: string;
 }
 
-const PackCard = ({ title, originalPrice, price, savings, gift, features }: PackCardProps) => {
+const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "" }: PackCardProps) => {
   return (
-    <div className="bg-card p-8 rounded-lg border border-border hover:border-primary transition-all duration-300 hover:shadow-glow">
+    <div className={`bg-card p-8 rounded-lg border border-border hover:border-primary transition-all duration-300 hover:shadow-glow flex flex-col ${className}`}>
       <div className="flex items-center gap-2 mb-4">
         <Gift className="w-6 h-6 text-primary" />
         <span className="text-sm font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-md">
@@ -49,7 +50,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features }: Pack
         ))}
       </ul>
 
-      <Button asChild className="w-full" size="lg">
+      <Button asChild className="w-full mt-auto" size="lg">
         <Link to="/contacto">Adquirir pack</Link>
       </Button>
     </div>

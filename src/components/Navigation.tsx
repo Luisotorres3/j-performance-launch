@@ -11,7 +11,7 @@ const Navigation = () => {
   const links = [
     { to: "/", label: "Inicio" },
     { to: "/planes", label: "Planes" },
-    { to: "/packs", label: "Packs Ahorro" },
+    
     { to: "/blog", label: "Blog" },
     { to: "/reviews", label: "Reseñas" },
     { to: "/contacto", label: "Contacto" },

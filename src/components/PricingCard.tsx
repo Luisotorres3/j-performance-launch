@@ -13,14 +13,15 @@ interface PricingCardProps {
   selectedPeriod?: "mensual" | "trimestral" | "semestral";
   features: string[];
   popular?: boolean;
+  className?: string;
 }
 
-const PricingCard = ({ title, price, prices, features, popular, selectedPeriod }: PricingCardProps) => {
+const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, className = "" }: PricingCardProps) => {
   return (
     <div
-      className={`relative bg-card p-8 rounded-lg border ${
+      className={`relative bg-card p-8 rounded-lg border flex flex-col ${
         popular ? "border-primary shadow-glow" : "border-border"
-      } hover:border-primary transition-all duration-300`}
+      } hover:border-primary transition-all duration-300 ${className}`}
     >
       {popular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -61,7 +62,7 @@ const PricingCard = ({ title, price, prices, features, popular, selectedPeriod }
         ))}
       </ul>
 
-      <Button asChild className="w-full" size="lg">
+      <Button asChild className="w-full mt-auto" size="lg">
         <Link to="/contact">Empieza ya</Link>
       </Button>
     </div>
