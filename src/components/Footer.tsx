@@ -12,32 +12,32 @@ const Footer = () => {
               <span className="text-primary">J</span> Performance Systems
             </h3>
             <p className="text-muted-foreground text-sm">
-              Transform your body and mind with personalized training programs designed for peak performance.
+              Transforma tu cuerpo y mente con programas de entrenamiento personalizados diseñados para un rendimiento óptimo.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-semibold mb-4">Enlaces rápidos</h4>
             <div className="flex flex-col gap-2">
-              <Link to="/training-plans" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Training Plans
+              <Link to="/planes" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Planes de entrenamiento
               </Link>
               <Link to="/packs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Special Packs
+                Packs Ahorro
               </Link>
               <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Blog
               </Link>
               <Link to="/reviews" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Reviews
+                Reseñas
               </Link>
             </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
+            <h4 className="font-semibold mb-4">Contacto</h4>
             <div className="flex flex-col gap-3">
               <a href="mailto:info@jperformance.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={16} />
@@ -48,10 +48,10 @@ const Footer = () => {
                 +34 600 000 000
               </a>
               <div className="flex gap-4 mt-2">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                   <Facebook size={20} />
                 </a>
               </div>
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} J Performance Systems. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} J Performance Systems. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

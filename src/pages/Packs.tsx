@@ -9,14 +9,14 @@ const Packs = () => {
       originalPrice: 135,
       price: 100,
       savings: 35,
-      gift: "500g Premium Protein Powder",
+      gift: "500 g Proteína Premium",
       features: [
-        "3 months of Básico plan",
-        "All basic plan features included",
-        "Personalized training program",
-        "Weekly progress tracking",
-        "Nutrition guidelines",
-        "Email support",
+        "3 meses del plan Básico",
+        "Incluye todas las características del plan Básico",
+        "Programa de entrenamiento personalizado",
+        "Seguimiento semanal del progreso",
+        "Guías de nutrición",
+        "Soporte por correo electrónico",
       ],
     },
     {
@@ -24,14 +24,14 @@ const Packs = () => {
       originalPrice: 225,
       price: 190,
       savings: 35,
-      gift: "2kg Premium Protein Powder (~45€ value)",
+      gift: "2 kg Proteína Premium (~45€ valor)",
       features: [
-        "3 months of Avanzado plan",
-        "All advanced plan features",
-        "Advanced training & nutrition",
-        "Bi-weekly video calls",
-        "Priority support",
-        "Performance dashboard",
+        "3 meses del plan Avanzado",
+        "Incluye todas las características del plan Avanzado",
+        "Entrenamiento y nutrición avanzada",
+        "Llamadas por video quincenales",
+        "Soporte prioritario",
+        "Panel de rendimiento",
       ],
     },
     {
@@ -39,15 +39,15 @@ const Packs = () => {
       originalPrice: 270,
       price: 235,
       savings: 35,
-      gift: "2kg Premium Protein + 500g Creatine",
+      gift: "2 kg Proteína Premium + 500 g Creatina",
       features: [
-        "3 months of Élite plan",
-        "All premium features",
-        "Weekly consultations",
-        "Biomechanics analysis",
-        "24/7 support",
-        "Body composition tracking",
-        "Supplement guidance",
+        "3 meses del plan Élite",
+        "Incluye todas las características premium",
+        "Consultas semanales",
+        "Análisis biomecánico",
+        "Soporte 24/7",
+        "Seguimiento de composición corporal",
+        "Orientación sobre suplementos",
       ],
     },
   ];
@@ -56,14 +56,14 @@ const Packs = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20">
+      <section className="pt-32 pb-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <h1 className="text-5xl font-bold mb-6">
-              Special <span className="text-primary">3-Month Packs</span>
+              Packs especiales de <span className="text-primary">3 meses</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Commit to your transformation with our exclusive 3-month packages. Save money and receive premium gifts to support your journey.
+              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso.
             </p>
           </div>
 
@@ -76,23 +76,23 @@ const Packs = () => {
           </div>
 
           <div className="mt-16 max-w-3xl mx-auto bg-muted p-8 rounded-lg border border-border">
-            <h3 className="text-2xl font-bold mb-4 text-center">Why Choose a 3-Month Pack?</h3>
+            <h3 className="text-2xl font-bold mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong>Better Results:</strong> Consistency is key to transformation. 3 months provides the optimal timeframe to see significant changes.</span>
+                <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong>Cost Savings:</strong> Save 35€ compared to monthly subscriptions.</span>
+                <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong>Premium Gifts:</strong> Receive high-quality supplements to accelerate your progress.</span>
+                <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">•</span>
-                <span><strong>Long-term Commitment:</strong> Build lasting habits and achieve sustainable results.</span>
+                <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
               </li>
             </ul>
           </div>

@@ -8,39 +8,46 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 8%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 200 100% 45%;
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 145 100% 45%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 210 60% 90%;
+    --secondary-foreground: 210 100% 40%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 200 100% 50%;
+    --section-alt: 210 15% 98%;
+    --section-alt-foreground: 0 0% 10%;
+
+    --accent: 210 100% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 200 100% 45%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 50%;
 
     --radius: 0.75rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(200 100% 45% / 0.1), hsl(0 0% 8%));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 12%), hsl(0 0% 8%));
-    --shadow-glow: 0 0 30px hsl(200 100% 45% / 0.3);
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(210 100% 50% / 0.1),
+      hsl(0 0% 100%)
+    );
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --shadow-glow: 0 0 30px hsl(210 100% 50% / 0.25);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
@@ -52,5 +59,45 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Style plain links as basic (no background/border) and blue on hover */
+  a:not([class*="Button"]):not([class*="button"]):not(
+      [class*="inline-flex"]
+    ):not([class*="items-center"]) {
+    @apply text-inherit no-underline bg-transparent border-0 px-0 py-0 transition-colors;
+  }
+
+  a:not([class*="Button"]):not([class*="button"]):not(
+      [class*="inline-flex"]
+    ):not([class*="items-center"])
+    :is(:hover, :focus) {
+    @apply text-blue-600;
+  }
+
+  /* Exclude navbar links from the above styles */
+  nav a {
+    @apply bg-transparent border-0 rounded-none px-0 py-0 !important;
+  }
+
+  /* Exclude footer links too: keep them plain but allow hover color changes */
+  footer a {
+    @apply bg-transparent border-0 rounded-none px-0 py-0 !important;
+    /* Don't force `color` here — allow utility classes like `hover:text-primary` to apply */
+    text-decoration: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure links that are buttons (via asChild) maintain flexbox centering */
+  a[class*="inline-flex"],
+  button a,
+  [class*="Button"] a {
+    @apply inline-flex items-center justify-center;
+  }
+
+  /* Ensure all buttons have borders if not already specified */
+  button:not([class*="border-"]) {
+    @apply border border-border;
   }
 }

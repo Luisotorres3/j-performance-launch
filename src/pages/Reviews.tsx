@@ -7,47 +7,47 @@ const Reviews = () => {
   const reviews = [
     {
       name: "Carlos Martinez",
-      text: "Working with J has been a game-changer. I've lost 15kg in 4 months while gaining muscle. The personalized approach and constant support made all the difference. Best decision I've ever made for my health.",
+      text: "Trabajar con J ha sido un cambio total. Perdí 15 kg en 4 meses mientras ganaba músculo. El enfoque personalizado y el apoyo constante marcaron la diferencia. La mejor decisión para mi salud.",
       rating: 5,
     },
     {
       name: "Miguel Rodriguez",
-      text: "The Élite plan is worth every euro. Weekly consultations, detailed nutrition plans, and the biomechanics analysis helped me overcome a plateau I'd been stuck at for years. Incredible results!",
+      text: "El plan Élite vale cada euro. Consultas semanales, planes nutricionales detallados y el análisis biomecánico me ayudaron a superar un estancamiento que arrastraba años. Resultados increíbles.",
       rating: 5,
     },
     {
       name: "David Lopez",
-      text: "J's expertise in sports nutrition and training is exceptional. I'm not just stronger and leaner, but I feel better in everyday life. The 3-month pack was a great investment.",
+      text: "La experiencia de J en nutrición deportiva y entrenamiento es excepcional. No solo estoy más fuerte y definido, sino que me siento mejor en el día a día. El pack de 3 meses fue una gran inversión.",
       rating: 5,
     },
     {
       name: "Antonio Garcia",
-      text: "Professional, knowledgeable, and genuinely caring. J takes time to understand your goals and creates programs that actually work. I've recommended him to all my friends.",
+      text: "Profesional, con conocimiento y realmente atento. J se toma el tiempo de entender tus objetivos y crea programas que funcionan. Se lo he recomendado a todos mis amigos.",
       rating: 5,
     },
     {
       name: "Fernando Silva",
-      text: "Started with the Básico plan and quickly upgraded to Avanzado. The progression in my strength and physique has been remarkable. The nutrition guidance alone is worth the price.",
+      text: "Empecé con el plan Básico y rápido pasé al Avanzado. La progresión en fuerza y físico ha sido notable. La orientación nutricional por sí sola merece la inversión.",
       rating: 5,
     },
     {
       name: "Roberto Sanchez",
-      text: "As someone who struggled with consistency, J's coaching kept me accountable and motivated. The results speak for themselves - down 20kg and feeling stronger than ever.",
+      text: "Como alguien que luchaba con la constancia, el coaching de J me mantuvo responsable y motivado. Los resultados hablan por sí mismos: -20 kg y me siento más fuerte que nunca.",
       rating: 5,
     },
     {
       name: "Pablo Moreno",
-      text: "The attention to detail in program design is impressive. Every exercise has a purpose, and the progression is perfectly structured. Finally seeing the results I've always wanted.",
+      text: "La atención al detalle en el diseño del programa es impresionante. Cada ejercicio tiene un propósito y la progresión está perfectamente estructurada. Finalmente veo los resultados que siempre quise.",
       rating: 5,
     },
     {
       name: "Javier Ruiz",
-      text: "J doesn't just give you a generic workout plan. He analyzes your biomechanics, adjusts based on your progress, and ensures you're training optimally. True professional.",
+      text: "J no te da un plan genérico. Analiza tu biomecánica, ajusta según tu progreso y asegura que entrenes de forma óptima. Un verdadero profesional.",
       rating: 5,
     },
     {
       name: "Luis Fernandez",
-      text: "The 3-month Élite pack transformed my body and mindset. The weekly check-ins and constant support kept me on track. Best shape of my life at 42 years old!",
+      text: "El pack Élite de 3 meses transformó mi cuerpo y mi mentalidad. Los chequeos semanales y el apoyo constante me mantuvieron en el camino. ¡La mejor forma de mi vida a los 42 años!",
       rating: 5,
     },
   ];
@@ -59,14 +59,14 @@ const Reviews = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20">
+      <section className="pt-32 pb-20 bg-section-alt">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <h1 className="text-5xl font-bold mb-6">
-              Client <span className="text-primary">Success Stories</span>
+              Historias de <span className="text-primary">éxito</span> de clientes
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Real transformations from real people. See what J Performance Systems clients have to say about their journey.
+              Transformaciones reales de personas reales. Lee lo que los clientes de J Performance tienen que decir sobre su experiencia.
             </p>
 
             {/* Rating Summary */}
@@ -78,7 +78,7 @@ const Reviews = () => {
               </div>
               <div className="text-left">
                 <div className="text-2xl font-bold">{averageRating.toFixed(1)}</div>
-                <div className="text-sm text-muted-foreground">{totalReviews} reviews</div>
+                <div className="text-sm text-muted-foreground">{totalReviews} reseñas</div>
               </div>
             </div>
           </div>
@@ -93,15 +93,15 @@ const Reviews = () => {
 
           {/* CTA Section */}
           <div className="mt-20 text-center bg-muted p-12 rounded-lg border border-border">
-            <h2 className="text-3xl font-bold mb-4">Ready to Write Your Success Story?</h2>
+            <h2 className="text-3xl font-bold mb-4">¿Listo para escribir tu historia de éxito?</h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Join these satisfied clients and start your transformation today with personalized training programs designed for results.
+              Únete a estos clientes satisfechos y comienza tu transformación hoy con programas personalizados diseñados para generar resultados.
             </p>
             <a
-              href="/training-plans"
+              href="/planes"
               className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
-              View Training Plans
+              Ver planes de entrenamiento
             </a>
           </div>
         </div>

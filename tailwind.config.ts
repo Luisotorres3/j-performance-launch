@@ -47,6 +47,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "section-alt": {
+          DEFAULT: "hsl(var(--section-alt))",
+          foreground: "hsl(var(--section-alt-foreground))",
+        },
       },
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',

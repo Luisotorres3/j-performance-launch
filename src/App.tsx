@@ -18,14 +18,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/j-performance-launch">
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/training-plans" element={<TrainingPlans />} />
+          <Route path="/planes" element={<TrainingPlans />} />
           <Route path="/packs" element={<Packs />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contacto" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

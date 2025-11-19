@@ -23,8 +23,8 @@ const Contact = () => {
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
+        title: "Información faltante",
+        description: "Por favor completa todos los campos obligatorios.",
         variant: "destructive",
       });
       return;
@@ -32,8 +32,8 @@ const Contact = () => {
 
     // Here you would typically send the data to a backend
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you within 24 hours.",
+      title: "Mensaje enviado",
+      description: "Gracias por tu mensaje. Te responderé dentro de 24 horas.",
     });
 
     // Reset form
@@ -56,21 +56,21 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20">
+      <section className="pt-32 pb-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <h1 className="text-5xl font-bold mb-6">
-              Get In <span className="text-primary">Touch</span>
+              Ponte en <span className="text-primary">contacto</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ready to start your transformation? Send me a message and let's discuss how we can achieve your fitness goals together.
+              ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar tus objetivos.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <div className="animate-slide-up">
-              <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
+                <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -78,7 +78,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
+                    <h3 className="font-semibold mb-1">Correo</h3>
                     <a href="mailto:info@jperformance.com" className="text-muted-foreground hover:text-primary transition-colors">
                       info@jperformance.com
                     </a>
@@ -90,7 +90,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Phone</h3>
+                    <h3 className="font-semibold mb-1">Teléfono</h3>
                     <a href="tel:+34600000000" className="text-muted-foreground hover:text-primary transition-colors">
                       +34 600 000 000
                     </a>
@@ -102,10 +102,10 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Location</h3>
+                    <h3 className="font-semibold mb-1">Ubicación</h3>
                     <p className="text-muted-foreground">
-                      Madrid, Spain<br />
-                      Online coaching available worldwide
+                      Madrid, España<br />
+                      Coaching online disponible a nivel mundial
                     </p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const Contact = () => {
                     <Instagram className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Social Media</h3>
+                    <h3 className="font-semibold mb-1">Redes sociales</h3>
                     <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                       @jperformancesystems
                     </a>
@@ -124,9 +124,9 @@ const Contact = () => {
               </div>
 
               <div className="mt-12 p-6 bg-muted rounded-lg border border-border">
-                <h3 className="font-semibold mb-3">Response Time</h3>
+                <h3 className="font-semibold mb-3">Tiempo de respuesta</h3>
                 <p className="text-muted-foreground">
-                  I typically respond to all inquiries within 24 hours. For urgent matters, please call directly.
+                  Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos urgentes, por favor llama directamente.
                 </p>
               </div>
             </div>
@@ -134,36 +134,36 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
               <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg border border-border">
-                <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+                <h2 className="text-2xl font-bold mb-6">Enviar un mensaje</h2>
                 
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Name *</Label>
+                    <Label htmlFor="name">Nombre *</Label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your name"
+                      placeholder="Tu nombre"
                       required
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="email">Email *</Label>
+                    <Label htmlFor="email">Correo *</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="your@email.com"
+                      placeholder="tu@correo.com"
                       required
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="phone">Phone</Label>
+                    <Label htmlFor="phone">Teléfono</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -175,20 +175,20 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">Mensaje *</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your fitness goals and how I can help..."
+                      placeholder="Cuéntame tus objetivos y cómo puedo ayudar..."
                       rows={6}
                       required
                     />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full">
-                    Send Message
+                    Enviar mensaje
                   </Button>
                 </div>
               </form>
