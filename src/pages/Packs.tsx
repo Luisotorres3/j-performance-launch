@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import PackCard from "@/components/PackCard";
+import { PlanCard, SectionHeader, Section } from "@/components/shared";
 
 const Packs = () => {
   const packs = [
@@ -56,48 +56,51 @@ const Packs = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl font-bold mb-6">
-              Packs especiales de <span className="text-primary">3 meses</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso.
-            </p>
-          </div>
+      <Section className="pt-32 pb-20">
+        <SectionHeader
+          title={<>Packs especiales de <span className="text-primary">3 meses</span></>}
+          description="Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso."
+          className="animate-fade-in"
+        />
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {packs.map((pack, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <PackCard {...pack} />
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 max-w-3xl mx-auto bg-muted p-8 rounded-lg border border-border">
-            <h3 className="text-2xl font-bold mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
-              </li>
-            </ul>
-          </div>
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {packs.map((pack, index) => (
+            <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              <PlanCard
+                title={pack.title}
+                price={pack.price}
+                originalPrice={pack.originalPrice}
+                savings={pack.savings}
+                gift={pack.gift}
+                features={pack.features}
+                index={index}
+              />
+            </div>
+          ))}
         </div>
-      </section>
+
+        <div className="mt-16 max-w-3xl mx-auto bg-muted p-8 rounded-lg border border-border">
+          <h3 className="text-2xl font-bold mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
+            </li>
+          </ul>
+        </div>
+      </Section>
 
       <Footer />
     </div>
