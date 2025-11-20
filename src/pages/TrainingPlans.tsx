@@ -5,12 +5,16 @@ import PackCard from "@/components/PackCard";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TrainingPlans = () => {
   const plans = [
     {
       title: "Básico",
-      prices: { mensual: 49.87, trimestral: 134.21, semestral: 280.17 },
+      originalPrice: 50,
+      price: 40,
+      savings: 10,
+      gift: "Guía de nutrición básica",
       features: [
         "Programa de entrenamiento personalizado",
         "Revisiones semanales de progreso",
@@ -21,8 +25,11 @@ const TrainingPlans = () => {
     },
     {
       title: "Profesional",
+      originalPrice: 75,
+      price: 60,
+      savings: 15,
+      gift: "Plan nutricional detallado + video técnico",
       popular: true,
-      prices: { mensual: 74.87, trimestral: 209.21, semestral: 419.17 },
       features: [
         "Incluye todas las características del plan Básico",
         "Programa de entrenamiento avanzado",
@@ -34,7 +41,10 @@ const TrainingPlans = () => {
     },
     {
       title: "Élite",
-      prices: { mensual: 104.87, trimestral: 289.21, semestral: 598.17 },
+      originalPrice: 105,
+      price: 85,
+      savings: 20,
+      gift: "Análisis biomecánico + consulta privada",
       features: [
         "Incluye todas las características del plan Profesional",
         "Consultas por video semanales",
@@ -46,7 +56,10 @@ const TrainingPlans = () => {
     },
     {
       title: "Opositores",
-      prices: { mensual: 61.87, trimestral: 168.21, semestral: 371.22 },
+      originalPrice: 62,
+      price: 50,
+      savings: 12,
+      gift: "Plan específico de preparación física",
       features: [
         "Programas específicos para preparación de oposiciones físicas",
         "Entrenamientos estructurados por objetivos",
@@ -56,7 +69,10 @@ const TrainingPlans = () => {
     },
     {
       title: "Readaptación",
-      prices: { mensual: 35.87, trimestral: 95.21, semestral: 190.17 },
+      originalPrice: 36,
+      price: 30,
+      savings: 6,
+      gift: "Protocolo de readaptación personalizado",
       features: [
         "Protocolos de readaptación tras lesión",
         "Evaluación y seguimiento funcional",
@@ -66,9 +82,9 @@ const TrainingPlans = () => {
     },
   ];
 
-  const [period, setPeriod] = useState<'mensual'|'trimestral'|'semestral'>('mensual');
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [visiblePlan, setVisiblePlan] = useState<string | null>(null);
+  const [period, setPeriod] = useState<'mensual'|'trimestral'|'semestral'>('mensual');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -90,191 +106,163 @@ const TrainingPlans = () => {
     return () => observer.disconnect();
   }, []);
 
+  const getPeriodPrice = (base: number) => {
+    if (period === 'mensual') return base;
+    if (period === 'trimestral') return Math.round(base * 0.9);
+    if (period === 'semestral') return Math.round(base * 0.8);
+    return base;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20 bg-section-alt">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+      <section className="pt-32 pb-20 bg-gradient-to-b from-background to-muted/20">
+        <div className="w-full px-2 sm:px-4 lg:px-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-5xl font-bold mb-6">
-              Planes mensuales de <span className="text-primary">entrenamiento</span>
+              Planes de <span className="text-primary">entrenamiento</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Elige el plan perfecto para tu camino hacia la forma física. Todos los planes incluyen programas personalizados diseñados específicamente para tus objetivos y nivel.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex justify-center items-center gap-4 mb-8">
-            <div className="inline-flex rounded-full bg-card p-1 border border-border shadow-sm" role="tablist" aria-label="Selector de periodo">
+          <motion.div 
+            className="flex justify-center items-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="inline-flex rounded-full bg-muted/50 p-1 border border-border shadow-sm backdrop-blur-sm" role="tablist" aria-label="Selector de periodo">
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === "mensual"}
-                onClick={() => setPeriod("mensual")}
-                className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${period === "mensual" ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:bg-primary/10"}`}
+                aria-pressed={period === 'mensual'}
+                onClick={() => setPeriod('mensual')}
+                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'mensual' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
               >
                 Mensual
               </button>
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === "trimestral"}
-                onClick={() => setPeriod("trimestral")}
-                className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${period === "trimestral" ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:bg-primary/10"}`}
+                aria-pressed={period === 'trimestral'}
+                onClick={() => setPeriod('trimestral')}
+                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'trimestral' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
               >
-                Trimestral
+                <span>Trimestral</span>
+                <span className="ml-2 text-xs bg-green-500/20 text-green-500 px-2 py-0.5 rounded-full">-10%</span>
               </button>
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === "semestral"}
-                onClick={() => setPeriod("semestral")}
-                className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${period === "semestral" ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:bg-primary/10"}`}
+                aria-pressed={period === 'semestral'}
+                onClick={() => setPeriod('semestral')}
+                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'semestral' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
               >
-                Semestral
+                <span>Semestral</span>
+                <span className="ml-2 text-xs bg-green-500/20 text-green-500 px-2 py-0.5 rounded-full">-20%</span>
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 w-full">
             {plans.map((plan, index) => (
-              <div
+              <motion.div
                 key={index}
-                role="button"
-                tabIndex={0}
-                data-title={plan.title}
-                onClick={() => setSelectedPlan(plan.title)}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedPlan(plan.title); }}
-                className={`plan-card animate-slide-up h-full cursor-pointer ${selectedPlan === plan.title ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                aria-pressed={selectedPlan === plan.title}
+                className="transition-transform hover:scale-105"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.3 + (index * 0.08) }}
               >
-                <PricingCard {...plan} selectedPeriod={period} className="h-full" showCTA={false} />
-              </div>
+                <PackCard
+                  title={plan.title}
+                  originalPrice={getPeriodPrice(plan.originalPrice)}
+                  price={getPeriodPrice(plan.price)}
+                  savings={getPeriodPrice(plan.savings)}
+                  gift={plan.gift}
+                  features={plan.features}
+                  className="h-full"
+                  index={index}
+                  selected={selectedPlan === plan.title}
+                  onSelect={() => setSelectedPlan(plan.title)}
+                />
+              </motion.div>
             ))}
           </div>
-
-          <div className="mt-8 text-center">
-            <div className="max-w-md mx-auto">
-              <Button asChild size="lg" className="w-full" disabled={!selectedPlan}>
-                <Link to={selectedPlan ? `/contact?plan=${encodeURIComponent(selectedPlan)}` : '#'} className={`${!selectedPlan ? 'pointer-events-none' : ''}`}>
-                  {selectedPlan ? `Empieza ya — ${selectedPlan}` : 'Elige un plan'}
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Mobile floating CTA for the plan currently in view while scrolling */}
-          {visiblePlan && (
-            <div className="fixed left-1/2 -translate-x-1/2 bottom-4 z-50 md:hidden">
-              <Button asChild size="lg" className="px-6">
-                <Link to={`/contact?plan=${encodeURIComponent(visiblePlan)}`}>
-                  Empieza — {visiblePlan}
-                </Link>
-              </Button>
-            </div>
-          )}
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-4">¿No sabes qué plan es el indicado para ti?</p>
-            <a href="/contacto" className="text-primary hover:underline font-semibold">
-              Contacta conmigo para una consulta gratuita →
-            </a>
+            <Link to="/contacto">Contacta conmigo para una consulta gratuita →</Link>
           </div>
         </div>
       </section>
 
-      {/* Packs section merged from Packs.tsx */}
-      <section className="pt-32 pb-20 bg-secondary">
+      {/* Payment Methods Banner */}
+      <section className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-6">
-              Packs especiales de <span className="text-primary">3 meses</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso.
-            </p>
-          </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto opacity-50">
+            {/* Bizum */}
+            <div className="h-8 md:h-10 flex items-center">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" 
+                alt="Bizum" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                title: "Pack 3 Meses Básico",
-                originalPrice: 135,
-                price: 100,
-                savings: 35,
-                gift: "500 g Proteína Premium",
-                features: [
-                  "3 meses del plan Básico",
-                  "Incluye todas las características del plan Básico",
-                  "Programa de entrenamiento personalizado",
-                  "Seguimiento semanal del progreso",
-                  "Guías de nutrición",
-                  "Soporte por correo electrónico",
-                ],
-              },
-              {
-                title: "Pack 3 Meses Avanzado",
-                originalPrice: 225,
-                price: 190,
-                savings: 35,
-                gift: "2 kg Proteína Premium (~45€ valor)",
-                features: [
-                  "3 meses del plan Avanzado",
-                  "Incluye todas las características del plan Avanzado",
-                  "Entrenamiento y nutrición avanzada",
-                  "Llamadas por video quincenales",
-                  "Soporte prioritario",
-                  "Panel de rendimiento",
-                ],
-              },
-              {
-                title: "Pack 3 Meses Élite",
-                originalPrice: 270,
-                price: 235,
-                savings: 35,
-                gift: "2 kg Proteína Premium + 500 g Creatina",
-                features: [
-                  "3 meses del plan Élite",
-                  "Incluye todas las características premium",
-                  "Consultas semanales",
-                  "Análisis biomecánico",
-                  "Soporte 24/7",
-                  "Seguimiento de composición corporal",
-                  "Orientación sobre suplementos",
-                ],
-              },
-            ].map((pack, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <PackCard {...pack} />
+            {/* Revolut */}
+            <div className="h-8 md:h-10 flex items-center">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/7/73/Revolut_logo.svg" 
+                alt="Revolut" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
+
+            {/* PayPal */}
+            <div className="h-8 md:h-10 flex items-center">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" 
+                alt="PayPal" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
+
+            {/* Transferencia Bancaria */}
+            <div className="h-8 md:h-10 flex items-center">
+              <svg viewBox="0 0 48 32" className="h-full w-auto">
+                <rect x="2" y="4" width="44" height="24" rx="2" fill="none" stroke="#666" strokeWidth="2"/>
+                <rect x="2" y="8" width="44" height="8" fill="#666"/>
+                <line x1="6" y1="20" x2="18" y2="20" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </div>
+
+            {/* Stripe */}
+            <div className="h-8 md:h-10 flex items-center relative">
+              <div className="absolute -top-2 -right-2 bg-accent/80 text-accent-foreground text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap z-10">
+                Pronto
               </div>
-            ))}
-          </div>
-
-          <div className="mt-16 max-w-3xl mx-auto bg-muted p-8 rounded-lg border border-border">
-            <h3 className="text-2xl font-bold mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold">•</span>
-                <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
-              </li>
-            </ul>
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
+                alt="Stripe" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Packs section removed */}
 
       <Footer />
     </div>

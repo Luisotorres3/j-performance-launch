@@ -20,10 +20,10 @@ const Highlights = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-20 bg-section-alt">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold mb-4">Por qué elegir J Performance System</h2>
+           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Por qué elegir J Performance System</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Entrenamiento profesional que combina experiencia, dedicación y métodos probados para ayudarte a alcanzar tus objetivos.
           </p>

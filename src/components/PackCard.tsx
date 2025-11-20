@@ -10,49 +10,97 @@ interface PackCardProps {
   gift: string;
   features: string[];
   className?: string;
+  index?: number;
+  selected?: boolean;
+  onSelect?: () => void;
 }
 
-const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "" }: PackCardProps) => {
+const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "", index = 0, selected = false, onSelect }: PackCardProps) => {
+  const borderColors = [
+    "border-blue-500/30",
+    "border-purple-500/30",
+    "border-pink-500/30",
+    "border-cyan-500/30",
+    "border-amber-500/30",
+  ];
+  
+  const selectedBorderColors = [
+    "border-blue-500",
+    "border-purple-500",
+    "border-pink-500",
+    "border-cyan-500",
+    "border-amber-500",
+  ];
+  
+  const buttonBorderColors = [
+    "border-blue-500 hover:bg-blue-500",
+    "border-purple-500 hover:bg-purple-500",
+    "border-pink-500 hover:bg-pink-500",
+    "border-cyan-500 hover:bg-cyan-500",
+    "border-amber-500 hover:bg-amber-500",
+  ];
+  
+  const ringColors = [
+    "ring-blue-500/30",
+    "ring-purple-500/30",
+    "ring-pink-500/30",
+    "ring-cyan-500/30",
+    "ring-amber-500/30",
+  ];
+  
+  const borderColor = selected ? selectedBorderColors[index % selectedBorderColors.length] : borderColors[index % borderColors.length];
+  const ringColor = ringColors[index % ringColors.length];
+  const buttonBorderColor = buttonBorderColors[index % buttonBorderColors.length];
+  const isPopular = title === "Profesional";
+  
   return (
-    <div className={`bg-card p-8 rounded-lg border border-border hover:border-primary transition-all duration-300 hover:shadow-glow flex flex-col ${className}`}>
-      <div className="flex items-center gap-2 mb-4">
-        <Gift className="w-6 h-6 text-primary" />
-        <span className="text-sm font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-md">
-          Pack especial
-        </span>
-      </div>
-
-      <h3 className="text-2xl font-bold mb-4">{title}</h3>
+    <div 
+      onClick={onSelect}
+      className={`relative bg-card/50 backdrop-blur-sm p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
+    >
+      {isPopular && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span className="bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg">
+            Más popular
+          </span>
+        </div>
+      )}
+      
+      <h3 className="text-2xl font-bold mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground mb-6">{gift}</p>
 
       <div className="mb-6">
-        <div className="flex items-baseline gap-2 mb-2">
-          <span className="text-4xl font-bold text-primary">{price}€</span>
+        <div className="flex items-baseline gap-2 mb-1">
+          <span className="text-5xl font-bold">{price}€</span>
           <span className="text-lg text-muted-foreground line-through">{originalPrice}€</span>
         </div>
-        <p className="text-lg font-semibold text-teal-600 dark:text-teal-400">Ahorra {savings}€</p>
+        <p className="text-sm text-muted-foreground">por mes</p>
       </div>
-      <div className="bg-muted p-4 rounded-lg mb-6 border border-border">
-        <div className="flex items-center gap-2 mb-2">
-          <Gift className="w-5 h-5 text-primary shrink-0" />
-          <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Regalo incluido:</span>
-        </div>
-        <p className="text-muted-foreground">
-          <strong className="text-slate-900 dark:text-white">{gift}</strong>
-        </p>
+      
+      <Button 
+        asChild 
+        className={`w-full mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
+        size="lg" 
+        variant="outline"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <Link to="/contacto">Comenzar</Link>
+      </Button>
+
+      <div className="border-t border-border pt-6 mb-4">
+        <p className="text-sm font-semibold mb-3">Incluye:</p>
       </div>
 
-      <ul className="space-y-3 mb-8">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3">
-            <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-            <span className="text-muted-foreground">{feature}</span>
+      <ul className="space-y-3 flex-1">
+        {features.map((feature, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm">
+            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+            <span className="text-muted-foreground leading-relaxed">{feature}</span>
           </li>
         ))}
       </ul>
-
-      <Button asChild className="w-full mt-auto" size="lg">
-        <Link to="/contacto">Adquirir pack</Link>
-      </Button>
     </div>
   );
 };

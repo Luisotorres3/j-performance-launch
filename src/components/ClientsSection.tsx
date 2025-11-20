@@ -23,43 +23,37 @@ const placeholderClients: Client[] = [
 
 const ClientsSection: React.FC<Props> = ({ clients = placeholderClients }) => {
   return (
-    <section className="pt-24 pb-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Con quién he trabajado anteriormente</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mt-3">A continuación algunos atletas y profesionales con los que he colaborado. Pásame las fotos y un mini-CV y los añado aquí con diseño potente.</p>
+    <section className="pt-2 pb-24 bg-background">
+      <div className="container mx-auto px-4 max-w-[1600px]">
+        <div className="text-center mb-16">
+          <h1 className="text-3xl md:text-5xl font-bold">Con quién he trabajado anteriormente</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-3">Jugadores que han mejorado su rendimiento a través de nuestro programa de entrenamiento.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {clients.map((c) => (
-            <article key={c.id} className="bg-card rounded-lg p-4 border border-border shadow-sm hover:shadow-glow transition-shadow duration-300 flex flex-col items-center text-center">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
+            <article key={c.id} className="bg-card rounded-2xl border-[3px] border-muted-foreground/30 overflow-hidden hover:border-primary transition-all duration-300 group shadow-md hover:shadow-2xl hover:shadow-primary/10">
+              <div className="aspect-[3/4] overflow-hidden bg-muted">
                 {c.photo ? (
-                  <img src={c.photo} alt={c.name} className="w-full h-full object-cover" />
+                  <img src={c.photo} alt={c.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 ) : (
-                  <div className="text-sm text-muted-foreground">Imagen</div>
+                  <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">Imagen</div>
                 )}
               </div>
 
-              <div className="mt-4">
-                <div className="text-lg md:text-xl font-semibold">{c.name}</div>
-                {c.clubs && <div className="text-sm text-primary mt-1">{c.clubs}</div>}
-                {c.role && <div className="text-sm text-muted-foreground mt-1">{c.role} • {c.duration ?? ''}</div>}
-              </div>
-
-              {c.miniCV && (
-                <div className="mt-3 text-sm text-muted-foreground">{c.miniCV}</div>
-              )}
-
-              <div className="mt-4">
-                <Link to="#" className="text-sm text-primary hover:underline">Ver más</Link>
+              <div className="p-5">
+                <h3 className="text-xl font-bold mb-2">{c.name}</h3>
+                {c.role && <div className="text-sm text-primary font-semibold mb-1">{c.role}</div>}
+                {c.clubs && <div className="text-sm text-muted-foreground font-medium mb-1">{c.clubs}</div>}
+                {c.duration && <div className="text-xs text-muted-foreground mb-3">{c.duration}</div>}
+                {c.miniCV && (
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-3 pt-3 border-t border-border">
+                    {c.miniCV}
+                  </p>
+                )}
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8 text-center text-sm text-muted-foreground">
-          <p>Para añadir clientes reales, pásame las fotos (preferible 800×800) y un mini-CV (1-2 líneas con equipos/temporadas). Puedo incorporarlos aquí y ajustar el diseño.</p>
         </div>
       </div>
     </section>

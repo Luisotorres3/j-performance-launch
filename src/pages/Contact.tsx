@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -58,18 +59,29 @@ const Contact = () => {
       
       <section className="pt-32 pb-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-5xl font-bold mb-6">
               Ponte en <span className="text-primary">contacto</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar tus objetivos.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
-            <div className="animate-slide-up">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
                 <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
               
               <div className="space-y-6">
@@ -129,10 +141,15 @@ const Contact = () => {
                   Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos urgentes, por favor llama directamente.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg border border-border">
                 <h2 className="text-2xl font-bold mb-6">Enviar un mensaje</h2>
                 
@@ -192,7 +209,7 @@ const Contact = () => {
                   </Button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

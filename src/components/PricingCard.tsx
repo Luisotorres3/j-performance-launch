@@ -65,7 +65,7 @@ const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, 
 
       {showCTA && (
         <Button asChild className="w-full mt-auto" size="lg">
-          <Link to="/contact">Empieza ya</Link>
+          <Link to="/contacto">Empieza ya</Link>
         </Button>
       )}
     </div>

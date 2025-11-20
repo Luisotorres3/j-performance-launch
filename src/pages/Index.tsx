@@ -11,6 +11,7 @@ import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
 import React, { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -21,135 +22,168 @@ const Index = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const testimonios = [
-    {
-      name: "Carlos M.",
-      text: "En solo 3 meses con J Performance Systems, vi resultados increíbles. El enfoque personalizado marcó la diferencia.",
-    },
-    {
-      name: "Miguel R.",
-      text: "La mejor inversión en mi salud. Asesoramiento profesional, resultados sorprendentes y apoyo constante durante todo el proceso.",
-    },
-    {
-      name: "David L.",
-      text: "La experiencia de J en biomecánica y nutrición transformó no solo mi cuerpo, sino mi estilo de vida. ¡Muy recomendable!",
-    },
-  ];
+  
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
+      
+      {/* Highlights - bg-section-alt */}
       <Highlights />
+      
+      {/* Clients Grid */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12 sm:mb-16 px-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Con quién he trabajado</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
+              Jugadores que han mejorado su rendimiento a través de nuestro programa de entrenamiento.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 max-w-7xl mx-auto px-2 sm:px-0">
+            {clients.slice(0, 10).map((client, index) => (
+              <motion.div
+                key={client.id}
+                className="group relative overflow-hidden rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={client.photo}
+                    alt={client.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-4 text-center bg-gradient-to-t from-card to-transparent">
+                  <h3 className="font-bold text-lg mb-1">{client.name}</h3>
+                  <p className="text-sm text-primary font-semibold">{client.role}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{client.clubs}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
+              <Link to="/reviews" onClick={() => window.scrollTo(0, 0)}>Ver todos los clientes</Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Plans Section */}
       <section className="py-20 bg-section-alt">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4">Planes destacados</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-12 sm:mb-16 px-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Planes destacados</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
               Descubre nuestros planes más populares diseñados para todos los niveles.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 sm:mb-12 px-2 sm:px-0">
             {[
-              { title: "Básico", prices: { mensual: 49.87, trimestral: 134.21, semestral: 280.17 }, features: ["Programa personalizado","Revisiones semanales","Guías nutricionales"] },
-              { title: "Profesional", popular: true, prices: { mensual: 74.87, trimestral: 209.21, semestral: 419.17 }, features: ["Todo lo del Básico","Consultas quincenales","Soporte prioritario"] },
-              { title: "Élite", prices: { mensual: 104.87, trimestral: 289.21, semestral: 598.17 }, features: ["Consultas semanales","Análisis biomecánico","Soporte 24/7"] },
+              { title: "Básico", price: 40, features: ["Programa personalizado","Revisiones semanales","Guías nutricionales"] },
+              { title: "Profesional", price: 60, popular: true, features: ["Todo lo del Básico","Consultas quincenales","Soporte prioritario"] },
+              { title: "Élite", price: 85, features: ["Consultas semanales","Análisis biomecánico","Soporte 24/7"] },
+              { title: "Opositores", price: 50, features: ["Preparación física","Entrenamientos por objetivos","Seguimiento regular"] },
+              { title: "Readaptación", price: 30, features: ["Readaptación tras lesión","Evaluación funcional","Recuperación progresiva"] },
             ].map((plan, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.08}s` }}>
-                <PricingCard {...plan} />
-              </div>
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <div className={`relative bg-card/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border-2 ${plan.popular ? 'border-primary/50 ring-2 ring-primary/20' : 'border-border'} hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col h-full`}>
+                  {plan.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                        Popular
+                      </span>
+                    </div>
+                  )}
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center">{plan.title}</h3>
+                  <div className="text-center mb-4 sm:mb-6">
+                    <div className="text-3xl sm:text-4xl font-bold mb-1">{plan.price}€</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">por mes</div>
+                  </div>
+                  <ul className="text-muted-foreground text-xs sm:text-sm space-y-2 sm:space-y-2.5 flex-1">
+                    {plan.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-primary text-base font-bold">✓</span>
+                        <span className="leading-relaxed">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="text-center">
-            <Button asChild size="lg" variant="outline">
-              <Link to="/training-plans">Ver todos los planes</Link>
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
+              <Link to="/planes" onClick={() => window.scrollTo(0, 0)}>Ver todos los planes</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* Packs Section */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4">Packs especiales</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Ahorra con nuestros packs de 3 meses e incluye regalos premium para potenciar tus resultados.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto mb-8">
-            {[
-              { title: "Pack 3 Meses Básico", originalPrice: 135, price: 100, savings: 35, gift: "500 g Proteína Premium", features: ["3 meses del plan Básico","Programa personalizado","Seguimiento semanal"] },
-              { title: "Pack 3 Meses Avanzado", originalPrice: 225, price: 190, savings: 35, gift: "2 kg Proteína Premium (~45€ valor)", features: ["Entrenamiento y nutrición avanzada","Llamadas quincenales","Soporte prioritario"] },
-              { title: "Pack 3 Meses Élite", originalPrice: 270, price: 235, savings: 35, gift: "2 kg Proteína Premium + 500 g Creatina", features: ["Consultas semanales","Análisis biomecánico","Soporte 24/7"] },
-              { title: "Pack 3 Meses Pro", originalPrice: 320, price: 280, savings: 40, gift: "Kit premium + asesoría", features: ["Consultas semanales","Análisis avanzado","Soporte 24/7"] },
-            ].map((pack, index) => (
-              <div key={index} className="animate-slide-up h-full" style={{ animationDelay: `${index * 0.08}s` }}>
-                <PackCard {...pack} className="h-full" />
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button asChild size="lg" className="shadow-glow">
-              <Link to="/training-plans">Ver packs completos</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials Section */}
-      <section className="py-20 bg-section-alt">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4">Lo que dicen mis clientes</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Resultados reales de personas reales que transformaron sus vidas con J Performance Systems.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {testimonios.map((testimonial, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <TestimonialCard {...testimonial} />
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button asChild size="lg" variant="outline">
-              <Link to="/reviews">Ver todas las reseñas</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Clients Carousel */}
-      <ClientsCarousel clients={clients} />
 
       {/* CTA Section */}
-      <section className="py-20 bg-section-alt">
+      <section className="py-12 sm:py-20 bg-background">
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold mb-6">
+          <motion.div 
+            className="max-w-3xl mx-auto px-2"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
               ¿Listo para comenzar tu transformación?
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
               Únete a la familia de J Performance Systems y desbloquea tu verdadero potencial con programas de entrenamiento personalizados.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="shadow-glow">
-                <Link to="/training-plans">Ver planes de entrenamiento</Link>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button asChild size="lg" className="shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                <Link to="/planes">Ver todos los planes</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/contact">Contáctame</Link>
+              <Button asChild size="lg" className="shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                <Link to="/contacto">Contáctame</Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -158,9 +192,9 @@ const Index = () => {
         <button
           aria-label="Ir arriba"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed right-6 bottom-6 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow hover:scale-105 transition-transform"
+          className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-50 p-2.5 sm:p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-transform"
         >
-          <ChevronUp className="w-5 h-5" />
+          <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       )}
     </div>

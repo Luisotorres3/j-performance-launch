@@ -9,16 +9,19 @@ interface Props {
   interval?: number; // ms
 }
 
-const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = true, interval = 4000 }) => {
+const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = false, interval = 4000 }) => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [swipeDistance, setSwipeDistance] = useState<number>(() =>
     typeof window !== "undefined" ? Math.max(300, window.innerWidth * 0.9) : 300
   );
+  const [visibleCount, setVisibleCount] = useState<number>(3);
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const onResize = () => setSwipeDistance(Math.max(300, window.innerWidth * 0.9));
+    const onResize = () => {
+      setSwipeDistance(Math.max(300, window.innerWidth * 0.9));
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -34,16 +37,14 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = true, interval =
 
   const goNext = () => {
     setDirection(1);
-    setIndex((prev) => (prev + 1) % clients.length);
+    setIndex((prev) => (prev + visibleCount) % clients.length);
   };
   const goPrev = () => {
     setDirection(-1);
-    setIndex((prev) => (prev - 1 + clients.length) % clients.length);
+    setIndex((prev) => (prev - visibleCount + clients.length * visibleCount) % clients.length);
   };
 
   if (!clients || clients.length === 0) return null;
-
-  const current = clients[index];
 
   const imageVariants = {
     enter: (dir: number) => ({ x: dir > 0 ? swipeDistance : -swipeDistance, opacity: 0 }),
@@ -52,7 +53,7 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = true, interval =
   };
 
   const handleDragEnd = (offsetX: number, velocityX: number) => {
-    // Use absolute offset * velocity (Framer Motion example) so direction is inferred
+    // Framer Motion recommended pattern: offset * velocity
     const swipe = Math.abs(offsetX) * velocityX;
     const swipeConfidenceThreshold = 1000;
     if (swipe < -swipeConfidenceThreshold) {
@@ -64,70 +65,86 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = true, interval =
     }
   };
 
+  // prepare visible items (wrap-around)
+  const n = clients.length;
+  const visible: Client[] = [];
+  for (let i = 0; i < Math.min(visibleCount, n); i++) {
+    visible.push(clients[(index + i) % n]);
+  }
+
   return (
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl font-bold mb-4">Con quién he trabajado</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Algunos de los jugadores y profesionales con los que he colaborado.</p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-6 bg-card rounded-2xl p-6 md:p-8 border border-border shadow-sm">
-          <div className="relative w-full md:w-2/3 flex items-center justify-center">
-            <button
-              aria-label="Anterior"
-              onClick={() => {
-                if (timerRef.current) window.clearTimeout(timerRef.current);
-                goPrev();
-              }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-slate-800/80 hover:bg-white px-2 py-2 rounded-full shadow"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+        <div className="relative w-full">
+          {/* Prev button */}
+          <button
+            aria-label="Anterior"
+            onClick={() => {
+              if (timerRef.current) window.clearTimeout(timerRef.current);
+              goPrev();
+            }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-6 bg-white/80 dark:bg-slate-800/80 hover:bg-white px-2 py-2 rounded-full shadow"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-            <div className="w-full max-w-3xl h-[540px] md:h-[720px] rounded-xl overflow-hidden bg-muted flex items-center justify-center">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.img
-                  key={current.id}
-                  src={current.photo}
-                  custom={direction}
-                  variants={imageVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ type: "tween", duration: 0.6 }}
-                  className="w-full h-full object-contain"
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.25}
-                  onDragStart={() => { if (timerRef.current) window.clearTimeout(timerRef.current); }}
-                  onDragEnd={(event, info) => handleDragEnd(info.offset.x, info.velocity.x)}
-                  whileTap={{ cursor: "grabbing" }}
-                  style={{ touchAction: "pan-y" }}
-                  alt={current.name}
-                />
-              </AnimatePresence>
-            </div>
+          {/* Carousel viewport */}
+          <div className="w-full overflow-hidden">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={index}
+                custom={direction}
+                variants={imageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ type: "tween", duration: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.15}
+                onDragStart={() => { if (timerRef.current) window.clearTimeout(timerRef.current); }}
+                onDragEnd={(event, info) => handleDragEnd(info.offset.x, info.velocity.x)}
+                style={{ touchAction: "pan-y" }}
+              >
+                {visible.map((c) => (
+                  <div key={c.id} className="bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
+                    {/* Image on left */}
+                    <div className="w-full md:w-64 h-48 md:h-auto flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden aspect-square">
+                      {c.photo ? (
+                        <img src={c.photo} alt={c.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="text-sm text-muted-foreground">Imagen</div>
+                      )}
+                    </div>
 
-            <button
-              aria-label="Siguiente"
-              onClick={() => {
-                if (timerRef.current) window.clearTimeout(timerRef.current);
-                goNext();
-              }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-slate-800/80 hover:bg-white px-2 py-2 rounded-full shadow"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+                    {/* Info on right */}
+                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                      <div className="text-2xl md:text-3xl font-bold">{c.name}</div>
+                      {c.clubs && <div className="text-lg text-primary mt-2">{c.clubs}</div>}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-            <div className="w-full md:w-1/3">
-            <h3 className="text-2xl md:text-3xl font-bold">{current.name}</h3>
-            <div className="mt-2 text-sm text-primary font-semibold">{current.clubs}</div>
-            <div className="text-sm text-muted-foreground mt-1">{current.role} • {current.duration}</div>
-
-            {current.miniCV && <p className="mt-4 text-sm text-muted-foreground">{current.miniCV}</p>}
-            <div className="mt-6 text-xs text-muted-foreground">{index + 1} / {clients.length}</div>
-          </div>
+          {/* Next button */}
+          <button
+            aria-label="Siguiente"
+            onClick={() => {
+              if (timerRef.current) window.clearTimeout(timerRef.current);
+              goNext();
+            }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-6 bg-white/80 dark:bg-slate-800/80 hover:bg-white px-2 py-2 rounded-full shadow"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </section>
@@ -135,3 +152,4 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = true, interval =
 };
 
 export default ClientsCarousel;
+

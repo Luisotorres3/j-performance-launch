@@ -52,7 +52,7 @@ const NotFound = () => {
                   Blog
                 </Link>
                 <Link to="/reviews" className="text-sm text-primary hover:underline">
-                  Reseñas
+                  Con quien he trabajado
                 </Link>
                 <Link to="/contacto" className="text-sm text-primary hover:underline">
                   Contacto
