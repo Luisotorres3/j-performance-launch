@@ -69,7 +69,7 @@ const PackCard = ({
   return (
     <div
       onClick={onSelect}
-      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
+      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? "ring-2 ring-primary/20" : ""} ${selected ? `ring-2 ${ringColor} shadow-xl` : ""} ${onSelect ? "cursor-pointer" : ""}`}
     >
       {isPopular && (
         <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
@@ -78,22 +78,24 @@ const PackCard = ({
           </span>
         </div>
       )}
-      
+
       <h3 className="text-xl sm:text-2xl font-bold mb-2">{title}</h3>
       <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">{gift}</p>
 
       <div className="mb-4 sm:mb-6">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="text-3xl sm:text-4xl md:text-5xl font-bold">{price}€</span>
-          <span className="text-base sm:text-lg text-muted-foreground line-through">{originalPrice}€</span>
+          <span className="text-base sm:text-lg text-muted-foreground line-through">
+            {originalPrice}€
+          </span>
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground">por mes</p>
       </div>
-      
-      <Button 
-        asChild 
+
+      <Button
+        asChild
         className={`w-full mb-4 sm:mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
-        size="lg" 
+        size="lg"
         variant="outline"
         onClick={(e) => {
           e.stopPropagation();

@@ -56,10 +56,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-background">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="text-center mb-10 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,8 @@ const Contact = () => {
               Ponte en <span className="text-primary">contacto</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar tus objetivos.
+              ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar
+              tus objetivos.
             </p>
           </motion.div>
 
@@ -82,8 +83,10 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Información de contacto</h2>
-              
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+                Información de contacto
+              </h2>
+
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -91,7 +94,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Correo</h3>
-                    <a href="mailto:info@jperformance.com" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors break-all">
+                    <a
+                      href="mailto:info@jperformance.com"
+                      className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors break-all"
+                    >
                       info@jperformance.com
                     </a>
                   </div>
@@ -103,7 +109,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Teléfono</h3>
-                    <a href="tel:+34600000000" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="tel:+34600000000"
+                      className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
+                    >
                       +34 600 000 000
                     </a>
                   </div>
@@ -116,7 +125,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Ubicación</h3>
                     <p className="text-sm sm:text-base text-muted-foreground">
-                      Andalucía, España<br />
+                      Andalucía, España
+                      <br />
                       Online
                     </p>
                   </div>
@@ -128,7 +138,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Redes sociales</h3>
-                    <a href="#" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="#"
+                      className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
+                    >
                       @jperformancesystems
                     </a>
                   </div>
@@ -136,9 +149,12 @@ const Contact = () => {
               </div>
 
               <div className="mt-8 sm:mt-12 p-4 sm:p-6 bg-muted rounded-lg border border-border">
-                <h3 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tiempo de respuesta</h3>
+                <h3 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">
+                  Tiempo de respuesta
+                </h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos urgentes, por favor llama directamente.
+                  Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos
+                  urgentes, por favor llama directamente.
                 </p>
               </div>
             </motion.div>
@@ -150,12 +166,17 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <form onSubmit={handleSubmit} className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border"
+              >
                 <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Enviar un mensaje</h2>
-                
+
                 <div className="space-y-3 sm:space-y-4">
                   <div>
-                    <Label htmlFor="name" className="text-sm sm:text-base">Nombre *</Label>
+                    <Label htmlFor="name" className="text-sm sm:text-base">
+                      Nombre *
+                    </Label>
                     <Input
                       id="name"
                       name="name"
@@ -168,7 +189,9 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="email" className="text-sm sm:text-base">Correo *</Label>
+                    <Label htmlFor="email" className="text-sm sm:text-base">
+                      Correo *
+                    </Label>
                     <Input
                       id="email"
                       name="email"
@@ -182,7 +205,9 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="phone" className="text-sm sm:text-base">Teléfono</Label>
+                    <Label htmlFor="phone" className="text-sm sm:text-base">
+                      Teléfono
+                    </Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -195,7 +220,9 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="message" className="text-sm sm:text-base">Mensaje *</Label>
+                    <Label htmlFor="message" className="text-sm sm:text-base">
+                      Mensaje *
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -208,7 +235,11 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12"
+                  >
                     Enviar mensaje
                   </Button>
                 </div>

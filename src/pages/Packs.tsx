@@ -55,7 +55,7 @@ const Packs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 animate-fade-in">
@@ -63,7 +63,8 @@ const Packs = () => {
               Packs especiales de <span className="text-primary">3 meses</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y recibe regalos premium para apoyar tu progreso.
+              Comprométete con tu transformación con nuestros packs exclusivos de 3 meses. Ahorra y
+              recibe regalos premium para apoyar tu progreso.
             </p>
           </div>
 
@@ -80,23 +81,38 @@ const Packs = () => {
           </div>
 
           <div className="mt-10 sm:mt-12 md:mt-16 max-w-3xl mx-auto bg-muted p-4 sm:p-6 md:p-8 rounded-lg border border-border">
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center">¿Por qué elegir un pack de 3 meses?</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center">
+              ¿Por qué elegir un pack de 3 meses?
+            </h3>
             <ul className="space-y-2 sm:space-y-3 text-muted-foreground text-sm sm:text-base">
               <li className="flex items-start gap-2 sm:gap-3">
                 <span className="text-primary font-bold shrink-0">•</span>
-                <span><strong>Mejores resultados:</strong> La constancia es clave para la transformación. 3 meses proporcionan el tiempo óptimo para ver cambios significativos.</span>
+                <span>
+                  <strong>Mejores resultados:</strong> La constancia es clave para la
+                  transformación. 3 meses proporcionan el tiempo óptimo para ver cambios
+                  significativos.
+                </span>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
                 <span className="text-primary font-bold shrink-0">•</span>
-                <span><strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones mensuales.</span>
+                <span>
+                  <strong>Ahorro de costes:</strong> Ahorra 35€ en comparación con suscripciones
+                  mensuales.
+                </span>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
                 <span className="text-primary font-bold shrink-0">•</span>
-                <span><strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar tu progreso.</span>
+                <span>
+                  <strong>Regalos Premium:</strong> Recibe suplementos de alta calidad para acelerar
+                  tu progreso.
+                </span>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
                 <span className="text-primary font-bold shrink-0">•</span>
-                <span><strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra resultados sostenibles.</span>
+                <span>
+                  <strong>Compromiso a largo plazo:</strong> Crea hábitos duraderos y logra
+                  resultados sostenibles.
+                </span>
               </li>
             </ul>
           </div>

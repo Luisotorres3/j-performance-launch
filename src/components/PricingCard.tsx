@@ -40,7 +40,7 @@ const PricingCard = ({
           </span>
         </div>
       )}
-      
+
       <div className="text-center mb-4 sm:mb-6">
         <h3 className="text-xl sm:text-2xl font-bold mb-2">{title}</h3>
         {prices ? (
@@ -61,13 +61,17 @@ const PricingCard = ({
             return (
               <div className="text-center">
                 <div className="text-base sm:text-xl text-muted-foreground">{label}</div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">{value.toFixed(2)}€</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
+                  {value.toFixed(2)}€
+                </div>
               </div>
             );
           })()
         ) : (
           <div className="flex items-baseline justify-center gap-1">
-            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">{price}€</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
+              {price}€
+            </span>
             <span className="text-sm sm:text-base text-muted-foreground">/mes</span>
           </div>
         )}
@@ -77,7 +81,9 @@ const PricingCard = ({
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-2 sm:gap-3">
             <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0 mt-0.5" />
-            <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature}</span>
+            <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              {feature}
+            </span>
           </li>
         ))}
       </ul>

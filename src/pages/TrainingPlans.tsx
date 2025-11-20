@@ -120,10 +120,10 @@ const TrainingPlans = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-b from-background to-muted/20">
         <div className="w-full px-2 sm:px-4 lg:px-12">
-          <motion.div 
+          <motion.div
             className="text-center mb-8 sm:mb-10 md:mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -134,46 +134,55 @@ const TrainingPlans = () => {
               Planes de <span className="text-primary">entrenamiento</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Elige el plan perfecto para tu camino hacia la forma física. Todos los planes incluyen programas personalizados diseñados específicamente para tus objetivos y nivel.
+              Elige el plan perfecto para tu camino hacia la forma física. Todos los planes incluyen
+              programas personalizados diseñados específicamente para tus objetivos y nivel.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex justify-center items-center gap-2 sm:gap-4 mb-8 sm:mb-10 md:mb-12 px-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="inline-flex flex-col sm:flex-row rounded-xl sm:rounded-full bg-muted/50 p-1 border border-border shadow-sm backdrop-blur-sm w-full sm:w-auto" role="tablist" aria-label="Selector de periodo">
+            <div
+              className="inline-flex flex-col sm:flex-row rounded-xl sm:rounded-full bg-muted/50 p-1 border border-border shadow-sm backdrop-blur-sm w-full sm:w-auto"
+              role="tablist"
+              aria-label="Selector de periodo"
+            >
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === 'mensual'}
-                onClick={() => setPeriod('mensual')}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'mensual' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
+                aria-pressed={period === "mensual"}
+                onClick={() => setPeriod("mensual")}
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === "mensual" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-background/50"}`}
               >
                 Mensual
               </button>
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === 'trimestral'}
-                onClick={() => setPeriod('trimestral')}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'trimestral' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
+                aria-pressed={period === "trimestral"}
+                onClick={() => setPeriod("trimestral")}
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === "trimestral" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-background/50"}`}
               >
                 <span>Trimestral</span>
-                <span className="ml-1 sm:ml-2 text-xs bg-green-500/20 text-green-500 px-1.5 sm:px-2 py-0.5 rounded-full">-10%</span>
+                <span className="ml-1 sm:ml-2 text-xs bg-green-500/20 text-green-500 px-1.5 sm:px-2 py-0.5 rounded-full">
+                  -10%
+                </span>
               </button>
               <button
                 type="button"
                 role="tab"
-                aria-pressed={period === 'semestral'}
-                onClick={() => setPeriod('semestral')}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === 'semestral' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:text-foreground hover:bg-background/50'}`}
+                aria-pressed={period === "semestral"}
+                onClick={() => setPeriod("semestral")}
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${period === "semestral" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-background/50"}`}
               >
                 <span>Semestral</span>
-                <span className="ml-1 sm:ml-2 text-xs bg-green-500/20 text-green-500 px-1.5 sm:px-2 py-0.5 rounded-full">-20%</span>
+                <span className="ml-1 sm:ml-2 text-xs bg-green-500/20 text-green-500 px-1.5 sm:px-2 py-0.5 rounded-full">
+                  -20%
+                </span>
               </button>
             </div>
           </motion.div>
