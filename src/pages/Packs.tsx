@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PackCard from "@/components/PackCard";
+import { Helmet } from "react-helmet-async";
 
 const Packs = () => {
   const packs = [
@@ -54,6 +55,18 @@ const Packs = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Packs Especiales de 3 Meses | J Performance System</title>
+        <meta
+          name="description"
+          content="Packs de entrenamiento de 3 meses con descuentos especiales. Incluye suplementos premium y seguimiento constante para lograr tu transformación física."
+        />
+        <meta property="og:title" content="Packs Especiales de 3 Meses | J Performance System" />
+        <meta property="og:description" content="Packs de entrenamiento de 3 meses con descuentos especiales. Incluye suplementos premium y seguimiento constante para lograr tu transformación física." />
+        <meta property="og:url" content="https://luisotorres3.github.io/j-performance-launch/#/packs" />
+        <meta name="twitter:title" content="Packs Especiales de 3 Meses | J Performance System" />
+        <meta name="twitter:description" content="Packs de entrenamiento de 3 meses con descuentos especiales. Incluye suplementos premium y seguimiento constante para lograr tu transformación física." />
+      </Helmet>
       <Navigation />
       
       <section className="pt-32 pb-20 bg-background">

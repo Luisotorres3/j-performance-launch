@@ -12,6 +12,7 @@ import PackCard from "@/components/PackCard";
 import React, { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -26,6 +27,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>J Performance System | Entrenador Personal Especializado</title>
+        <meta
+          name="description"
+          content="Entrenador personal especializado en biomecánica deportiva. Planes de entrenamiento personalizados, readaptación de lesiones y análisis biomecánico para optimizar tu rendimiento."
+        />
+        <meta property="og:title" content="J Performance System | Entrenador Personal Especializado" />
+        <meta property="og:description" content="Entrenador personal especializado en biomecánica deportiva. Planes de entrenamiento personalizados, readaptación de lesiones y análisis biomecánico para optimizar tu rendimiento." />
+        <meta property="og:url" content="https://luisotorres3.github.io/j-performance-launch/#/" />
+        <meta name="twitter:title" content="J Performance System | Entrenador Personal Especializado" />
+        <meta name="twitter:description" content="Entrenador personal especializado en biomecánica deportiva. Planes de entrenamiento personalizados, readaptación de lesiones y análisis biomecánico para optimizar tu rendimiento." />
+      </Helmet>
       <Navigation />
       <Hero />
       

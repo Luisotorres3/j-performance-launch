@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const TrainingPlans = () => {
   const plans = [
@@ -115,6 +116,18 @@ const TrainingPlans = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Planes de Entrenamiento Personalizados | J Performance System</title>
+        <meta
+          name="description"
+          content="Planes de entrenamiento personalizado para todos los niveles: básico, profesional, élite, opositores y readaptación. Programas con análisis biomecánico y seguimiento nutricional."
+        />
+        <meta property="og:title" content="Planes de Entrenamiento Personalizados | J Performance System" />
+        <meta property="og:description" content="Planes de entrenamiento personalizado para todos los niveles: básico, profesional, élite, opositores y readaptación. Programas con análisis biomecánico y seguimiento nutricional." />
+        <meta property="og:url" content="https://luisotorres3.github.io/j-performance-launch/#/planes" />
+        <meta name="twitter:title" content="Planes de Entrenamiento Personalizados | J Performance System" />
+        <meta name="twitter:description" content="Planes de entrenamiento personalizado para todos los niveles: básico, profesional, élite, opositores y readaptación. Programas con análisis biomecánico y seguimiento nutricional." />
+      </Helmet>
       <Navigation />
       
       <section className="pt-32 pb-20 bg-gradient-to-b from-background to-muted/20">
