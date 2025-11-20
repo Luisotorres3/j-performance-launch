@@ -8,6 +8,7 @@ import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -55,6 +56,18 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Contacto | J Performance System - Entrenador Personal</title>
+        <meta
+          name="description"
+          content="Contáctame para comenzar tu transformación física. Entrenador personal especializado en biomecánica y planes de entrenamiento personalizados en Andalucía."
+        />
+        <meta property="og:title" content="Contacto | J Performance System - Entrenador Personal" />
+        <meta property="og:description" content="Contáctame para comenzar tu transformación física. Entrenador personal especializado en biomecánica y planes de entrenamiento personalizados en Andalucía." />
+        <meta property="og:url" content="https://luisotorres3.github.io/j-performance-launch/#/contacto" />
+        <meta name="twitter:title" content="Contacto | J Performance System - Entrenador Personal" />
+        <meta name="twitter:description" content="Contáctame para comenzar tu transformación física. Entrenador personal especializado en biomecánica y planes de entrenamiento personalizados en Andalucía." />
+      </Helmet>
       <Navigation />
 
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-background">

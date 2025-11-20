@@ -1,10 +1,23 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Construction, Lock } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Blog de Entrenamiento y Nutrición | J Performance System</title>
+        <meta
+          name="description"
+          content="Artículos sobre entrenamiento, nutrición deportiva, biomecánica y consejos para mejorar tu rendimiento físico. Próximamente contenido exclusivo."
+        />
+        <meta property="og:title" content="Blog de Entrenamiento y Nutrición | J Performance System" />
+        <meta property="og:description" content="Artículos sobre entrenamiento, nutrición deportiva, biomecánica y consejos para mejorar tu rendimiento físico. Próximamente contenido exclusivo." />
+        <meta property="og:url" content="https://luisotorres3.github.io/j-performance-launch/#/blog" />
+        <meta name="twitter:title" content="Blog de Entrenamiento y Nutrición | J Performance System" />
+        <meta name="twitter:description" content="Artículos sobre entrenamiento, nutrición deportiva, biomecánica y consejos para mejorar tu rendimiento físico. Próximamente contenido exclusivo." />
+      </Helmet>
       <Navigation />
 
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 min-h-[calc(100vh-200px)] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-section-alt via-background to-section-alt">

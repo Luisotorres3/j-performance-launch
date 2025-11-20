@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,6 +15,11 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Página No Encontrada | J Performance System</title>
+        <meta name="description" content="La página que buscas no existe. Vuelve al inicio para encontrar planes de entrenamiento personalizado y servicios de entrenador personal." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Navigation />
       <div className="flex min-h-[calc(100vh-80px)] items-center justify-center pt-20 pb-20">
         <div className="container mx-auto px-4">
