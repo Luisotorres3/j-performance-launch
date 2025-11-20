@@ -10,7 +10,7 @@ const Reviews = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20 bg-section-alt">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-section-alt">
         <div className="container mx-auto px-4">
           <ClientsSection clients={clients} />
         </div>

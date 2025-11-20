@@ -56,30 +56,30 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
   return (
     <div 
       onClick={onSelect}
-      className={`relative bg-card/50 backdrop-blur-sm p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
+      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
     >
       {isPopular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg">
+        <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
+          <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-lg">
             Más popular
           </span>
         </div>
       )}
       
-      <h3 className="text-2xl font-bold mb-2">{title}</h3>
-      <p className="text-sm text-muted-foreground mb-6">{gift}</p>
+      <h3 className="text-xl sm:text-2xl font-bold mb-2">{title}</h3>
+      <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">{gift}</p>
 
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-5xl font-bold">{price}€</span>
-          <span className="text-lg text-muted-foreground line-through">{originalPrice}€</span>
+          <span className="text-3xl sm:text-4xl md:text-5xl font-bold">{price}€</span>
+          <span className="text-base sm:text-lg text-muted-foreground line-through">{originalPrice}€</span>
         </div>
-        <p className="text-sm text-muted-foreground">por mes</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">por mes</p>
       </div>
       
       <Button 
         asChild 
-        className={`w-full mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
+        className={`w-full mb-4 sm:mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
         size="lg" 
         variant="outline"
         onClick={(e) => {
@@ -89,14 +89,14 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
         <Link to="/contacto">Comenzar</Link>
       </Button>
 
-      <div className="border-t border-border pt-6 mb-4">
-        <p className="text-sm font-semibold mb-3">Incluye:</p>
+      <div className="border-t border-border pt-4 sm:pt-6 mb-3 sm:mb-4">
+        <p className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Incluye:</p>
       </div>
 
-      <ul className="space-y-3 flex-1">
+      <ul className="space-y-2 sm:space-y-3 flex-1">
         {features.map((feature, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm">
-            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+          <li key={i} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm">
+            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0 mt-0.5" />
             <span className="text-muted-foreground leading-relaxed">{feature}</span>
           </li>
         ))}
