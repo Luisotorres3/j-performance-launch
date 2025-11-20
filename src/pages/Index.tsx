@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
+import FAQ from "@/components/FAQ";
 import React, { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -158,6 +159,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* CTA Section */}
       <section className="py-12 sm:py-20 bg-background">
