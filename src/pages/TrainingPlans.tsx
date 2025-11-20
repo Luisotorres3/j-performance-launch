@@ -1,11 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import PricingCard from "@/components/PricingCard";
-import PackCard from "@/components/PackCard";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { PlanCard, Section, SectionHeader } from "@/components/shared";
 
 const TrainingPlans = () => {
   const plans = [
@@ -119,20 +117,10 @@ const TrainingPlans = () => {
       
       <section className="pt-32 pb-20 bg-gradient-to-b from-background to-muted/20">
         <div className="w-full px-2 sm:px-4 lg:px-12">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl font-bold mb-6">
-              Planes de <span className="text-primary">entrenamiento</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Elige el plan perfecto para tu camino hacia la forma física. Todos los planes incluyen programas personalizados diseñados específicamente para tus objetivos y nivel.
-            </p>
-          </motion.div>
+          <SectionHeader
+            title={<>Planes de <span className="text-primary">entrenamiento</span></>}
+            description="Elige el plan perfecto para tu camino hacia la forma física. Todos los planes incluyen programas personalizados diseñados específicamente para tus objetivos y nivel."
+          />
 
           <motion.div 
             className="flex justify-center items-center gap-4 mb-12"
@@ -184,13 +172,14 @@ const TrainingPlans = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: 0.3 + (index * 0.08) }}
               >
-                <PackCard
+                <PlanCard
                   title={plan.title}
                   originalPrice={getPeriodPrice(plan.originalPrice)}
                   price={getPeriodPrice(plan.price)}
                   savings={getPeriodPrice(plan.savings)}
                   gift={plan.gift}
                   features={plan.features}
+                  popular={plan.popular}
                   className="h-full"
                   index={index}
                   selected={selectedPlan === plan.title}

@@ -8,6 +8,7 @@ import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { ContactInfoItem } from "@/components/shared";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -85,54 +86,30 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Correo</h3>
-                    <a href="mailto:info@jperformance.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@jperformance.com
-                    </a>
-                  </div>
-                </div>
+                <ContactInfoItem icon={Mail} title="Correo">
+                  <a href="mailto:info@jperformance.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    info@jperformance.com
+                  </a>
+                </ContactInfoItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Teléfono</h3>
-                    <a href="tel:+34600000000" className="text-muted-foreground hover:text-primary transition-colors">
-                      +34 600 000 000
-                    </a>
-                  </div>
-                </div>
+                <ContactInfoItem icon={Phone} title="Teléfono">
+                  <a href="tel:+34600000000" className="text-muted-foreground hover:text-primary transition-colors">
+                    +34 600 000 000
+                  </a>
+                </ContactInfoItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Ubicación</h3>
-                    <p className="text-muted-foreground">
-                      Andalucía, España<br />
-                      Online
-                    </p>
-                  </div>
-                </div>
+                <ContactInfoItem icon={MapPin} title="Ubicación">
+                  <p className="text-muted-foreground">
+                    Andalucía, España<br />
+                    Online
+                  </p>
+                </ContactInfoItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Instagram className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Redes sociales</h3>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      @jperformancesystems
-                    </a>
-                  </div>
-                </div>
+                <ContactInfoItem icon={Instagram} title="Redes sociales">
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    @jperformancesystems
+                  </a>
+                </ContactInfoItem>
               </div>
 
               <div className="mt-12 p-6 bg-muted rounded-lg border border-border">
