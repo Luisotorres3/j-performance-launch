@@ -22,14 +22,14 @@ interface PlanCardProps {
   ctaLink?: string;
 }
 
-const PlanCard = ({ 
-  title, 
+const PlanCard = ({
+  title,
   description,
-  price, 
+  price,
   originalPrice,
   savings,
   period = "mes",
-  features, 
+  features,
   popular = false,
   gift,
   className = "",
@@ -38,7 +38,7 @@ const PlanCard = ({
   onSelect,
   showCTA = true,
   ctaText = "Comenzar",
-  ctaLink = "/contacto"
+  ctaLink = "/contacto",
 }: PlanCardProps) => {
   const borderColors = [
     "border-blue-500/30",
@@ -47,7 +47,7 @@ const PlanCard = ({
     "border-cyan-500/30",
     "border-amber-500/30",
   ];
-  
+
   const selectedBorderColors = [
     "border-blue-500",
     "border-purple-500",
@@ -55,7 +55,7 @@ const PlanCard = ({
     "border-cyan-500",
     "border-amber-500",
   ];
-  
+
   const buttonBorderColors = [
     "border-blue-500 hover:bg-blue-500",
     "border-purple-500 hover:bg-purple-500",
@@ -63,7 +63,7 @@ const PlanCard = ({
     "border-cyan-500 hover:bg-cyan-500",
     "border-amber-500 hover:bg-amber-500",
   ];
-  
+
   const ringColors = [
     "ring-blue-500/30",
     "ring-purple-500/30",
@@ -71,31 +71,29 @@ const PlanCard = ({
     "ring-cyan-500/30",
     "ring-amber-500/30",
   ];
-  
-  const borderColor = selected 
-    ? selectedBorderColors[index % selectedBorderColors.length] 
+
+  const borderColor = selected
+    ? selectedBorderColors[index % selectedBorderColors.length]
     : borderColors[index % borderColors.length];
   const ringColor = ringColors[index % ringColors.length];
   const buttonBorderColor = buttonBorderColors[index % buttonBorderColors.length];
-  
+
   return (
-    <div 
+    <div
       onClick={onSelect}
-      className={`relative bg-card/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${popular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
+      className={`relative bg-card/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${popular ? "ring-2 ring-primary/20" : ""} ${selected ? `ring-2 ${ringColor} shadow-xl` : ""} ${onSelect ? "cursor-pointer" : ""}`}
     >
       {popular && (
         <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
           <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-lg">
-            {popular === true ? 'Más popular' : popular}
+            {popular === true ? "Más popular" : popular}
           </span>
         </div>
       )}
-      
+
       <h3 className="text-xl sm:text-2xl font-bold mb-2">{title}</h3>
       {(description || gift) && (
-        <p className="text-sm text-muted-foreground mb-4 sm:mb-6">
-          {description || gift}
-        </p>
+        <p className="text-sm text-muted-foreground mb-4 sm:mb-6">{description || gift}</p>
       )}
 
       <div className="mb-4 sm:mb-6">
@@ -108,18 +106,14 @@ const PlanCard = ({
           )}
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground">por {period}</p>
-        {savings && (
-          <p className="text-xs text-green-500 font-semibold mt-1">
-            Ahorro: {savings}€
-          </p>
-        )}
+        {savings && <p className="text-xs text-green-500 font-semibold mt-1">Ahorro: {savings}€</p>}
       </div>
-      
+
       {showCTA && (
-        <Button 
-          asChild 
+        <Button
+          asChild
           className={`w-full mb-4 sm:mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
-          size="lg" 
+          size="lg"
           variant="outline"
           onClick={(e) => {
             e.stopPropagation();

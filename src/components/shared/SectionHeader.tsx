@@ -8,7 +8,12 @@ interface SectionHeaderProps {
   animate?: boolean;
 }
 
-const SectionHeader = ({ title, description, className = "", animate = true }: SectionHeaderProps) => {
+const SectionHeader = ({
+  title,
+  description,
+  className = "",
+  animate = true,
+}: SectionHeaderProps) => {
   const content = (
     <div className={`text-center mb-12 sm:mb-16 px-2 ${className}`}>
       <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{title}</h2>

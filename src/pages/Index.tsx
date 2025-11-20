@@ -5,6 +5,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import Footer from "@/components/Footer";
 import ClientsCarousel from "@/components/ClientsCarousel";
 import clients from "@/data/clients";
+import FAQ from "@/components/FAQ";
 import React, { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -19,16 +20,14 @@ const Index = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      
+
       {/* Highlights - bg-section-alt */}
       <Highlights />
-      
+
       {/* Clients Grid */}
       <Section>
         <SectionHeader
@@ -84,13 +83,42 @@ const Index = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 sm:mb-12 px-2 sm:px-0">
           {[
-            { title: "Básico", price: 40, features: ["Programa personalizado","Revisiones semanales","Guías nutricionales"] },
-            { title: "Profesional", price: 60, popular: true, features: ["Todo lo del Básico","Consultas quincenales","Soporte prioritario"] },
-            { title: "Élite", price: 85, features: ["Consultas semanales","Análisis biomecánico","Soporte 24/7"] },
-            { title: "Opositores", price: 50, features: ["Preparación física","Entrenamientos por objetivos","Seguimiento regular"] },
-            { title: "Readaptación", price: 30, features: ["Readaptación tras lesión","Evaluación funcional","Recuperación progresiva"] },
+            {
+              title: "Básico",
+              price: 40,
+              features: ["Programa personalizado", "Revisiones semanales", "Guías nutricionales"],
+            },
+            {
+              title: "Profesional",
+              price: 60,
+              popular: true,
+              features: ["Todo lo del Básico", "Consultas quincenales", "Soporte prioritario"],
+            },
+            {
+              title: "Élite",
+              price: 85,
+              features: ["Consultas semanales", "Análisis biomecánico", "Soporte 24/7"],
+            },
+            {
+              title: "Opositores",
+              price: 50,
+              features: [
+                "Preparación física",
+                "Entrenamientos por objetivos",
+                "Seguimiento regular",
+              ],
+            },
+            {
+              title: "Readaptación",
+              price: 30,
+              features: [
+                "Readaptación tras lesión",
+                "Evaluación funcional",
+                "Recuperación progresiva",
+              ],
+            },
           ].map((plan, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -109,22 +137,23 @@ const Index = () => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <PrimaryButton to="/planes">
-            Ver todos los planes
-          </PrimaryButton>
+          <PrimaryButton to="/planes">Ver todos los planes</PrimaryButton>
         </motion.div>
       </Section>
 
+      {/* FAQ Section */}
+      <FAQ />
+
       {/* CTA Section */}
       <Section>
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto px-2 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -135,7 +164,8 @@ const Index = () => {
             ¿Listo para comenzar tu transformación?
           </h2>
           <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
-            Únete a la familia de J Performance Systems y desbloquea tu verdadero potencial con programas de entrenamiento personalizados.
+            Únete a la familia de J Performance Systems y desbloquea tu verdadero potencial con
+            programas de entrenamiento personalizados.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <PrimaryButton to="/planes" className="hover:scale-105">

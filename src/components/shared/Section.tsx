@@ -7,23 +7,22 @@ interface SectionProps {
   containerClassName?: string;
 }
 
-const Section = ({ 
-  children, 
-  className = "", 
+const Section = ({
+  children,
+  className = "",
   bgColor = "background",
-  containerClassName = ""
+  containerClassName = "",
 }: SectionProps) => {
-  const bgClass = bgColor === "section-alt" 
-    ? "bg-section-alt" 
-    : bgColor === "muted" 
-    ? "bg-muted/20" 
-    : "bg-background";
+  const bgClass =
+    bgColor === "section-alt"
+      ? "bg-section-alt"
+      : bgColor === "muted"
+        ? "bg-muted/20"
+        : "bg-background";
 
   return (
     <section className={`py-20 ${bgClass} ${className}`}>
-      <div className={`container mx-auto px-4 ${containerClassName}`}>
-        {children}
-      </div>
+      <div className={`container mx-auto px-4 ${containerClassName}`}>{children}</div>
     </section>
   );
 };

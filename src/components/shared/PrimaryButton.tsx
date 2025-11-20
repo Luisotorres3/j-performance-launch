@@ -11,17 +11,17 @@ interface PrimaryButtonProps {
   onClick?: () => void;
 }
 
-const PrimaryButton = ({ 
-  to, 
-  children, 
-  size = "lg", 
+const PrimaryButton = ({
+  to,
+  children,
+  size = "lg",
   variant = "default",
   className = "",
-  onClick 
+  onClick,
 }: PrimaryButtonProps) => {
   return (
-    <Button 
-      asChild 
+    <Button
+      asChild
       size={size}
       variant={variant}
       className={`shadow-lg hover:shadow-xl transition-shadow ${className}`}
