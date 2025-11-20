@@ -35,7 +35,7 @@ const ClientsSection: React.FC<Props> = ({ clients = placeholderClients }) => {
             <article key={c.id} className="bg-card rounded-2xl border-[3px] border-muted-foreground/30 overflow-hidden hover:border-primary transition-all duration-300 group shadow-md hover:shadow-2xl hover:shadow-primary/10">
               <div className="aspect-[3/4] overflow-hidden bg-muted">
                 {c.photo ? (
-                  <img src={c.photo} alt={c.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                  <img src={c.photo} alt={`${c.name} - ${c.role || 'Cliente'} ${c.clubs ? `(${c.clubs})` : ''}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">Imagen</div>
                 )}

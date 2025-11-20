@@ -56,9 +56,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      <section className="pt-32 pb-20 bg-background">
-        <div className="container mx-auto px-4">
+      <main>
+        <section className="pt-32 pb-20 bg-background">
+          <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -128,7 +128,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Redes sociales</h3>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Seguir en Instagram">
                       @jperformancesystems
                     </a>
                   </div>
@@ -213,7 +213,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
+      </main>
       <Footer />
     </div>
   );

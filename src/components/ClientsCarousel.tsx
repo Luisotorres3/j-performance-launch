@@ -117,7 +117,7 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = false, interval 
                     {/* Image on left */}
                     <div className="w-full md:w-64 h-48 md:h-auto flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden aspect-square">
                       {c.photo ? (
-                        <img src={c.photo} alt={c.name} className="w-full h-full object-cover" />
+                        <img src={c.photo} alt={`${c.name} - Cliente de J Performance System ${c.clubs ? `(${c.clubs})` : ''}`} className="w-full h-full object-cover" />
                       ) : (
                         <div className="text-sm text-muted-foreground">Imagen</div>
                       )}
