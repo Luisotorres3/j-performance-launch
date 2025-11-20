@@ -6,7 +6,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 min-h-[calc(100vh-200px)] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-section-alt via-background to-section-alt">
         {/* Blurred background content */}
         <div className="absolute inset-0 blur-[8px] opacity-30 select-none pointer-events-none">
@@ -28,11 +28,11 @@ const Blog = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mb-6 sm:mb-8 animate-pulse">
             <Construction className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
           </div>
-          
+
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
             Próximamente
           </h1>
-          
+
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
             Estamos preparando contenido exclusivo de entrenamiento y nutrición
           </p>
@@ -43,9 +43,18 @@ const Blog = () => {
           </div>
 
           <div className="mt-8 sm:mt-12 flex gap-2 justify-center">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s' }}></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+            <div
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce"
+              style={{ animationDelay: "0s" }}
+            ></div>
+            <div
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce"
+              style={{ animationDelay: "0.2s" }}
+            ></div>
+            <div
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary animate-bounce"
+              style={{ animationDelay: "0.4s" }}
+            ></div>
           </div>
         </div>
       </section>
