@@ -173,4 +173,11 @@ All colors MUST be HSL.
   .animate-slide-down {
     animation: slide-down 0.3s ease-out forwards;
   }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
 }
