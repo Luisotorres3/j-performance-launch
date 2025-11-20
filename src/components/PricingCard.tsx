@@ -17,7 +17,16 @@ interface PricingCardProps {
   showCTA?: boolean;
 }
 
-const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, className = "", showCTA = true }: PricingCardProps) => {
+const PricingCard = ({
+  title,
+  price,
+  prices,
+  features,
+  popular,
+  selectedPeriod,
+  className = "",
+  showCTA = true,
+}: PricingCardProps) => {
   return (
     <div
       className={`relative bg-card p-8 rounded-lg border flex flex-col ${
@@ -31,14 +40,24 @@ const PricingCard = ({ title, price, prices, features, popular, selectedPeriod, 
           </span>
         </div>
       )}
-      
+
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold mb-2">{title}</h3>
         {prices ? (
           (() => {
-            const period = selectedPeriod ?? 'mensual';
-            const label = period === 'mensual' ? 'Mensual' : period === 'trimestral' ? 'Trimestral' : 'Semestral';
-            const value = period === 'mensual' ? prices.mensual : period === 'trimestral' ? prices.trimestral : prices.semestral;
+            const period = selectedPeriod ?? "mensual";
+            const label =
+              period === "mensual"
+                ? "Mensual"
+                : period === "trimestral"
+                  ? "Trimestral"
+                  : "Semestral";
+            const value =
+              period === "mensual"
+                ? prices.mensual
+                : period === "trimestral"
+                  ? prices.trimestral
+                  : prices.semestral;
             return (
               <div className="text-center">
                 <div className="text-xl text-muted-foreground">{label}</div>

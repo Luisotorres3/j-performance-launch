@@ -15,7 +15,18 @@ interface PackCardProps {
   onSelect?: () => void;
 }
 
-const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "", index = 0, selected = false, onSelect }: PackCardProps) => {
+const PackCard = ({
+  title,
+  originalPrice,
+  price,
+  savings,
+  gift,
+  features,
+  className = "",
+  index = 0,
+  selected = false,
+  onSelect,
+}: PackCardProps) => {
   const borderColors = [
     "border-blue-500/30",
     "border-purple-500/30",
@@ -23,7 +34,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
     "border-cyan-500/30",
     "border-amber-500/30",
   ];
-  
+
   const selectedBorderColors = [
     "border-blue-500",
     "border-purple-500",
@@ -31,7 +42,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
     "border-cyan-500",
     "border-amber-500",
   ];
-  
+
   const buttonBorderColors = [
     "border-blue-500 hover:bg-blue-500",
     "border-purple-500 hover:bg-purple-500",
@@ -39,7 +50,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
     "border-cyan-500 hover:bg-cyan-500",
     "border-amber-500 hover:bg-amber-500",
   ];
-  
+
   const ringColors = [
     "ring-blue-500/30",
     "ring-purple-500/30",
@@ -47,16 +58,18 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
     "ring-cyan-500/30",
     "ring-amber-500/30",
   ];
-  
-  const borderColor = selected ? selectedBorderColors[index % selectedBorderColors.length] : borderColors[index % borderColors.length];
+
+  const borderColor = selected
+    ? selectedBorderColors[index % selectedBorderColors.length]
+    : borderColors[index % borderColors.length];
   const ringColor = ringColors[index % ringColors.length];
   const buttonBorderColor = buttonBorderColors[index % buttonBorderColors.length];
   const isPopular = title === "Profesional";
-  
+
   return (
-    <div 
+    <div
       onClick={onSelect}
-      className={`relative bg-card/50 backdrop-blur-sm p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''} ${onSelect ? 'cursor-pointer' : ''}`}
+      className={`relative bg-card/50 backdrop-blur-sm p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? "ring-2 ring-primary/20" : ""} ${selected ? `ring-2 ${ringColor} shadow-xl` : ""} ${onSelect ? "cursor-pointer" : ""}`}
     >
       {isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -65,7 +78,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
           </span>
         </div>
       )}
-      
+
       <h3 className="text-2xl font-bold mb-2">{title}</h3>
       <p className="text-sm text-muted-foreground mb-6">{gift}</p>
 
@@ -76,11 +89,11 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
         </div>
         <p className="text-sm text-muted-foreground">por mes</p>
       </div>
-      
-      <Button 
-        asChild 
+
+      <Button
+        asChild
         className={`w-full mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
-        size="lg" 
+        size="lg"
         variant="outline"
         onClick={(e) => {
           e.stopPropagation();

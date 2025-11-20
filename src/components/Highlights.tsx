@@ -5,17 +5,20 @@ const Highlights = () => {
     {
       icon: Target,
       title: "Optimización del rendimiento",
-      description: "Programas de entrenamiento basados en la ciencia diseñados para maximizar tu rendimiento físico y capacidades atléticas.",
+      description:
+        "Programas de entrenamiento basados en la ciencia diseñados para maximizar tu rendimiento físico y capacidades atléticas.",
     },
     {
       icon: Apple,
       title: "Asesoría nutricional",
-      description: "Planes de nutrición personalizados que energizan tu cuerpo para resultados óptimos y progreso sostenible.",
+      description:
+        "Planes de nutrición personalizados que energizan tu cuerpo para resultados óptimos y progreso sostenible.",
     },
     {
       icon: Dumbbell,
       title: "Entrenamiento personalizado",
-      description: "Programas de entrenamiento a medida según tus objetivos, nivel de condición y biomecánica para máxima eficiencia.",
+      description:
+        "Programas de entrenamiento a medida según tus objetivos, nivel de condición y biomecánica para máxima eficiencia.",
     },
   ];
 
@@ -23,9 +26,12 @@ const Highlights = () => {
     <section className="py-20 bg-section-alt">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Por qué elegir J Performance System</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Por qué elegir J Performance System
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Entrenamiento profesional que combina experiencia, dedicación y métodos probados para ayudarte a alcanzar tus objetivos.
+            Entrenamiento profesional que combina experiencia, dedicación y métodos probados para
+            ayudarte a alcanzar tus objetivos.
           </p>
         </div>
 

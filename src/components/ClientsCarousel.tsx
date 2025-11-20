@@ -77,7 +77,9 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = false, interval 
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl font-bold mb-4">Con quién he trabajado</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Algunos de los jugadores y profesionales con los que he colaborado.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Algunos de los jugadores y profesionales con los que he colaborado.
+          </p>
         </div>
 
         <div className="relative w-full">
@@ -108,12 +110,17 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = false, interval 
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.15}
-                onDragStart={() => { if (timerRef.current) window.clearTimeout(timerRef.current); }}
+                onDragStart={() => {
+                  if (timerRef.current) window.clearTimeout(timerRef.current);
+                }}
                 onDragEnd={(event, info) => handleDragEnd(info.offset.x, info.velocity.x)}
                 style={{ touchAction: "pan-y" }}
               >
                 {visible.map((c) => (
-                  <div key={c.id} className="bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
+                  <div
+                    key={c.id}
+                    className="bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row"
+                  >
                     {/* Image on left */}
                     <div className="w-full md:w-64 h-48 md:h-auto flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden aspect-square">
                       {c.photo ? (
@@ -152,4 +159,3 @@ const ClientsCarousel: React.FC<Props> = ({ clients, autoPlay = false, interval 
 };
 
 export default ClientsCarousel;
-

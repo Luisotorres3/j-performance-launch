@@ -20,7 +20,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -56,10 +56,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-32 pb-20 bg-background">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,8 @@ const Contact = () => {
               Ponte en <span className="text-primary">contacto</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar tus objetivos.
+              ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar
+              tus objetivos.
             </p>
           </motion.div>
 
@@ -82,8 +83,8 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
-              
+              <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -91,7 +92,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Correo</h3>
-                    <a href="mailto:info@jperformance.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="mailto:info@jperformance.com"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       info@jperformance.com
                     </a>
                   </div>
@@ -103,7 +107,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Teléfono</h3>
-                    <a href="tel:+34600000000" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="tel:+34600000000"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       +34 600 000 000
                     </a>
                   </div>
@@ -116,7 +123,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Ubicación</h3>
                     <p className="text-muted-foreground">
-                      Andalucía, España<br />
+                      Andalucía, España
+                      <br />
                       Online
                     </p>
                   </div>
@@ -128,7 +136,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Redes sociales</h3>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       @jperformancesystems
                     </a>
                   </div>
@@ -138,7 +149,8 @@ const Contact = () => {
               <div className="mt-12 p-6 bg-muted rounded-lg border border-border">
                 <h3 className="font-semibold mb-3">Tiempo de respuesta</h3>
                 <p className="text-muted-foreground">
-                  Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos urgentes, por favor llama directamente.
+                  Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos
+                  urgentes, por favor llama directamente.
                 </p>
               </div>
             </motion.div>
@@ -152,7 +164,7 @@ const Contact = () => {
             >
               <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg border border-border">
                 <h2 className="text-2xl font-bold mb-6">Enviar un mensaje</h2>
-                
+
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="name">Nombre *</Label>

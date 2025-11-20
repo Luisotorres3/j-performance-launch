@@ -25,7 +25,6 @@ const Hero: React.FC = () => {
   return (
     <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen py-20 md:py-32">
       <div className="container mx-auto px-4">
-
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Photo Section */}
           <motion.div
@@ -64,18 +63,25 @@ const Hero: React.FC = () => {
           >
             {/* Introduction */}
             <div>
-              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 mb-4">Juan Pasquau</h2>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200 mb-4">
+                Juan Pasquau
+              </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                Soy entrenador personal con formación en entrenamiento funcional y nutrición deportiva. Ayudo a clientes a lograr objetivos reales mediante planes personalizados, seguimiento y apoyo constante.
+                Soy entrenador personal con formación en entrenamiento funcional y nutrición
+                deportiva. Ayudo a clientes a lograr objetivos reales mediante planes
+                personalizados, seguimiento y apoyo constante.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Mi enfoque combina análisis biomecánico, programación progresiva y hábitos de vida sostenibles para resultados duraderos.
+                Mi enfoque combina análisis biomecánico, programación progresiva y hábitos de vida
+                sostenibles para resultados duraderos.
               </p>
             </div>
 
             {/* Certifications */}
             <div>
-              <h4 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4">Certificaciones y Especialidades</h4>
+              <h4 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4">
+                Certificaciones y Especialidades
+              </h4>
               <div className="grid grid-cols-2 gap-3">
                 {certifications.map((cert, index) => (
                   <motion.div
@@ -87,7 +93,9 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                   >
                     <span className="text-2xl">{cert.icon}</span>
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{cert.name}</span>
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {cert.name}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -95,7 +103,9 @@ const Hero: React.FC = () => {
 
             {/* Achievements */}
             <div>
-              <h4 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4">Logros Destacados</h4>
+              <h4 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-4">
+                Logros Destacados
+              </h4>
               <div className="flex space-x-6">
                 {achievements.map((achievement, index) => (
                   <motion.div
@@ -106,8 +116,12 @@ const Hero: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 * index }}
                   >
-                    <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">{achievement.number}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{achievement.label}</div>
+                    <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">
+                      {achievement.number}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {achievement.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>

@@ -9,7 +9,7 @@ const Reviews = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <section className="pt-32 pb-20 bg-section-alt">
         <div className="container mx-auto px-4">
           <ClientsSection clients={clients} />
