@@ -57,24 +57,24 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <section className="pt-32 pb-20 bg-background">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
               Ponte en <span className="text-primary">contacto</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               ¿Listo para comenzar tu transformación? Envíame un mensaje y hablemos de cómo alcanzar tus objetivos.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -82,62 +82,62 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h2 className="text-3xl font-bold mb-8">Información de contacto</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Información de contacto</h2>
               
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Correo</h3>
-                    <a href="mailto:info@jperformance.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Correo</h3>
+                    <a href="mailto:info@jperformance.com" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors break-all">
                       info@jperformance.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Teléfono</h3>
-                    <a href="tel:+34600000000" className="text-muted-foreground hover:text-primary transition-colors">
+                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Teléfono</h3>
+                    <a href="tel:+34600000000" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors">
                       +34 600 000 000
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Ubicación</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Ubicación</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground">
                       Andalucía, España<br />
                       Online
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Instagram className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Redes sociales</h3>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Redes sociales</h3>
+                    <a href="#" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors">
                       @jperformancesystems
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-12 p-6 bg-muted rounded-lg border border-border">
-                <h3 className="font-semibold mb-3">Tiempo de respuesta</h3>
-                <p className="text-muted-foreground">
+              <div className="mt-8 sm:mt-12 p-4 sm:p-6 bg-muted rounded-lg border border-border">
+                <h3 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tiempo de respuesta</h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   Normalmente respondo todas las consultas en un plazo de 24 horas. Para asuntos urgentes, por favor llama directamente.
                 </p>
               </div>
@@ -150,24 +150,25 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg border border-border">
-                <h2 className="text-2xl font-bold mb-6">Enviar un mensaje</h2>
+              <form onSubmit={handleSubmit} className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Enviar un mensaje</h2>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div>
-                    <Label htmlFor="name">Nombre *</Label>
+                    <Label htmlFor="name" className="text-sm sm:text-base">Nombre *</Label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Tu nombre"
+                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
                       required
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="email">Correo *</Label>
+                    <Label htmlFor="email" className="text-sm sm:text-base">Correo *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -175,12 +176,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="tu@correo.com"
+                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
                       required
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="phone">Teléfono</Label>
+                    <Label htmlFor="phone" className="text-sm sm:text-base">Teléfono</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -188,23 +190,25 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+34 600 000 000"
+                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Mensaje *</Label>
+                    <Label htmlFor="message" className="text-sm sm:text-base">Mensaje *</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Cuéntame tus objetivos y cómo puedo ayudar..."
-                      rows={6}
+                      rows={5}
+                      className="mt-1.5 text-sm sm:text-base resize-none"
                       required
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12">
                     Enviar mensaje
                   </Button>
                 </div>
