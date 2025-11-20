@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
                 <div className="rounded-2xl overflow-hidden bg-white dark:bg-slate-800 w-full h-[520px] md:h-[640px] mx-auto flex items-center justify-center">
                   <img
                     src={perfilImg}
-                    alt="Entrenador personal"
+                    alt="Juan Pasquau - Entrenador personal certificado especializado en entrenamiento funcional y nutrición deportiva"
                     className="max-w-full max-h-full object-contain rounded-2xl shadow-lg"
                   />
                 </div>

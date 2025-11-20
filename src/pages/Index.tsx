@@ -27,10 +27,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero />
-      
-      {/* Highlights - bg-section-alt */}
-      <Highlights />
+      <main>
+        <Hero />
+        
+        {/* Highlights - bg-section-alt */}
+        <Highlights />
       
       {/* Clients Grid */}
       <section className="py-20 bg-background">
@@ -61,7 +62,7 @@ const Index = () => {
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={client.photo}
-                    alt={client.name}
+                    alt={`${client.name} - ${client.role || 'Cliente'} de J Performance System`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -187,6 +188,7 @@ const Index = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
       {showTop && (
         <button

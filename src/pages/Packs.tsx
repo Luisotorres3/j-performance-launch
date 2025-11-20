@@ -55,9 +55,9 @@ const Packs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      <section className="pt-32 pb-20 bg-background">
-        <div className="container mx-auto px-4">
+      <main>
+        <section className="pt-32 pb-20 bg-background">
+          <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <h1 className="text-5xl font-bold mb-6">
               Packs especiales de <span className="text-primary">3 meses</span>
@@ -98,7 +98,7 @@ const Packs = () => {
           </div>
         </div>
       </section>
-
+      </main>
       <Footer />
     </div>
   );

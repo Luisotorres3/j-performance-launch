@@ -6,9 +6,9 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      <section className="pt-32 pb-20 min-h-[calc(100vh-200px)] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-section-alt via-background to-section-alt">
-        {/* Blurred background content */}
+      <main>
+        <section className="pt-32 pb-20 min-h-[calc(100vh-200px)] flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-section-alt via-background to-section-alt">
+          {/* Blurred background content */}
         <div className="absolute inset-0 blur-[8px] opacity-30 select-none pointer-events-none">
           <div className="container mx-auto px-4 pt-20">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -49,7 +49,7 @@ const Blog = () => {
           </div>
         </div>
       </section>
-
+      </main>
       <Footer />
     </div>
   );

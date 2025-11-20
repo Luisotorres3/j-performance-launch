@@ -21,7 +21,7 @@ const Footer = () => {
               </p>
               <img 
                 src={logoImg} 
-                alt="J Performance Systems Logo" 
+                alt="Logo de J Performance Systems - Entrenamiento personalizado y nutrición deportiva" 
                 className="w-16 h-16 object-contain mb-4"
               />
             </div>
@@ -55,10 +55,10 @@ const Footer = () => {
                   +34 600 000 000
                 </a>
                 <div className="flex gap-4 mt-2">
-                  <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Visitar Instagram de J Performance Systems">
                     <Instagram size={20} />
                   </a>
-                  <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Visitar Facebook de J Performance Systems">
                     <Facebook size={20} />
                   </a>
                 </div>

@@ -15,9 +15,10 @@ const NotFound = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <div className="flex min-h-[calc(100vh-80px)] items-center justify-center pt-20 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto animate-fade-in">
+      <main>
+        <div className="flex min-h-[calc(100vh-80px)] items-center justify-center pt-20 pb-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto animate-fade-in">
             <div className="mb-8">
               <h1 className="text-9xl font-bold text-primary/20 mb-4">404</h1>
               <h2 className="text-4xl font-bold mb-4">Página no encontrada</h2>
@@ -62,6 +63,7 @@ const NotFound = () => {
           </div>
         </div>
       </div>
+      </main>
       <Footer />
     </div>
   );

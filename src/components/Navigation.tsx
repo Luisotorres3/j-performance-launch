@@ -26,13 +26,13 @@ const Navigation = () => {
   };
 
   return (
-    <>
+    <header>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b-2 border-border shadow-sm">
         <div className="container mx-auto px-2 sm:px-4">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold text-foreground">
-              <img src={logo} alt="J Performance logo" className="h-12 sm:h-14 md:h-16 w-auto inline-block" />
+              <img src={logo} alt="Logo de J Performance System - Entrenador Personal" className="h-12 sm:h-14 md:h-16 w-auto inline-block" />
               <span>
                 <span className="text-primary">J</span> Performance System
               </span>
@@ -62,7 +62,8 @@ const Navigation = () => {
             <button
               className="md:hidden text-foreground p-2 hover:bg-muted rounded-lg transition-colors relative z-[70]"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -120,7 +121,7 @@ const Navigation = () => {
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 };
 

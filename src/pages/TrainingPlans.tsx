@@ -116,9 +116,9 @@ const TrainingPlans = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      <section className="pt-32 pb-20 bg-gradient-to-b from-background to-muted/20">
-        <div className="w-full px-2 sm:px-4 lg:px-12">
+      <main>
+        <section className="pt-32 pb-20 bg-gradient-to-b from-background to-muted/20">
+          <div className="w-full px-2 sm:px-4 lg:px-12">
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
@@ -215,7 +215,7 @@ const TrainingPlans = () => {
             <div className="h-8 md:h-10 flex items-center">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" 
-                alt="Bizum" 
+                alt="Logo de Bizum - Método de pago disponible" 
                 className="h-full w-auto object-contain"
               />
             </div>
@@ -224,7 +224,7 @@ const TrainingPlans = () => {
             <div className="h-8 md:h-10 flex items-center">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/7/73/Revolut_logo.svg" 
-                alt="Revolut" 
+                alt="Logo de Revolut - Método de pago disponible" 
                 className="h-full w-auto object-contain"
               />
             </div>
@@ -233,14 +233,14 @@ const TrainingPlans = () => {
             <div className="h-8 md:h-10 flex items-center">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" 
-                alt="PayPal" 
+                alt="Logo de PayPal - Método de pago disponible" 
                 className="h-full w-auto object-contain"
               />
             </div>
 
             {/* Transferencia Bancaria */}
             <div className="h-8 md:h-10 flex items-center">
-              <svg viewBox="0 0 48 32" className="h-full w-auto">
+              <svg viewBox="0 0 48 32" className="h-full w-auto" aria-label="Icono de transferencia bancaria - Método de pago disponible">
                 <rect x="2" y="4" width="44" height="24" rx="2" fill="none" stroke="#666" strokeWidth="2"/>
                 <rect x="2" y="8" width="44" height="8" fill="#666"/>
                 <line x1="6" y1="20" x2="18" y2="20" stroke="#666" strokeWidth="2" strokeLinecap="round"/>
@@ -254,16 +254,14 @@ const TrainingPlans = () => {
               </div>
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" 
-                alt="Stripe" 
+                alt="Logo de Stripe - Método de pago próximamente disponible" 
                 className="h-full w-auto object-contain"
               />
             </div>
           </div>
         </div>
       </section>
-
-      {/* Packs section removed */}
-
+      </main>
       <Footer />
     </div>
   );
