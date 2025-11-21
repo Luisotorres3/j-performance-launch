@@ -32,20 +32,8 @@ const Navigation = () => {
         <div className="container mx-auto px-2 sm:px-4">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-<<<<<<< HEAD
             <Link to="/" className="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold text-foreground" onClick={() => window.scrollTo(0, 0)}>
               <img src={logo} alt="J Performance logo" className="h-12 sm:h-14 md:h-16 w-auto inline-block" />
-=======
-            <Link
-              to="/"
-              className="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold text-foreground"
-            >
-              <img
-                src={logo}
-                alt="J Performance logo"
-                className="h-12 sm:h-14 md:h-16 w-auto inline-block"
-              />
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
               <span>
                 <span className="text-primary">J</span> Performance System
               </span>
@@ -84,7 +72,6 @@ const Navigation = () => {
         </div>
       </nav>
 
-<<<<<<< HEAD
       {/* Mobile Navigation - Full screen overlay with smooth transitions */}
       <div 
         className={`fixed left-0 right-0 bottom-0 md:hidden transition-all duration-500 ease-in-out ${
@@ -118,54 +105,6 @@ const Navigation = () => {
                     transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
                     opacity: isOpen ? 1 : 0
                   }}
-=======
-      {/* Mobile Navigation - Full screen overlay - Outside nav for proper z-index */}
-      {isOpen && (
-        <div
-          className="fixed left-0 right-0 bottom-0 md:hidden"
-          style={{ top: "64px", zIndex: 60 }}
-        >
-          {/* Backdrop with animation */}
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/40 backdrop-blur-md animate-in fade-in duration-300"
-            onClick={() => setIsOpen(false)}
-          />
-
-          {/* Menu panel with slide animation */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/30 animate-in slide-in-from-top duration-300 overflow-y-auto">
-            <div className="container mx-auto px-6 py-8 min-h-full flex flex-col">
-              {/* Navigation Links */}
-              <div className="flex-1 flex flex-col justify-center gap-2">
-                {links.map((link, index) => (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    className={`text-xl font-semibold transition-all duration-300 px-8 py-5 rounded-2xl transform hover:scale-105 active:scale-95 ${
-                      isActive(link.to)
-                        ? "text-primary bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 border-l-4 border-primary shadow-lg shadow-primary/20"
-                        : "text-foreground hover:bg-gradient-to-r hover:from-muted hover:to-transparent hover:text-primary hover:border-l-4 hover:border-primary/50"
-                    } animate-in slide-in-from-left duration-300`}
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      animationDelay: `${index * 0.08}s`,
-                      animationFillMode: "backwards",
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* CTA Button at bottom */}
-              <div
-                className="mt-8 px-2 animate-in slide-in-from-bottom duration-500"
-                style={{ animationDelay: "0.4s", animationFillMode: "backwards" }}
-              >
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full text-lg py-7 rounded-2xl shadow-2xl shadow-primary/30 bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary transition-all duration-300 transform hover:scale-105 active:scale-95"
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                 >
                   <span className="text-2xl">{link.emoji}</span>
                   {link.label}

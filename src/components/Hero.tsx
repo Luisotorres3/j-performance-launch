@@ -23,16 +23,10 @@ const Hero: React.FC = () => {
   ];
 
   return (
-<<<<<<< HEAD
     <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen pt-24 pb-8 sm:pt-28 sm:pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
       <div className="container mx-auto px-4 sm:px-6">
 
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
-=======
-    <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen py-12 sm:py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
           {/* Photo Section */}
           <motion.div
             className="relative"
@@ -70,37 +64,16 @@ const Hero: React.FC = () => {
           >
             {/* Introduction */}
             <div>
-<<<<<<< HEAD
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Juan Pasquau</h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
                 Entrenador de alto rendimiento especializado en fuerza, atletismo y preparación física para opositores y deportistas que buscan resultados serios. Mi metodología de trabajo se basa en la solidez de una programación estratégica y un enfoque claro: elevar el nivel de tu rendimiento sea cual sea tu punto de partida. Me gusta ser simple y exigente: yo hago el análisis y la planificación, tú te encargas de cumplir. Disciplina clásica, visión de futuro y un sistema diseñado para que rindas como un profesional.
-=======
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-3 sm:mb-4">
-                Juan Pasquau
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4">
-                Soy entrenador personal con formación en entrenamiento funcional y nutrición
-                deportiva. Ayudo a clientes a lograr objetivos reales mediante planes
-                personalizados, seguimiento y apoyo constante.
-              </p>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Mi enfoque combina análisis biomecánico, programación progresiva y hábitos de vida
-                sostenibles para resultados duraderos.
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
               </p>
             </div>
 
             {/* Certifications */}
             <div>
-<<<<<<< HEAD
               <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Certificaciones y Especialidades</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3">
-=======
-              <h4 className="text-lg sm:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3 sm:mb-4">
-                Certificaciones y Especialidades
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                 {certifications.map((cert, index) => (
                   <motion.div
                     key={cert.id}
@@ -110,15 +83,8 @@ const Hero: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                   >
-<<<<<<< HEAD
                     <span className="text-lg sm:text-xl md:text-2xl shrink-0">{cert.icon}</span>
                     <span className="text-xs sm:text-sm md:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">{cert.name}</span>
-=======
-                    <span className="text-xl sm:text-2xl shrink-0">{cert.icon}</span>
-                    <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">
-                      {cert.name}
-                    </span>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   </motion.div>
                 ))}
               </div>
@@ -126,15 +92,8 @@ const Hero: React.FC = () => {
 
             {/* Achievements */}
             <div>
-<<<<<<< HEAD
               <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Logros Destacados</h4>
               <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center sm:justify-start">
-=======
-              <h4 className="text-lg sm:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3 sm:mb-4">
-                Logros Destacados
-              </h4>
-              <div className="flex flex-wrap gap-4 sm:gap-6 justify-center sm:justify-start">
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                 {achievements.map((achievement, index) => (
                   <motion.div
                     key={achievement.id}
@@ -144,17 +103,8 @@ const Hero: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 * index }}
                   >
-<<<<<<< HEAD
                     <div className="text-lg sm:text-xl md:text-2xl font-bold text-teal-600 dark:text-teal-400">{achievement.number}</div>
                     <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-tight">{achievement.label}</div>
-=======
-                    <div className="text-xl sm:text-2xl font-bold text-teal-600 dark:text-teal-400">
-                      {achievement.number}
-                    </div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                      {achievement.label}
-                    </div>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   </motion.div>
                 ))}
               </div>

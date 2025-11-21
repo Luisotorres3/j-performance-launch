@@ -195,7 +195,6 @@ const Contact = () => {
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                     <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-<<<<<<< HEAD
                   <div className="flex-1">
                     <h3 className="font-semibold mb-2 text-sm sm:text-base">Redes sociales</h3>
                     <div className="space-y-1.5">
@@ -227,16 +226,6 @@ const Contact = () => {
                         Telegram
                       </a>
                     </div>
-=======
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Redes sociales</h3>
-                    <a
-                      href="#"
-                      className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      @jperformancesystems
-                    </a>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   </div>
                 </div>
               </div>
@@ -328,7 +317,6 @@ const Contact = () => {
                     />
                   </div>
 
-<<<<<<< HEAD
                   <Button 
                     type="submit" 
                     size="lg" 
@@ -343,14 +331,6 @@ const Contact = () => {
                     ) : (
                       'Enviar mensaje'
                     )}
-=======
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12"
-                  >
-                    Enviar mensaje
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   </Button>
                 </div>
               </form>

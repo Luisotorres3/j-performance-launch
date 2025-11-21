@@ -18,22 +18,7 @@ interface PackCardProps {
   onButtonClick?: () => void;
 }
 
-<<<<<<< HEAD
 const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "", index = 0, selected = false, onSelect, description, showButton = true, onButtonClick }: PackCardProps) => {
-=======
-const PackCard = ({
-  title,
-  originalPrice,
-  price,
-  savings,
-  gift,
-  features,
-  className = "",
-  index = 0,
-  selected = false,
-  onSelect,
-}: PackCardProps) => {
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
   const borderColors = [
     "border-blue-500/30",
     "border-purple-500/30",
@@ -74,14 +59,8 @@ const PackCard = ({
   const isPopular = title === "Profesional";
 
   return (
-<<<<<<< HEAD
     <div 
       className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''}`}
-=======
-    <div
-      onClick={onSelect}
-      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? "ring-2 ring-primary/20" : ""} ${selected ? `ring-2 ${ringColor} shadow-xl` : ""} ${onSelect ? "cursor-pointer" : ""}`}
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
     >
       {isPopular && (
         <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
@@ -96,7 +75,6 @@ const PackCard = ({
       <div className="mb-4 sm:mb-6">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="text-3xl sm:text-4xl md:text-5xl font-bold">{price}€</span>
-<<<<<<< HEAD
           {originalPrice && (
             <span className="text-base sm:text-lg text-muted-foreground line-through">{originalPrice}€</span>
           )}
@@ -123,26 +101,6 @@ const PackCard = ({
           Comenzar
         </Button>
       )}
-=======
-          <span className="text-base sm:text-lg text-muted-foreground line-through">
-            {originalPrice}€
-          </span>
-        </div>
-        <p className="text-xs sm:text-sm text-muted-foreground">por mes</p>
-      </div>
-
-      <Button
-        asChild
-        className={`w-full mb-4 sm:mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
-        size="lg"
-        variant="outline"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <Link to="/contacto">Comenzar</Link>
-      </Button>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
 
       {features && features.length > 0 && (
         <>

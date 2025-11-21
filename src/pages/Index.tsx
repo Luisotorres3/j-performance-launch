@@ -32,32 +32,18 @@ const Index = () => {
       <Highlights />
 
       {/* Clients Grid */}
-<<<<<<< HEAD
       <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div 
             className="text-center mb-8 sm:mb-12 md:mb-16 px-2"
-=======
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12 sm:mb-16 px-2"
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-<<<<<<< HEAD
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">Con quién he trabajado</h2>
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-4">
               Jugadores que han mejorado su rendimiento a través de nuestro programa de entrenamiento.
-=======
-            <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Con quién he trabajado</h2>
-            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
-              Jugadores que han mejorado su rendimiento a través de nuestro programa de
-              entrenamiento.
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             </p>
           </motion.div>
 
@@ -88,44 +74,25 @@ const Index = () => {
             ))}
           </div>
 
-<<<<<<< HEAD
           <motion.div 
             className="text-center mt-8 sm:mt-10 md:mt-12"
-=======
-          <motion.div
-            className="text-center mt-12"
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-<<<<<<< HEAD
             <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto">
               <Link to="/reviews" onClick={() => window.scrollTo(0, 0)}>Ver todos los clientes</Link>
-=======
-            <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
-              <Link to="/reviews" onClick={() => window.scrollTo(0, 0)}>
-                Ver todos los clientes
-              </Link>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             </Button>
           </motion.div>
         </div>
       </section>
 
       {/* Plans Section */}
-<<<<<<< HEAD
       <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div 
             className="text-center mb-8 sm:mb-12 md:mb-16 px-2"
-=======
-      <section className="py-20 bg-section-alt">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12 sm:mb-16 px-2"
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -139,7 +106,6 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto mb-6 sm:mb-8 md:mb-12">
             {[
-<<<<<<< HEAD
               { 
                 title: "Básico", 
                 price: 50, 
@@ -165,41 +131,6 @@ const Index = () => {
                 title: "Readaptación", 
                 price: 35, 
                 description: "Para deportistas recuperándose de lesiones que quieren volver a competir"
-=======
-              {
-                title: "Básico",
-                price: 40,
-                features: ["Programa personalizado", "Revisiones semanales", "Guías nutricionales"],
-              },
-              {
-                title: "Profesional",
-                price: 60,
-                popular: true,
-                features: ["Todo lo del Básico", "Consultas quincenales", "Soporte prioritario"],
-              },
-              {
-                title: "Élite",
-                price: 85,
-                features: ["Consultas semanales", "Análisis biomecánico", "Soporte 24/7"],
-              },
-              {
-                title: "Opositores",
-                price: 50,
-                features: [
-                  "Preparación física",
-                  "Entrenamientos por objetivos",
-                  "Seguimiento regular",
-                ],
-              },
-              {
-                title: "Readaptación",
-                price: 30,
-                features: [
-                  "Readaptación tras lesión",
-                  "Evaluación funcional",
-                  "Recuperación progresiva",
-                ],
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
               },
             ].map((plan, index) => (
               <motion.div
@@ -209,7 +140,6 @@ const Index = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-<<<<<<< HEAD
                 <PackCard
                   title={plan.title}
                   price={plan.price}
@@ -218,32 +148,6 @@ const Index = () => {
                   index={index}
                   showButton={false}
                 />
-=======
-                <div
-                  className={`relative bg-card/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border-2 ${plan.popular ? "border-primary/50 ring-2 ring-primary/20" : "border-border"} hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 flex flex-col h-full`}
-                >
-                  {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                        Popular
-                      </span>
-                    </div>
-                  )}
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center">{plan.title}</h3>
-                  <div className="text-center mb-4 sm:mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold mb-1">{plan.price}€</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">por mes</div>
-                  </div>
-                  <ul className="text-muted-foreground text-xs sm:text-sm space-y-2 sm:space-y-2.5 flex-1">
-                    {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary text-base font-bold">✓</span>
-                        <span className="leading-relaxed">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
               </motion.div>
             ))}
           </div>
@@ -255,15 +159,8 @@ const Index = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-<<<<<<< HEAD
             <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto">
               <Link to="/planes" onClick={() => window.scrollTo(0, 0)}>Ver todos los planes</Link>
-=======
-            <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
-              <Link to="/planes" onClick={() => window.scrollTo(0, 0)}>
-                Ver todos los planes
-              </Link>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             </Button>
           </motion.div>
         </div>
@@ -273,15 +170,9 @@ const Index = () => {
       <FAQ />
 
       {/* CTA Section */}
-<<<<<<< HEAD
       <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <motion.div 
-=======
-      <section className="py-12 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
             className="max-w-3xl mx-auto px-2"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -291,7 +182,6 @@ const Index = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-6">
               ¿Listo para comenzar tu transformación?
             </h2>
-<<<<<<< HEAD
             <p className="text-sm sm:text-base md:text-xl text-muted-foreground mb-6 sm:mb-7 md:mb-8 leading-relaxed px-2">
               Únete a la familia de J Performance Systems y desbloquea tu verdadero potencial con programas de entrenamiento personalizados.
             </p>
@@ -301,26 +191,6 @@ const Index = () => {
               </Button>
               <Button asChild size="lg" className="shadow-lg hover:shadow-xl hover:scale-105 transition-all w-full sm:w-auto">
                 <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>Contáctame</Link>
-=======
-            <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
-              Únete a la familia de J Performance Systems y desbloquea tu verdadero potencial con
-              programas de entrenamiento personalizados.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="shadow-lg hover:shadow-xl hover:scale-105 transition-all"
-              >
-                <Link to="/planes">Ver todos los planes</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                className="shadow-lg hover:shadow-xl hover:scale-105 transition-all"
-              >
-                <Link to="/contacto">Contáctame</Link>
->>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
               </Button>
             </div>
           </motion.div>
