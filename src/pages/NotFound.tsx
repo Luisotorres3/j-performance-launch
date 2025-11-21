@@ -22,10 +22,11 @@ const NotFound = () => {
               <h1 className="text-9xl font-bold text-primary/20 mb-4">404</h1>
               <h2 className="text-4xl font-bold mb-4">Página no encontrada</h2>
               <p className="text-xl text-muted-foreground mb-8">
-                ¡Vaya! La página que buscas no existe. Puede que se haya movido, eliminado o que la URL sea incorrecta.
+                ¡Vaya! La página que buscas no existe. Puede que se haya movido, eliminado o que la
+                URL sea incorrecta.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="lg" className="shadow-glow">
                 <Link to="/" onClick={() => window.scrollTo(0, 0)}>

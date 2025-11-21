@@ -16,6 +16,7 @@ const Footer = () => {
               <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4">
                 <span className="text-primary">J</span> Performance System
               </h3>
+<<<<<<< HEAD
               
               <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 max-w-xs mx-auto sm:mx-0">
                 Transforma tu cuerpo y mente con programas de entrenamiento personalizados diseñados para un rendimiento óptimo.
@@ -32,17 +33,49 @@ const Footer = () => {
               <h4 className="font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base">Enlaces rápidos</h4>
               <div className="flex flex-col gap-2 sm:gap-2.5 md:gap-3 items-start">
                 <Link to="/planes" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+=======
+
+              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                Transforma tu cuerpo y mente con programas de entrenamiento personalizados diseñados
+                para un rendimiento óptimo.
+              </p>
+              <img
+                src={logoImg}
+                alt="J Performance Systems Logo"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+              />
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Enlaces rápidos</h4>
+              <div className="flex flex-col gap-2 sm:gap-3">
+                <Link
+                  to="/planes"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+>>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   Planes de entrenamiento
                 </Link>
-                <Link to="/blog" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/blog"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Blog
                 </Link>
-                <Link to="/reviews" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/reviews"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Mis clientes
                 </Link>
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* Contact - Mobile Bottom Right, Desktop Right */}
             <div className="text-right sm:text-left order-3 md:order-3">
               <h4 className="font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base">Contacto</h4>
@@ -91,14 +124,57 @@ const Footer = () => {
                     aria-label="Telegram"
                   >
                     <Send size={20} className="sm:w-5 sm:h-5" />
+=======
+            {/* Contact */}
+            <div>
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contacto</h4>
+              <div className="flex flex-col gap-2 sm:gap-3">
+                <a
+                  href="mailto:info@jperformance.com"
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors break-all"
+                >
+                  <Mail size={14} className="sm:w-4 sm:h-4 shrink-0" />
+                  info@jperformance.com
+                </a>
+                <a
+                  href="tel:+34600000000"
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Phone size={14} className="sm:w-4 sm:h-4 shrink-0" />
+                  +34 600 000 000
+                </a>
+                <div className="flex gap-3 sm:gap-4 mt-2">
+                  <a
+                    href="https://www.instagram.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Instagram size={18} className="sm:w-5 sm:h-5" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Facebook size={18} className="sm:w-5 sm:h-5" />
+>>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="border-t border-border mt-6 sm:mt-7 md:mt-8 pt-5 sm:pt-6 md:pt-8 text-center text-xs sm:text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} J Performance Systems. Todos los derechos reservados.</p>
+=======
+          <div className="border-t border-border mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-muted-foreground">
+            <p>
+              © {new Date().getFullYear()} J Performance Systems. Todos los derechos reservados.
+            </p>
+>>>>>>> 4892249563441a230b94e7d4223864d40e5ed286
           </div>
         </div>
       </footer>
