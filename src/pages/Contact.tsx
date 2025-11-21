@@ -4,11 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, Instagram, MapPin, Send, MessageCircle } from "lucide-react";
-import { SiTiktok } from "react-icons/si";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Mail, Phone, Instagram, MapPin, Send } from "lucide-react";
+import { SiTiktok, SiWhatsapp } from "react-icons/si";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { CONTACT_INFO } from "@/constants/contact";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -19,6 +22,8 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,26 +38,36 @@ const Contact = () => {
       return;
     }
 
+    // Privacy and cookies validation
+    if (!privacyAccepted || !cookiesAccepted) {
+      toast({
+        title: "Aceptación requerida",
+        description: "Debes aceptar la política de privacidad y el uso de cookies para continuar.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       // Using EmailJS to send emails
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          service_id: 'service_jperformance', // You'll need to replace this
-          template_id: 'template_contact', // You'll need to replace this
-          user_id: 'YOUR_PUBLIC_KEY', // You'll need to replace this
+          service_id: "service_jperformance",
+          template_id: "template_zate27v",
+          user_id: "-nXRl3c5g-N1Nylkg",
           template_params: {
             from_name: formData.name,
             from_email: formData.email,
-            phone: formData.phone || 'No proporcionado',
+            phone: formData.phone || "No proporcionado",
             message: formData.message,
-            to_email: 'info@jperformance.com', // Your email
-          }
+            to_email: CONTACT_INFO.email,
+          },
         }),
       });
 
@@ -69,16 +84,18 @@ const Contact = () => {
           phone: "",
           message: "",
         });
+        setPrivacyAccepted(false);
+        setCookiesAccepted(false);
       } else {
-        throw new Error('Error al enviar');
+        throw new Error("Error al enviar");
       }
     } catch (error) {
       // Fallback to mailto if EmailJS fails
-      const mailtoLink = `mailto:info@jperformance.com?subject=Mensaje de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
-        `Nombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone || 'No proporcionado'}\n\nMensaje:\n${formData.message}`
+      const mailtoLink = `mailto:${CONTACT_INFO.email}?subject=Mensaje de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
+        `Nombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone || "No proporcionado"}\n\nMensaje:\n${formData.message}`
       )}`;
       window.location.href = mailtoLink;
-      
+
       toast({
         title: "Abriendo cliente de correo",
         description: "Se abrirá tu cliente de correo para enviar el mensaje.",
@@ -137,10 +154,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Correo</h3>
                     <a
-                      href="mailto:info@jperformance.com"
+                      href={`mailto:${CONTACT_INFO.email}`}
                       className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors break-all"
                     >
-                      info@jperformance.com
+                      {CONTACT_INFO.email}
                     </a>
                   </div>
                 </div>
@@ -152,22 +169,22 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Teléfono</h3>
                     <a
-                      href="tel:+34600000000"
+                      href={`tel:${CONTACT_INFO.phone}`}
                       className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
                     >
-                      +34 600 000 000
+                      {CONTACT_INFO.phoneFormatted}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    <SiWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">WhatsApp</h3>
-                    <a 
-                      href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20tus%20servicios" 
+                    <a
+                      href={CONTACT_INFO.whatsapp.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
@@ -184,7 +201,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1 text-sm sm:text-base">Ubicación</h3>
                     <p className="text-sm sm:text-base text-muted-foreground">
-                      Andalucía, España
+                      {CONTACT_INFO.location}
                       <br />
                       Online
                     </p>
@@ -198,32 +215,41 @@ const Contact = () => {
                   <div className="flex-1">
                     <h3 className="font-semibold mb-2 text-sm sm:text-base">Redes sociales</h3>
                     <div className="space-y-1.5">
-                      <a 
-                        href="https://instagram.com/jperformancesystems" 
+                      <a
+                        href={CONTACT_INFO.whatsapp.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <SiWhatsapp className="w-4 h-4" />
+                        WhatsApp
+                      </a>
+                      <a
+                        href={CONTACT_INFO.social.instagram.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                       >
                         <Instagram className="w-4 h-4" />
-                        @jperformancesystems
+                        {CONTACT_INFO.social.instagram.handle}
                       </a>
-                      <a 
-                        href="https://tiktok.com/@jperformancesystems" 
+                      <a
+                        href={CONTACT_INFO.social.tiktok.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                       >
                         <SiTiktok className="w-4 h-4" />
-                        @jperformancesystems
+                        {CONTACT_INFO.social.tiktok.handle}
                       </a>
-                      <a 
-                        href="https://t.me/jperformancesystems" 
+                      <a
+                        href={CONTACT_INFO.social.telegram.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                       >
                         <Send className="w-4 h-4" />
-                        Telegram
+                        {CONTACT_INFO.social.telegram.handle}
                       </a>
                     </div>
                   </div>
@@ -317,11 +343,59 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+                  <div className="space-y-3 pt-2">
+                    <div className="flex items-start space-x-2">
+                      <Checkbox
+                        id="privacy"
+                        checked={privacyAccepted}
+                        onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                        className="mt-0.5"
+                      />
+                      <label
+                        htmlFor="privacy"
+                        className="text-xs sm:text-sm leading-tight cursor-pointer"
+                      >
+                        He leído y acepto la{" "}
+                        <Link
+                          to="/privacidad"
+                          className="text-primary hover:underline"
+                          target="_blank"
+                        >
+                          Política de Privacidad
+                        </Link>{" "}
+                        *
+                      </label>
+                    </div>
+
+                    <div className="flex items-start space-x-2">
+                      <Checkbox
+                        id="cookies"
+                        checked={cookiesAccepted}
+                        onCheckedChange={(checked) => setCookiesAccepted(checked as boolean)}
+                        className="mt-0.5"
+                      />
+                      <label
+                        htmlFor="cookies"
+                        className="text-xs sm:text-sm leading-tight cursor-pointer"
+                      >
+                        Acepto el uso de cookies según la{" "}
+                        <Link
+                          to="/cookies"
+                          className="text-primary hover:underline"
+                          target="_blank"
+                        >
+                          Política de Cookies
+                        </Link>{" "}
+                        *
+                      </label>
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !privacyAccepted || !cookiesAccepted}
                   >
                     {isSubmitting ? (
                       <>
@@ -329,7 +403,7 @@ const Contact = () => {
                         Enviando...
                       </>
                     ) : (
-                      'Enviar mensaje'
+                      "Enviar mensaje"
                     )}
                   </Button>
                 </div>

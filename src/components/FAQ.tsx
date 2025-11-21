@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -7,42 +6,37 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQ: React.FC = () => {
+const FAQ = () => {
   const faqs = [
     {
       question: "¿Cómo funcionan los entrenamientos online?",
       answer:
-        "Los entrenamientos online se adaptan completamente a tu horario y ubicación. Recibirás un plan personalizado basado en tus objetivos, nivel físico y disponibilidad de equipamiento. Incluye videos demostrativos, seguimiento semanal y ajustes continuos según tu progreso. Todo a través de una plataforma fácil de usar donde podrás consultarme cuando lo necesites.",
+        "Trabajo con una planificación completamente personalizada. Recibes tu programa en una plataforma profesional (Hevy), con vídeos, indicaciones técnicas y cargas adaptadas a tu nivel. Yo superviso tu evolución para ajustar volúmenes, intensidades y progresiones en función de tu rendimiento real. Es un sistema estructurado, claro y orientado a resultados.",
     },
     {
       question: "¿Qué diferencia hay entre el entrenamiento presencial y online?",
       answer:
-        "El entrenamiento presencial ofrece supervisión directa e inmediata, ideal si buscas corrección técnica en tiempo real. El online te brinda mayor flexibilidad horaria y es perfecto si viajas frecuentemente o prefieres entrenar en tu propio espacio. Ambos incluyen planes personalizados y seguimiento constante, pero con dinámicas diferentes.",
+        "En el presencial tienes al entrenador delante y requiere de una adaptación a nivel de horarios completa. En el online tienes un sistema completo, medido y revisado cada semana, que te permite avanzar sin depender de horarios. Mi labor es darte una programación seria y un seguimiento sólido para que entrenes con criterio, no al azar. El valor está en el método, no en la distancia.",
     },
     {
       question: "¿Necesito experiencia previa para empezar?",
       answer:
-        "No, para nada. Trabajo con personas de todos los niveles, desde principiantes absolutos hasta deportistas avanzados. Cada plan se diseña desde cero según tu punto de partida, objetivos y condiciones físicas actuales. Lo importante es tu compromiso y ganas de mejorar.",
+        "No. Trabajo con iniciación, intermedios y perfiles avanzados. La programación se ajusta a tu punto de partida y tu objetivo. Lo único imprescindible es que quieras mejorar y sigas el plan con constancia.",
     },
     {
       question: "¿Cuánto tiempo tarda en verse resultados?",
       answer:
-        "Depende de varios factores: tu punto de partida, objetivos, constancia y adherencia al plan. En general, los primeros cambios en fuerza y resistencia se notan en 3-4 semanas. Los cambios estéticos suelen ser visibles entre 8-12 semanas. Lo más importante es ser consistente y seguir el proceso.",
+        "Depende del objetivo y del punto de partida, las primeras mejoras llegan en 4–6 semanas.",
     },
     {
       question: "¿Qué incluye el servicio de nutrición?",
       answer:
-        "Los planes básicos incluyen guías nutricionales generales y recomendaciones adaptadas a tus objetivos. Los planes superiores ofrecen consultas nutricionales más específicas, ajustes según tus progresos y pautas detalladas. No elaboro dietas estrictas, sino que te enseño a crear hábitos alimenticios sostenibles.",
-    },
-    {
-      question: "¿Puedo pausar mi plan si tengo algún imprevisto?",
-      answer:
-        "Sí, entiendo que la vida a veces trae imprevistos. Si necesitas hacer una pausa por viaje, lesión o motivos personales, podemos ajustar el plan. Lo importante es mantener una comunicación abierta para que podamos adaptar tu entrenamiento a tus circunstancias.",
+        "Incluye una planificación nutricional personalizada, adaptada a tus entrenamientos y objetivos. Revisamos tu evolución y ajustamos ingestas, raciones y estrategias según tus resultados. Es un sistema pensado para mejorar rendimiento, no para hacer dietas milagro.",
     },
     {
       question: "¿Cómo es el proceso de seguimiento y comunicación?",
       answer:
-        "El seguimiento varía según el plan elegido. Incluye revisiones semanales o quincenales donde analizamos tu progreso, ajustamos ejercicios y resolvemos dudas. La comunicación es por WhatsApp o email, con tiempos de respuesta según el tipo de plan. Mi objetivo es que siempre te sientas acompañado en tu proceso.",
+        "Trabajamos con comunicación directa a través de WhatsApp o plataforma interna (Hevy). Revisando métricas, vídeos de técnica y comparando resultados a través de las cargas y de las sensaciones que vayas teniendo. A partir de ahí, ajusto la carga, progresiones y tareas específicas.",
     },
   ];
 
@@ -56,9 +50,7 @@ const FAQ: React.FC = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">
-            Preguntas Frecuentes
-          </h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Preguntas Frecuentes</h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
             Resuelve tus dudas sobre nuestros servicios de entrenamiento personal
           </p>

@@ -43,16 +43,32 @@ const NotFound = () => {
             <div className="mt-12 pt-8 border-t border-border">
               <p className="text-sm text-muted-foreground mb-4">Quizá buscas:</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/planes" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
+                <Link
+                  to="/planes"
+                  className="text-sm text-primary hover:underline"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   Planes de entrenamiento
                 </Link>
-                <Link to="/blog" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
+                <Link
+                  to="/blog"
+                  className="text-sm text-primary hover:underline"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   Blog
                 </Link>
-                <Link to="/reviews" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
+                <Link
+                  to="/reviews"
+                  className="text-sm text-primary hover:underline"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   Con quien he trabajado
                 </Link>
-                <Link to="/contacto" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
+                <Link
+                  to="/contacto"
+                  className="text-sm text-primary hover:underline"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
                   Contacto
                 </Link>
               </div>

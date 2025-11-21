@@ -1,97 +1,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { TRAINING_PLANS, getPeriodPrice, getTotalPrice, Plan } from "@/constants/plans";
 
 const TrainingPlans = () => {
-  const plans = [
-    {
-      title: "Básico",
-      originalPrice: 60,
-      price: 50,
-      savings: 10,
-      giftTrimestral: "500g Proteína ",
-      giftSemestral: "500gr Proteína + 100g Creatina",
-      features: [
-        "Entrenamiento profesional",
-        "Control de cargas",
-        "Planificación versátil y contrastada",
-        "Revisiones y actualizaciones periódicas",
-        "Método probado para empezar a mejorar desde cualquier nivel",
-        "Revisión técnica"
-      ],
-    },
-    {
-      title: "Profesional",
-      originalPrice: 90,
-      price: 75,
-      savings: 15,
-      giftTrimestral: "500gr Proteína + 100g Creatina",
-      giftSemestral: "1kg Proteína + 100g Creatina",
-      popular: true,
-      features: [
-        "Incluye todas las características del plan Básico",
-        "Nutrición controlada",
-        "Control del rendimiento",
-        "Gestión de hábitos",
-        "Videollamada mensual para evaluar la evolución de la programación"
-
-      ],
-    },
-    {
-      title: "Élite",
-      originalPrice: 130,
-      price: 110,
-      savings: 20,
-      giftTrimestral: "1kg Proteína + 500g Creatina",
-      giftSemestral: "2kg Proteína + 500g Creatina",
-      features: [
-        "Incluye todas las características del plan Profesional",
-        "Técnicas de nutrición avanzada",
-        "Gestión de la suplementación",
-        "Planificación avanzada por macro y mesociclos",
-        "Informes exhaustivos personalizados de rendimiento mensuales"
-
-      ],
-    },
-    {
-      title: "Opositores",
-      originalPrice: 62,
-      price: 50,
-      savings: 12,
-      giftTrimestral: "500gr Proteína + 100g Creatina",
-      giftSemestral: "1kg Proteína + 100g Creatina",
-      features: [
-        "Entrenamiento + nutrición adaptado a tus pruebas físicas y a tu nivel de base",
-        "Mediciones programadas de marcas",
-        "Análisis de fortalezas y debilidades",
-        "Control de la técnica",
-        "Ayuda con la gestión del conjunto de la oposición"
-
-      ],
-    },
-    {
-      title: "Readaptación",
-      originalPrice: 50,
-      price: 35,
-      savings: 6,
-      giftSemestral: "1kg Proteína + 100g Creatina",
-      features: [
-        "Trabajo para que vuelvas a hacer deporte con normalidad",
-        "Vuelve a competir sin riesgos",
-        "Trabajo estructural",
-        "Transición a tu máximo rendimiento",
-        "Comunicación clara sobre el progreso.",
-        "Especialista en lesiones de tren inferior"
-
-      ],
-    },
-  ];
-
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [visiblePlan, setVisiblePlan] = useState<string | null>(null);
@@ -121,25 +36,23 @@ const TrainingPlans = () => {
     return () => observer.disconnect();
   }, []);
 
-  const getPeriodPrice = (base: number) => {
-    if (period === "mensual") return base;
-    if (period === "trimestral") return Math.round(base * 0.9);
-    if (period === "semestral") return Math.round(base * 0.8);
-    return base;
-  };
-
-  const handlePlanSelect = (plan: typeof plans[0]) => {
+  const handlePlanSelect = (plan: Plan) => {
     const planData = {
       title: plan.title,
       originalPrice: getPeriodPrice(plan.originalPrice),
       price: getPeriodPrice(plan.price),
       savings: getPeriodPrice(plan.savings),
-      gift: period === 'trimestral' ? plan.giftTrimestral : period === 'semestral' ? plan.giftSemestral : undefined,
+      gift:
+        period === "trimestral"
+          ? plan.giftTrimestral
+          : period === "semestral"
+            ? plan.giftSemestral
+            : undefined,
       features: plan.features,
-      period: period
+      period: period,
     };
     window.scrollTo(0, 0);
-    navigate('/checkout', { state: planData });
+    navigate("/checkout", { state: planData });
   };
 
   return (
@@ -206,14 +119,14 @@ const TrainingPlans = () => {
               >
                 <span>Semestral</span>
                 <span className="ml-1 sm:ml-2 text-xs bg-green-500/20 text-green-500 px-1.5 sm:px-2 py-0.5 rounded-full">
-                  -20%
+                  -17%
                 </span>
               </button>
             </div>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 w-full">
-            {plans.map((plan, index) => (
+            {TRAINING_PLANS.map((plan, index) => (
               <motion.div
                 key={index}
                 className="transition-transform hover:scale-105"
@@ -224,15 +137,23 @@ const TrainingPlans = () => {
               >
                 <PackCard
                   title={plan.title}
-                  originalPrice={getPeriodPrice(plan.originalPrice)}
-                  price={getPeriodPrice(plan.price)}
-                  savings={getPeriodPrice(plan.savings)}
-                  gift={period === 'trimestral' ? plan.giftTrimestral : period === 'semestral' ? plan.giftSemestral : undefined}
+                  originalPrice={period !== "mensual" ? plan.price : undefined}
+                  price={getPeriodPrice(plan.price, period)}
+                  savings={getPeriodPrice(plan.savings, period)}
+                  gift={
+                    period === "trimestral"
+                      ? plan.giftTrimestral
+                      : period === "semestral"
+                        ? plan.giftSemestral
+                        : undefined
+                  }
                   features={plan.features}
                   className="h-full"
                   index={index}
                   selected={selectedPlan === plan.title}
                   onButtonClick={() => handlePlanSelect(plan)}
+                  period={period}
+                  totalPrice={getTotalPrice(plan.price, period)}
                 />
               </motion.div>
             ))}
@@ -240,7 +161,9 @@ const TrainingPlans = () => {
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-4">¿No sabes qué plan es el indicado para ti?</p>
-            <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>Contacta conmigo para una consulta gratuita →</Link>
+            <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>
+              Contacta conmigo para una consulta gratuita →
+            </Link>
           </div>
         </div>
       </section>

@@ -1,14 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
 export interface Client {
   id: string | number;
   name: string;
-  role?: string; // e.g., "Jugador profesional", "Entrenador"
-  clubs?: string; // e.g., "Real Madrid, Barcelona"
-  duration?: string; // e.g., "2021–2023"
+  currentClub?: string; // Equipo actual
+  previousClubs?: string[]; // Lista de equipos anteriores
   photo?: string; // url or import path
-  miniCV?: string; // short bio / where they played
 }
 
 interface Props {
@@ -19,30 +14,27 @@ const placeholderClients: Client[] = [
   {
     id: 1,
     name: "Nombre Apellido",
-    role: "Jugador",
-    clubs: "Club A, Club B",
+    currentClub: "Club A",
+    previousClubs: ["Club B", "Club C"],
     photo: "",
-    miniCV: "Breve trayectoria deportiva.",
   },
   {
     id: 2,
     name: "Nombre Apellido",
-    role: "Entrenador",
-    clubs: "Club X",
+    currentClub: "Club X",
+    previousClubs: ["Club Y"],
     photo: "",
-    miniCV: "Breve trayectoria como entrenador.",
   },
   {
     id: 3,
     name: "Nombre Apellido",
-    role: "Jugador",
-    clubs: "Club Y, Club Z",
+    currentClub: "Club Z",
+    previousClubs: ["Club A", "Club B"],
     photo: "",
-    miniCV: "Breve trayectoria deportiva.",
   },
 ];
 
-const ClientsSection: React.FC<Props> = ({ clients = placeholderClients }) => {
+const ClientsSection = ({ clients = placeholderClients }: Props) => {
   return (
     <section className="pt-2 pb-12 sm:pb-16 md:pb-24 bg-background">
       <div className="container mx-auto px-4 max-w-[1600px]">
@@ -76,22 +68,21 @@ const ClientsSection: React.FC<Props> = ({ clients = placeholderClients }) => {
               </div>
 
               <div className="p-3 sm:p-4 md:p-5">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">{c.name}</h3>
-                {c.role && (
-                  <div className="text-xs sm:text-sm text-primary font-semibold mb-1">{c.role}</div>
-                )}
-                {c.clubs && (
-                  <div className="text-xs sm:text-sm text-muted-foreground font-medium mb-1">
-                    {c.clubs}
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3">{c.name}</h3>
+                {c.currentClub && (
+                  <div className="text-sm sm:text-base text-blue-600 dark:text-blue-400 font-semibold mb-2 sm:mb-3">
+                    {c.currentClub}
                   </div>
                 )}
-                {c.duration && (
-                  <div className="text-xs text-muted-foreground mb-2 sm:mb-3">{c.duration}</div>
-                )}
-                {c.miniCV && (
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-border">
-                    {c.miniCV}
-                  </p>
+                {c.previousClubs && c.previousClubs.length > 0 && (
+                  <div className="text-xs sm:text-sm text-muted-foreground">
+                    <div className="font-medium mb-1">Equipos anteriores:</div>
+                    <ul className="list-disc list-inside space-y-0.5">
+                      {c.previousClubs.map((club, idx) => (
+                        <li key={idx}>{club}</li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
             </article>

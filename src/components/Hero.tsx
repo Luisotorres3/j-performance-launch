@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import perfilImg from "@/assets/hero.png";
 
@@ -8,7 +7,7 @@ import perfilImg from "@/assets/hero.png";
  * - Decorative gradients and floating badges
  * - Spanish texts and teal/cyan styling, dark/light support
  */
-const Hero: React.FC = () => {
+const Hero = () => {
   const certifications = [
     { id: 1, name: "Graduado en Ciencias de la Actividad Física y el Deporte", icon: "👨🏻‍🎓" },
     { id: 2, name: "Técnico en Nutrición deportiva", icon: "🥙" },
@@ -25,7 +24,6 @@ const Hero: React.FC = () => {
   return (
     <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen pt-24 pb-8 sm:pt-28 sm:pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
       <div className="container mx-auto px-4 sm:px-6">
-
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
           {/* Photo Section */}
           <motion.div
@@ -64,15 +62,29 @@ const Hero: React.FC = () => {
           >
             {/* Introduction */}
             <div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Juan Pasquau</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">
+                Juan Pasquau
+              </h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
-                Entrenador de alto rendimiento especializado en fuerza, atletismo y preparación física para opositores y deportistas que buscan resultados serios. Mi metodología de trabajo se basa en la solidez de una programación estratégica y un enfoque claro: elevar el nivel de tu rendimiento sea cual sea tu punto de partida. Me gusta ser simple y exigente: yo hago el análisis y la planificación, tú te encargas de cumplir. Disciplina clásica, visión de futuro y un sistema diseñado para que rindas como un profesional.
+                Entrenador de alto rendimiento especializado en fuerza, atletismo y preparación
+                física para opositores y deportistas que buscan resultados serios.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
+                Mi metodología de trabajo se basa en la solidez de una programación estratégica y un
+                enfoque claro: elevar el nivel de tu rendimiento sea cual sea tu punto de partida.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
+                Me gusta ser simple y exigente: yo hago el análisis y la planificación, tú te
+                encargas de cumplir. Disciplina clásica, visión de futuro y un sistema diseñado para
+                que rindas como un profesional.
               </p>
             </div>
 
             {/* Certifications */}
             <div>
-              <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Certificaciones y Especialidades</h4>
+              <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">
+                Certificaciones y Especialidades
+              </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3">
                 {certifications.map((cert, index) => (
                   <motion.div
@@ -84,7 +96,9 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                   >
                     <span className="text-lg sm:text-xl md:text-2xl shrink-0">{cert.icon}</span>
-                    <span className="text-xs sm:text-sm md:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">{cert.name}</span>
+                    <span className="text-xs sm:text-sm md:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">
+                      {cert.name}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -92,7 +106,9 @@ const Hero: React.FC = () => {
 
             {/* Achievements */}
             <div>
-              <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">Logros Destacados</h4>
+              <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 sm:mb-3 md:mb-4">
+                Logros Destacados
+              </h4>
               <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center sm:justify-start">
                 {achievements.map((achievement, index) => (
                   <motion.div
@@ -103,8 +119,12 @@ const Hero: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 * index }}
                   >
-                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-teal-600 dark:text-teal-400">{achievement.number}</div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-tight">{achievement.label}</div>
+                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-teal-600 dark:text-teal-400">
+                      {achievement.number}
+                    </div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-tight">
+                      {achievement.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>

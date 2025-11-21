@@ -9,7 +9,11 @@ import Checkout from "./pages/Checkout";
 import Blog from "./pages/Blog";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import LegalNotice from "./pages/LegalNotice";
+import CookiesPolicy from "./pages/CookiesPolicy";
 import NotFound from "./pages/NotFound";
+import CookieBanner from "./components/CookieBanner";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +22,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <Router>
+      <Router future={{ v7_startTransition: true }}>
+        <CookieBanner />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/planes" element={<TrainingPlans />} />
@@ -26,6 +31,9 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="/privacidad" element={<PrivacyPolicy />} />
+          <Route path="/aviso-legal" element={<LegalNotice />} />
+          <Route path="/cookies" element={<CookiesPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,41 +1,51 @@
-import { Dumbbell, Apple, Target } from "lucide-react";
+import { ClipboardCheck, Target, TrendingUp, Video } from "lucide-react";
 
 const Highlights = () => {
   const highlights = [
     {
+      icon: ClipboardCheck,
+      title: "1. Evaluación inicial",
+      description:
+        "Análisis completo de tu nivel actual, objetivos, historial de lesiones y disponibilidad para crear tu plan personalizado.",
+    },
+    {
       icon: Target,
-      title: "Optimización del rendimiento",
+      title: "2. Planificación estratégica",
       description:
-        "Programas de entrenamiento basados en la ciencia diseñados para maximizar tu rendimiento físico y capacidades atléticas.",
+        "Diseño de tu programa de entrenamiento y nutrición adaptado a tus necesidades específicas y progreso esperado.",
     },
     {
-      icon: Apple,
-      title: "Asesoría nutricional",
+      icon: TrendingUp,
+      title: "3. Seguimiento continuo",
       description:
-        "Planes de nutrición personalizados que energizan tu cuerpo para resultados óptimos y progreso sostenible.",
+        "Monitoreo constante de tu evolución con ajustes periódicos del plan según tus resultados y feedback.",
     },
     {
-      icon: Dumbbell,
-      title: "Entrenamiento personalizado",
-      description:
-        "Programas de entrenamiento a medida según tus objetivos, nivel de condición y biomecánica para máxima eficiencia.",
+      icon: Video,
+      title: "4. Herramientas digitales",
+      tools: [
+        "📹 Google Meet para videollamadas",
+        "💪 Hevy Coach para seguimiento",
+        "💬 WhatsApp para comunicación directa",
+        "🍎 MyFitnessPal para control nutricional",
+      ],
     },
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
+    <section className="py-12 sm:py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 sm:mb-12 md:mb-16 animate-fade-in">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
-            Por qué elegir J Performance System
+            ¿Cómo trabajo?
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
-            Entrenamiento profesional que combina experiencia, dedicación y métodos probados para
-            ayudarte a alcanzar tus objetivos.
+            Mi metodología se basa en un proceso estructurado que garantiza resultados medibles y
+            sostenibles en el tiempo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {highlights.map((highlight, index) => (
             <div
               key={index}
@@ -46,9 +56,22 @@ const Highlights = () => {
                 <highlight.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{highlight.title}</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {highlight.description}
-              </p>
+              {highlight.description ? (
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {highlight.description}
+                </p>
+              ) : highlight.tools ? (
+                <ul className="space-y-1.5 sm:space-y-2">
+                  {highlight.tools.map((tool, idx) => (
+                    <li
+                      key={idx}
+                      className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
+                    >
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>

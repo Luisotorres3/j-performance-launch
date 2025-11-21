@@ -90,7 +90,9 @@ const PricingCard = ({
 
       {showCTA && (
         <Button asChild className="w-full mt-auto" size="lg">
-          <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>Empieza ya</Link>
+          <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>
+            Empieza ya
+          </Link>
         </Button>
       )}
     </div>

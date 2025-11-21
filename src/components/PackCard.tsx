@@ -16,9 +16,27 @@ interface PackCardProps {
   description?: string;
   showButton?: boolean;
   onButtonClick?: () => void;
+  period?: "mensual" | "trimestral" | "semestral";
+  totalPrice?: number;
 }
 
-const PackCard = ({ title, originalPrice, price, savings, gift, features, className = "", index = 0, selected = false, onSelect, description, showButton = true, onButtonClick }: PackCardProps) => {
+const PackCard = ({
+  title,
+  originalPrice,
+  price,
+  savings,
+  gift,
+  features,
+  className = "",
+  index = 0,
+  selected = false,
+  onSelect,
+  description,
+  showButton = true,
+  onButtonClick,
+  period = "mensual",
+  totalPrice,
+}: PackCardProps) => {
   const borderColors = [
     "border-blue-500/30",
     "border-purple-500/30",
@@ -59,8 +77,8 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
   const isPopular = title === "Profesional";
 
   return (
-    <div 
-      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? 'ring-2 ring-primary/20' : ''} ${selected ? `ring-2 ${ringColor} shadow-xl` : ''}`}
+    <div
+      className={`relative bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border-2 ${borderColor} hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col ${className} ${isPopular ? "ring-2 ring-primary/20" : ""} ${selected ? `ring-2 ${ringColor} shadow-xl` : ""}`}
     >
       {isPopular && (
         <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
@@ -75,21 +93,37 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
       <div className="mb-4 sm:mb-6">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="text-3xl sm:text-4xl md:text-5xl font-bold">{price}€</span>
-          {originalPrice && (
-            <span className="text-base sm:text-lg text-muted-foreground line-through">{originalPrice}€</span>
+          {originalPrice && (period === "trimestral" || period === "semestral") && (
+            <span className="text-base sm:text-lg text-muted-foreground line-through">
+              {originalPrice}€
+            </span>
           )}
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground">por mes</p>
+        {totalPrice && (period === "trimestral" || period === "semestral") && (
+          <div className="mt-2">
+            <div className="flex items-baseline gap-2">
+              <p className="text-sm sm:text-base text-primary font-semibold">
+                Total: {totalPrice}€
+              </p>
+              {originalPrice && (
+                <span className="text-xs sm:text-sm text-muted-foreground line-through">
+                  {originalPrice * (period === "trimestral" ? 3 : 6)}€
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
-      
+
       {description && (
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">{description}</p>
       )}
-      
+
       {showButton && (
-        <Button 
+        <Button
           className={`w-full mb-4 sm:mb-6 border-2 ${buttonBorderColor} hover:text-primary-foreground`}
-          size="lg" 
+          size="lg"
           variant="outline"
           onClick={(e) => {
             e.stopPropagation();
@@ -104,7 +138,9 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
 
       {features && features.length > 0 && (
         <>
-          <div className={`border-t border-border pt-4 sm:pt-6 mb-3 sm:mb-4 ${!showButton ? 'mt-4 sm:mt-6' : ''}`}>
+          <div
+            className={`border-t border-border pt-4 sm:pt-6 mb-3 sm:mb-4 ${!showButton ? "mt-4 sm:mt-6" : ""}`}
+          >
             <p className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Incluye:</p>
           </div>
 
@@ -118,7 +154,7 @@ const PackCard = ({ title, originalPrice, price, savings, gift, features, classN
           </ul>
         </>
       )}
-      
+
       {gift && (
         <div className="flex items-center gap-2 mt-4 sm:mt-6 bg-primary/10 border border-primary/30 rounded-lg p-2 sm:p-3">
           <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
