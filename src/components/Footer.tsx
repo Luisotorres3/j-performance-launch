@@ -25,7 +25,7 @@ const Footer = () => {
               <img
                 src={logoImg}
                 alt="J Performance System Logo"
-                className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain mx-auto sm:mx-0"
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain mx-auto sm:mx-0"
               />
             </div>
 
@@ -142,7 +142,7 @@ const Footer = () => {
 
           <div className="border-t border-border mt-6 sm:mt-7 md:mt-8 pt-5 sm:pt-6 md:pt-8 text-center text-xs sm:text-sm text-muted-foreground">
             <p>
-              © {new Date().getFullYear()} J Performance Systems. Todos los derechos reservados.
+              © {new Date().getFullYear()} J Performance System. Todos los derechos reservados.
             </p>
           </div>
         </div>

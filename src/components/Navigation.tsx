@@ -55,7 +55,7 @@ const Navigation = () => {
               <img
                 src={logo}
                 alt="J Performance logo"
-                className="h-12 sm:h-14 md:h-16 w-auto inline-block"
+                className="h-16 sm:h-20 md:h-24 w-auto inline-block"
               />
               <span>
                 <span className="text-primary">J</span> Performance System

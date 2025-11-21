@@ -274,140 +274,45 @@ const Contact = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <form
-                onSubmit={handleSubmit}
-                className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border"
-              >
+              <div className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border">
                 <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Enviar un mensaje</h2>
 
-                <div className="space-y-3 sm:space-y-4">
-                  <div>
-                    <Label htmlFor="name" className="text-sm sm:text-base">
-                      Nombre *
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Tu nombre"
-                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
-                      required
-                    />
+                <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <Mail className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
                   </div>
-
-                  <div>
-                    <Label htmlFor="email" className="text-sm sm:text-base">
-                      Correo *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="tu@correo.com"
-                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
-                      required
-                    />
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3">Próximamente</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base max-w-md mb-6">
+                    Estamos mejorando nuestro formulario de contacto para ofrecerte una mejor experiencia.
+                  </p>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-8">
+                    Mientras tanto, puedes contactarnos directamente:
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="text-sm sm:text-base"
+                    >
+                      <a href={`mailto:${CONTACT_INFO.email}`}>
+                        <Mail className="w-4 h-4 mr-2" />
+                        Enviar Email
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="text-sm sm:text-base"
+                    >
+                      <a href={CONTACT_INFO.whatsapp.url} target="_blank" rel="noopener noreferrer">
+                        <SiWhatsapp className="w-4 h-4 mr-2" />
+                        WhatsApp
+                      </a>
+                    </Button>
                   </div>
-
-                  <div>
-                    <Label htmlFor="phone" className="text-sm sm:text-base">
-                      Teléfono
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+34 600 000 000"
-                      className="mt-1.5 text-sm sm:text-base h-10 sm:h-11"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message" className="text-sm sm:text-base">
-                      Mensaje *
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Cuéntame tus objetivos y cómo puedo ayudar..."
-                      rows={5}
-                      className="mt-1.5 text-sm sm:text-base resize-none"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-3 pt-2">
-                    <div className="flex items-start space-x-2">
-                      <Checkbox
-                        id="privacy"
-                        checked={privacyAccepted}
-                        onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
-                        className="mt-0.5"
-                      />
-                      <label
-                        htmlFor="privacy"
-                        className="text-xs sm:text-sm leading-tight cursor-pointer"
-                      >
-                        He leído y acepto la{" "}
-                        <Link
-                          to="/privacidad"
-                          className="text-primary hover:underline"
-                          target="_blank"
-                        >
-                          Política de Privacidad
-                        </Link>{" "}
-                        *
-                      </label>
-                    </div>
-
-                    <div className="flex items-start space-x-2">
-                      <Checkbox
-                        id="cookies"
-                        checked={cookiesAccepted}
-                        onCheckedChange={(checked) => setCookiesAccepted(checked as boolean)}
-                        className="mt-0.5"
-                      />
-                      <label
-                        htmlFor="cookies"
-                        className="text-xs sm:text-sm leading-tight cursor-pointer"
-                      >
-                        Acepto el uso de cookies según la{" "}
-                        <Link
-                          to="/cookies"
-                          className="text-primary hover:underline"
-                          target="_blank"
-                        >
-                          Política de Cookies
-                        </Link>{" "}
-                        *
-                      </label>
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12"
-                    disabled={isSubmitting || !privacyAccepted || !cookiesAccepted}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="animate-spin mr-2">⏳</span>
-                        Enviando...
-                      </>
-                    ) : (
-                      "Enviar mensaje"
-                    )}
-                  </Button>
                 </div>
-              </form>
+              </div>
             </motion.div>
           </div>
         </div>
