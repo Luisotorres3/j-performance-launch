@@ -7,20 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PackCard from "@/components/PackCard";
 import FAQ from "@/components/FAQ";
-import { useEffect, useState } from "react";
-import { ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { TRAINING_PLANS } from "@/constants/plans";
 
 const Index = () => {
-  const [showTop, setShowTop] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.pageYOffset > 300);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -217,15 +207,6 @@ const Index = () => {
       </section>
 
       <Footer />
-      {showTop && (
-        <button
-          aria-label="Ir arriba"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-50 p-2.5 sm:p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-transform"
-        >
-          <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-      )}
     </div>
   );
 };
