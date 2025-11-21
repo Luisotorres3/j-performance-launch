@@ -47,7 +47,7 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-section-alt">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-12 sm:mb-16 px-2"
@@ -65,7 +65,7 @@ const FAQ: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -91,24 +91,6 @@ const FAQ: React.FC = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
-
-        <motion.div
-          className="text-center mt-8 sm:mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-muted-foreground text-sm sm:text-base mb-4">
-            ¿Tienes alguna otra duda?
-          </p>
-          <a
-            href="#contacto"
-            className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-primary-foreground bg-primary rounded-lg hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl"
-          >
-            Contáctame
-          </a>
         </motion.div>
       </div>
     </section>

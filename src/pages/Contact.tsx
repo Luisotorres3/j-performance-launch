@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, Instagram, MapPin } from "lucide-react";
+import { Mail, Phone, Instagram, MapPin, Send, MessageCircle } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +20,7 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -31,19 +33,59 @@ const Contact = () => {
       return;
     }
 
-    // Here you would typically send the data to a backend
-    toast({
-      title: "Mensaje enviado",
-      description: "Gracias por tu mensaje. Te responderé dentro de 24 horas.",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    try {
+      // Using EmailJS to send emails
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_jperformance', // You'll need to replace this
+          template_id: 'template_contact', // You'll need to replace this
+          user_id: 'YOUR_PUBLIC_KEY', // You'll need to replace this
+          template_params: {
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone || 'No proporcionado',
+            message: formData.message,
+            to_email: 'info@jperformance.com', // Your email
+          }
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "✅ Mensaje enviado",
+          description: "Gracias por tu mensaje. Te responderé dentro de 24 horas.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        throw new Error('Error al enviar');
+      }
+    } catch (error) {
+      // Fallback to mailto if EmailJS fails
+      const mailtoLink = `mailto:info@jperformance.com?subject=Mensaje de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
+        `Nombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone || 'No proporcionado'}\n\nMensaje:\n${formData.message}`
+      )}`;
+      window.location.href = mailtoLink;
+      
+      toast({
+        title: "Abriendo cliente de correo",
+        description: "Se abrirá tu cliente de correo para enviar el mensaje.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -111,6 +153,23 @@ const Contact = () => {
 
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1 text-sm sm:text-base">WhatsApp</h3>
+                    <a 
+                      href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20tus%20servicios" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Enviar mensaje
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
@@ -126,11 +185,37 @@ const Contact = () => {
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                     <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">Redes sociales</h3>
-                    <a href="#" className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors">
-                      @jperformancesystems
-                    </a>
+                  <div className="flex-1">
+                    <h3 className="font-semibold mb-2 text-sm sm:text-base">Redes sociales</h3>
+                    <div className="space-y-1.5">
+                      <a 
+                        href="https://instagram.com/jperformancesystems" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <Instagram className="w-4 h-4" />
+                        @jperformancesystems
+                      </a>
+                      <a 
+                        href="https://tiktok.com/@jperformancesystems" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <SiTiktok className="w-4 h-4" />
+                        @jperformancesystems
+                      </a>
+                      <a 
+                        href="https://t.me/jperformancesystems" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <Send className="w-4 h-4" />
+                        Telegram
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -208,8 +293,20 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12">
-                    Enviar mensaje
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full mt-2 text-sm sm:text-base h-11 sm:h-12"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="animate-spin mr-2">⏳</span>
+                        Enviando...
+                      </>
+                    ) : (
+                      'Enviar mensaje'
+                    )}
                   </Button>
                 </div>
               </form>

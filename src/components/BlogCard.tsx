@@ -28,7 +28,7 @@ const BlogCard = ({ title, excerpt, date, image, slug }: BlogCardProps) => {
         <h3 className="text-xl font-semibold mb-3 line-clamp-2">{title}</h3>
         <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
         <Button asChild variant="outline">
-          <Link to={`/blog/${slug}`}>Leer más</Link>
+          <Link to={`/blog/${slug}`} onClick={() => window.scrollTo(0, 0)}>Leer más</Link>
         </Button>
       </div>
     </article>

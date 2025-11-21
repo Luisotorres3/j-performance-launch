@@ -4,54 +4,58 @@ import PricingCard from "@/components/PricingCard";
 import PackCard from "@/components/PackCard";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const TrainingPlans = () => {
   const plans = [
     {
       title: "Básico",
-      originalPrice: 50,
-      price: 40,
+      originalPrice: 60,
+      price: 50,
       savings: 10,
-      gift: "Guía de nutrición básica",
+      giftTrimestral: "500g Proteína ",
+      giftSemestral: "500gr Proteína + 100g Creatina",
       features: [
-        "Programa de entrenamiento personalizado",
-        "Revisiones semanales de progreso",
-        "Guías nutricionales básicas",
-        "Soporte por correo electrónico",
-        "Acceso a la biblioteca de entrenamientos",
+        "Entrenamiento profesional",
+        "Control de cargas",
+        "Planificación versátil y contrastada",
+        "Revisiones y actualizaciones periódicas",
+        "Método probado para empezar a mejorar desde cualquier nivel",
+        "Revisión técnica"
       ],
     },
     {
       title: "Profesional",
-      originalPrice: 75,
-      price: 60,
+      originalPrice: 90,
+      price: 75,
       savings: 15,
-      gift: "Plan nutricional detallado + video técnico",
+      giftTrimestral: "500gr Proteína + 100g Creatina",
+      giftSemestral: "1kg Proteína + 100g Creatina",
       popular: true,
       features: [
         "Incluye todas las características del plan Básico",
-        "Programa de entrenamiento avanzado",
-        "Plan nutricional detallado",
-        "Consultas por video quincenales",
-        "Soporte prioritario",
-        "Panel de seguimiento de rendimiento",
+        "Nutrición controlada",
+        "Control del rendimiento",
+        "Gestión de hábitos",
+        "Videollamada mensual para evaluar la evolución de la programación"
+
       ],
     },
     {
       title: "Élite",
-      originalPrice: 105,
-      price: 85,
+      originalPrice: 130,
+      price: 110,
       savings: 20,
-      gift: "Análisis biomecánico + consulta privada",
+      giftTrimestral: "1kg Proteína + 500g Creatina",
+      giftSemestral: "2kg Proteína + 500g Creatina",
       features: [
         "Incluye todas las características del plan Profesional",
-        "Consultas por video semanales",
-        "Análisis avanzado de biomecánica",
-        "Recomendaciones de suplementación",
-        "Soporte por mensajería 24/7",
-        "Análisis mensual de composición corporal",
+        "Técnicas de nutrición avanzada",
+        "Gestión de la suplementación",
+        "Planificación avanzada por macro y mesociclos",
+        "Informes exhaustivos personalizados de rendimiento mensuales"
+
       ],
     },
     {
@@ -59,29 +63,36 @@ const TrainingPlans = () => {
       originalPrice: 62,
       price: 50,
       savings: 12,
-      gift: "Plan específico de preparación física",
+      giftTrimestral: "500gr Proteína + 100g Creatina",
+      giftSemestral: "1kg Proteína + 100g Creatina",
       features: [
-        "Programas específicos para preparación de oposiciones físicas",
-        "Entrenamientos estructurados por objetivos",
-        "Plan nutricional orientado a rendimiento",
-        "Soporte y seguimiento regular",
+        "Entrenamiento + nutrición adaptado a tus pruebas físicas y a tu nivel de base",
+        "Mediciones programadas de marcas",
+        "Análisis de fortalezas y debilidades",
+        "Control de la técnica",
+        "Ayuda con la gestión del conjunto de la oposición"
+
       ],
     },
     {
       title: "Readaptación",
-      originalPrice: 36,
-      price: 30,
+      originalPrice: 50,
+      price: 35,
       savings: 6,
-      gift: "Protocolo de readaptación personalizado",
+      giftSemestral: "1kg Proteína + 100g Creatina",
       features: [
-        "Protocolos de readaptación tras lesión",
-        "Evaluación y seguimiento funcional",
-        "Programas de recuperación progresiva",
-        "Coordinación con profesionales de la salud",
+        "Trabajo para que vuelvas a hacer deporte con normalidad",
+        "Vuelve a competir sin riesgos",
+        "Trabajo estructural",
+        "Transición a tu máximo rendimiento",
+        "Comunicación clara sobre el progreso.",
+        "Especialista en lesiones de tren inferior"
+
       ],
     },
   ];
 
+  const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [visiblePlan, setVisiblePlan] = useState<string | null>(null);
   const [period, setPeriod] = useState<'mensual'|'trimestral'|'semestral'>('mensual');
@@ -111,6 +122,20 @@ const TrainingPlans = () => {
     if (period === 'trimestral') return Math.round(base * 0.9);
     if (period === 'semestral') return Math.round(base * 0.8);
     return base;
+  };
+
+  const handlePlanSelect = (plan: typeof plans[0]) => {
+    const planData = {
+      title: plan.title,
+      originalPrice: getPeriodPrice(plan.originalPrice),
+      price: getPeriodPrice(plan.price),
+      savings: getPeriodPrice(plan.savings),
+      gift: period === 'trimestral' ? plan.giftTrimestral : period === 'semestral' ? plan.giftSemestral : undefined,
+      features: plan.features,
+      period: period
+    };
+    window.scrollTo(0, 0);
+    navigate('/checkout', { state: planData });
   };
 
   return (
@@ -189,12 +214,12 @@ const TrainingPlans = () => {
                   originalPrice={getPeriodPrice(plan.originalPrice)}
                   price={getPeriodPrice(plan.price)}
                   savings={getPeriodPrice(plan.savings)}
-                  gift={plan.gift}
+                  gift={period === 'trimestral' ? plan.giftTrimestral : period === 'semestral' ? plan.giftSemestral : undefined}
                   features={plan.features}
                   className="h-full"
                   index={index}
                   selected={selectedPlan === plan.title}
-                  onSelect={() => setSelectedPlan(plan.title)}
+                  onButtonClick={() => handlePlanSelect(plan)}
                 />
               </motion.div>
             ))}
@@ -202,7 +227,7 @@ const TrainingPlans = () => {
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-4">¿No sabes qué plan es el indicado para ti?</p>
-            <Link to="/contacto">Contacta conmigo para una consulta gratuita →</Link>
+            <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>Contacta conmigo para una consulta gratuita →</Link>
           </div>
         </div>
       </section>

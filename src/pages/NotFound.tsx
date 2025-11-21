@@ -28,7 +28,7 @@ const NotFound = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="lg" className="shadow-glow">
-                <Link to="/">
+                <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                   <Home className="mr-2 h-4 w-4" />
                   Ir al inicio
                 </Link>
@@ -42,19 +42,16 @@ const NotFound = () => {
             <div className="mt-12 pt-8 border-t border-border">
               <p className="text-sm text-muted-foreground mb-4">Quizá buscas:</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/planes" className="text-sm text-primary hover:underline">
+                <Link to="/planes" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
                   Planes de entrenamiento
                 </Link>
-                <Link to="/packs" className="text-sm text-primary hover:underline">
-                  Packs especiales
-                </Link>
-                <Link to="/blog" className="text-sm text-primary hover:underline">
+                <Link to="/blog" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
                   Blog
                 </Link>
-                <Link to="/reviews" className="text-sm text-primary hover:underline">
+                <Link to="/reviews" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
                   Con quien he trabajado
                 </Link>
-                <Link to="/contacto" className="text-sm text-primary hover:underline">
+                <Link to="/contacto" className="text-sm text-primary hover:underline" onClick={() => window.scrollTo(0, 0)}>
                   Contacto
                 </Link>
               </div>
