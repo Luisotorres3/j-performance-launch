@@ -23,8 +23,8 @@ const Hero = () => {
 
   return (
     <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen pt-24 pb-8 sm:pt-28 sm:pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Photo Section */}
           <motion.div
             className="relative"

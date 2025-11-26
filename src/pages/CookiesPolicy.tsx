@@ -8,7 +8,7 @@ const CookiesPolicy = () => {
       <Navigation />
 
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-3 sm:px-4 max-w-4xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">
             Política de Cookies
           </h1>

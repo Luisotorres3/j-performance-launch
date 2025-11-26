@@ -485,8 +485,8 @@ const Checkout = () => {
                           </div>
                         )}
                         <div
-                          className="calendly-inline-widget"
-                          style={{ minWidth: "320px", height: "700px", display: calendlyLoaded ? 'block' : 'none', textAlign: 'left' }}
+                          className="calendly-inline-widget w-full"
+                          style={{ minWidth: "280px", maxWidth: "100%", height: "700px", display: calendlyLoaded ? 'block' : 'none', textAlign: 'left' }}
                         />
 
                         <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-muted rounded-lg">

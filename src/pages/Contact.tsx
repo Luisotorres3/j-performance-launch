@@ -117,7 +117,7 @@ const Contact = () => {
       <Navigation />
 
       <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-background">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-3 sm:px-4">
           <motion.div
             className="text-center mb-10 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -134,7 +134,7 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -146,7 +146,7 @@ const Contact = () => {
                 Información de contacto
               </h2>
 
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />

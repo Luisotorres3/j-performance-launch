@@ -18,7 +18,7 @@ const Index = () => {
 
       {/* Clients Grid */}
       <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6">
           <motion.div
             className="text-center mb-8 sm:mb-12 md:mb-16 px-2"
             initial={{ opacity: 0, y: 30 }}
@@ -91,7 +91,7 @@ const Index = () => {
       <Highlights />
       {/* Plans Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6">
           <motion.div
             className="text-center mb-8 sm:mb-12 md:mb-16 px-2"
             initial={{ opacity: 0, y: 30 }}
@@ -167,7 +167,7 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-section-alt">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 text-center">
           <motion.div
             className="max-w-3xl mx-auto px-2"
             initial={{ opacity: 0, scale: 0.95 }}

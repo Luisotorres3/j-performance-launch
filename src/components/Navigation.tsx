@@ -68,11 +68,10 @@ const Navigation = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`text-sm font-medium transition-all duration-200 hover:text-primary hover:scale-105 relative pb-1 ${
-                    isActive(link.to)
+                  className={`text-sm font-medium transition-all duration-200 hover:text-primary hover:scale-105 relative pb-1 ${isActive(link.to)
                       ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
                       : "text-muted-foreground hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-0.5 hover:after:bg-primary/50"
-                  }`}
+                    }`}
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   {link.label}
@@ -99,24 +98,21 @@ const Navigation = () => {
 
       {/* Mobile Navigation - Full screen overlay with smooth transitions */}
       <div
-        className={`fixed left-0 right-0 bottom-0 md:hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed left-0 right-0 bottom-0 md:hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
         style={{ top: "64px", zIndex: 60 }}
       >
         {/* Backdrop with smooth fade */}
         <div
-          className={`absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50 backdrop-blur-lg transition-opacity duration-500 ${
-            isOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50 backdrop-blur-lg transition-opacity duration-500 ${isOpen ? "opacity-100" : "opacity-0"
+            }`}
           onClick={() => setIsOpen(false)}
         />
 
         {/* Menu panel with smooth slide */}
         <div
-          className={`absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 overflow-y-auto transition-transform duration-500 ease-out ${
-            isOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 overflow-y-auto transition-transform duration-500 ease-out ${isOpen ? "translate-y-0" : "-translate-y-full"
+            }`}
         >
           <div className="container mx-auto px-4 py-4 min-h-full flex flex-col">
             {/* Navigation Links */}

@@ -37,7 +37,7 @@ const placeholderClients: Client[] = [
 const ClientsSection = ({ clients = placeholderClients }: Props) => {
   return (
     <section className="pt-2 pb-12 sm:pb-16 md:pb-24 bg-background">
-      <div className="container mx-auto px-4 max-w-[1600px]">
+      <div className="container mx-auto px-3 sm:px-4 max-w-[1600px]">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-2">
             Con quién he trabajado anteriormente
