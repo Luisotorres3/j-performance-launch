@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <section className="w-full bg-gradient-to-b from-background to-muted/50 min-h-screen pt-24 pb-8 sm:pt-28 sm:pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-start">
           {/* Photo Section */}
           <motion.div
             className="relative"
@@ -39,11 +39,11 @@ const Hero = () => {
 
               {/* Main photo container */}
               <div className="relative bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl md:rounded-3xl p-1.5 sm:p-3 md:p-4 shadow-2xl max-w-md mx-auto">
-                <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden bg-white dark:bg-slate-800 w-full h-[280px] sm:h-[360px] md:h-[440px] lg:h-[520px] mx-auto flex items-center justify-center">
+                <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden bg-white dark:bg-slate-800 w-full h-[280px] sm:h-[360px] md:h-[440px] lg:h-[520px] mx-auto flex items-start justify-center">
                   <img
                     src={perfilImg}
                     alt="Entrenador personal"
-                    className="max-w-full max-h-full object-contain rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg"
+                    className="max-w-full max-h-full object-contain object-top rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
@@ -70,11 +70,10 @@ const Hero = () => {
                 física para opositores y deportistas que buscan resultados serios.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
-                Mi metodología de trabajo se basa en la solidez de una programación estratégica y un
-                enfoque claro: elevar el nivel de tu rendimiento sea cual sea tu punto de partida.
+                Mi método de trabajo se basa en la solidez de una programación estratégica en función del nivel de rendimiento al que aspires y de tu punto de partida, y además, un seguimiento proactivo.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
-                Me gusta ser simple y exigente: yo hago el análisis y la planificación, tú te
+                Soy directo y exigente: yo hago el análisis y la planificación, tú te
                 encargas de cumplir. Disciplina clásica, visión de futuro y un sistema diseñado para
                 que rindas como un profesional.
               </p>

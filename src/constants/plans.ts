@@ -64,9 +64,9 @@ export const TRAINING_PLANS: Plan[] = [
   },
   {
     title: "Opositores",
-    originalPrice: 62,
-    price: 50,
-    savings: 12,
+    originalPrice: 70,
+    price: 60,
+    savings: 10,
     giftTrimestral: "500gr Proteína + 100g Creatina",
     giftSemestral: "1kg Proteína + 100g Creatina",
     features: [

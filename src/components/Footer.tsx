@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, Phone, Send } from "lucide-react";
+import { Instagram, Mail, Phone, Send, Linkedin } from "lucide-react";
 import { SiTiktok, SiWhatsapp } from "react-icons/si";
 import logoImg from "@/assets/logo.png";
 import SectionSeparator from "@/components/SectionSeparator";
@@ -134,6 +134,15 @@ const Footer = () => {
                     aria-label="Telegram"
                   >
                     <Send size={20} className="sm:w-5 sm:h-5" />
+                  </a>
+                  <a
+                    href={CONTACT_INFO.social.linkedin.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={20} className="sm:w-5 sm:h-5" />
                   </a>
                 </div>
               </div>

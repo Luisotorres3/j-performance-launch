@@ -40,7 +40,7 @@ const LegalNotice = () => {
                     <strong>Teléfono de contacto:</strong> {CONTACT_INFO.phoneFormatted}
                   </li>
                   <li>
-                    <strong>Sitio web:</strong> https://jperformance.com
+                    <strong>Sitio web:</strong> https://jperformancesystem.es
                   </li>
                 </ul>
               </div>
@@ -52,7 +52,7 @@ const LegalNotice = () => {
               </h2>
               <p>
                 El presente Aviso Legal regula el uso, acceso y utilización del sitio web 
-                <strong> https://jperformance.com</strong>, del cual es titular Juan Pasquau Lope bajo 
+                <strong> https://jperformancesystem.es</strong>, del cual es titular Juan Pasquau Lope bajo 
                 el nombre comercial J Performance System.
               </p>
               <p className="mt-3">

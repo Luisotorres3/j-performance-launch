@@ -36,7 +36,7 @@ const FAQ = () => {
     {
       question: "¿Cómo es el proceso de seguimiento y comunicación?",
       answer:
-        "Trabajamos con comunicación directa a través de WhatsApp o plataforma interna (Hevy). Revisando métricas, vídeos de técnica y comparando resultados a través de las cargas y de las sensaciones que vayas teniendo. A partir de ahí, ajusto la carga, progresiones y tareas específicas.",
+        "Trabajo con comunicación directa a través de WhatsApp o plataforma interna (Hevy). Revisando métricas, vídeos de técnica y comparando resultados a través de las cargas y de las sensaciones que vayas teniendo. A partir de ahí, ajusto la carga, progresiones y tareas específicas.",
     },
   ];
 
@@ -52,7 +52,7 @@ const FAQ = () => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Preguntas Frecuentes</h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
-            Resuelve tus dudas sobre nuestros servicios de entrenamiento personal
+            Resuelve tus dudas sobre mis servicios de entrenamiento personal
           </p>
         </motion.div>
 

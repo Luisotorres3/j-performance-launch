@@ -43,7 +43,7 @@ const ClientsSection = ({ clients = placeholderClients }: Props) => {
             Con quién he trabajado anteriormente
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto mt-2 sm:mt-3 px-4">
-            Jugadores que han mejorado su rendimiento a través de nuestro programa de entrenamiento.
+            Jugadores que han mejorado su rendimiento a través de mi programa de entrenamiento.
           </p>
         </div>
 

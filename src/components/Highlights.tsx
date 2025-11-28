@@ -1,4 +1,6 @@
 import { ClipboardCheck, Target, TrendingUp, Video } from "lucide-react";
+import { SiGooglemeet, SiWhatsapp } from "react-icons/si";
+import { FaDumbbell, FaApple } from "react-icons/fa";
 
 const Highlights = () => {
   const highlights = [
@@ -24,10 +26,10 @@ const Highlights = () => {
       icon: Video,
       title: "4. Herramientas digitales",
       tools: [
-        "📹 Google Meet para videollamadas",
-        "💪 Hevy Coach para seguimiento",
-        "💬 WhatsApp para comunicación directa",
-        "🍎 MyFitnessPal para control nutricional",
+        { name: "Google Meet para videollamadas", icon: SiGooglemeet },
+        { name: "Hevy Coach para seguimiento", icon: FaDumbbell },
+        { name: "WhatsApp para comunicación directa", icon: SiWhatsapp },
+        { name: "MyFitnessPal para control nutricional", icon: FaApple },
       ],
     },
   ];
@@ -61,13 +63,14 @@ const Highlights = () => {
                   {highlight.description}
                 </p>
               ) : highlight.tools ? (
-                <ul className="space-y-1.5 sm:space-y-2">
+                <ul className="space-y-2 sm:space-y-3">
                   {highlight.tools.map((tool, idx) => (
                     <li
                       key={idx}
-                      className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
+                      className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex items-center gap-2"
                     >
-                      {tool}
+                      <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
+                      <span>{tool.name}</span>
                     </li>
                   ))}
                 </ul>

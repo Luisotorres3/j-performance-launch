@@ -17,6 +17,10 @@ export const CONTACT_INFO = {
       handle: "@jperformancesystem",
       url: "https://t.me/jperformancesystem",
     },
+    linkedin: {
+      handle: "Juan Pasquau Lope",
+      url: "https://www.linkedin.com/in/juan-pasquau-lope-2a2840182/",
+    },
   },
   whatsapp: {
     url: "https://wa.me/34618179652?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20tus%20servicios",

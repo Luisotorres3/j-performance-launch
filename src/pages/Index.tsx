@@ -30,7 +30,7 @@ const Index = () => {
               Con quién he trabajado
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-4">
-              Jugadores que han mejorado su rendimiento a través de nuestro programa de
+              Jugadores que han mejorado su rendimiento a través de mi programa de
               entrenamiento.
             </p>
           </motion.div>
@@ -103,7 +103,7 @@ const Index = () => {
               Planes destacados
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-4">
-              Descubre nuestros planes más populares diseñados para todos los niveles.
+              Descubre mis planes más populares diseñados para todos los niveles.
             </p>
           </motion.div>
 

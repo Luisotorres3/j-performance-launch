@@ -5,13 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Mail, Phone, Instagram, MapPin, Send } from "lucide-react";
+import { Mail, Phone, Instagram, MapPin, Send, Linkedin } from "lucide-react";
 import { SiTiktok, SiWhatsapp } from "react-icons/si";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CONTACT_INFO } from "@/constants/contact";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,6 +25,11 @@ const Contact = () => {
   });
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
+
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    emailjs.init("-nXRl3c5g-N1Nylkg");
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,55 +57,57 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Using EmailJS to send emails
-      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          service_id: "service_jperformance",
-          template_id: "template_zate27v",
-          user_id: "-nXRl3c5g-N1Nylkg",
-          template_params: {
-            from_name: formData.name,
-            from_email: formData.email,
-            phone: formData.phone || "No proporcionado",
-            message: formData.message,
-            to_email: CONTACT_INFO.email,
-          },
-        }),
-      });
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        "service_jperformance",
+        "template_zate27v",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || "No proporcionado",
+          message: formData.message,
+          to_email: CONTACT_INFO.email,
+        }
+      );
 
-      if (response.ok) {
-        toast({
-          title: "✅ Mensaje enviado",
-          description: "Gracias por tu mensaje. Te responderé dentro de 24 horas.",
-        });
-
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-        setPrivacyAccepted(false);
-        setCookiesAccepted(false);
-      } else {
-        throw new Error("Error al enviar");
-      }
-    } catch (error) {
-      // Fallback to mailto if EmailJS fails
-      const mailtoLink = `mailto:${CONTACT_INFO.email}?subject=Mensaje de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
-        `Nombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone || "No proporcionado"}\n\nMensaje:\n${formData.message}`
-      )}`;
-      window.location.href = mailtoLink;
-
+      console.log("EmailJS Success:", result);
+      
       toast({
-        title: "Abriendo cliente de correo",
-        description: "Se abrirá tu cliente de correo para enviar el mensaje.",
+        title: "✅ Mensaje enviado",
+        description: "Gracias por tu mensaje. Te responderé dentro de 24 horas.",
       });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setPrivacyAccepted(false);
+      setCookiesAccepted(false);
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      
+      // Si es error 412 (Gmail desconectado), usar mailto como alternativa
+      if (error?.status === 412) {
+        const mailtoLink = `mailto:${CONTACT_INFO.email}?subject=${encodeURIComponent(`Contacto de ${formData.name}`)}&body=${encodeURIComponent(
+          `Nombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone || "No proporcionado"}\n\nMensaje:\n${formData.message}`
+        )}`;
+        
+        window.location.href = mailtoLink;
+        
+        toast({
+          title: "📧 Abriendo tu cliente de correo",
+          description: "El formulario automático no está disponible. Por favor envía el email que se ha preparado.",
+        });
+      } else {
+        toast({
+          title: "❌ Error al enviar",
+          description: "Por favor, contacta directamente por WhatsApp o email.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -277,41 +285,127 @@ const Contact = () => {
               <div className="bg-card p-4 sm:p-6 md:p-8 rounded-lg border border-border">
                 <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Enviar un mensaje</h2>
 
-                <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <Mail className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-3">Próximamente</h3>
-                  <p className="text-muted-foreground text-sm sm:text-base max-w-md mb-6">
-                    Estamos mejorando nuestro formulario de contacto para ofrecerte una mejor experiencia.
-                  </p>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-8">
-                    Mientras tanto, puedes contactarnos directamente:
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-                    <Button
-                      asChild
-                      size="lg"
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-sm sm:text-base">
+                      Nombre completo <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Tu nombre"
+                      required
                       className="text-sm sm:text-base"
-                    >
-                      <a href={`mailto:${CONTACT_INFO.email}`}>
-                        <Mail className="w-4 h-4 mr-2" />
-                        Enviar Email
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="lg"
-                      className="text-sm sm:text-base"
-                    >
-                      <a href={CONTACT_INFO.whatsapp.url} target="_blank" rel="noopener noreferrer">
-                        <SiWhatsapp className="w-4 h-4 mr-2" />
-                        WhatsApp
-                      </a>
-                    </Button>
+                    />
                   </div>
-                </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-sm sm:text-base">
+                      Email <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="tu@email.com"
+                      required
+                      className="text-sm sm:text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="phone" className="text-sm sm:text-base">
+                      Teléfono (opcional)
+                    </Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+34 600 000 000"
+                      className="text-sm sm:text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-sm sm:text-base">
+                      Mensaje <span className="text-destructive">*</span>
+                    </Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Cuéntame sobre tus objetivos y cómo puedo ayudarte..."
+                      rows={5}
+                      required
+                      className="text-sm sm:text-base resize-none"
+                    />
+                  </div>
+
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Checkbox
+                        id="privacy"
+                        checked={privacyAccepted}
+                        onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
+                      />
+                      <label
+                        htmlFor="privacy"
+                        className="text-xs sm:text-sm text-muted-foreground leading-tight cursor-pointer"
+                      >
+                        He leído y acepto la{" "}
+                        <Link
+                          to="/privacidad"
+                          className="text-primary hover:underline"
+                          target="_blank"
+                        >
+                          Política de Privacidad
+                        </Link>{" "}
+                        <span className="text-destructive">*</span>
+                      </label>
+                    </div>
+
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Checkbox
+                        id="cookies"
+                        checked={cookiesAccepted}
+                        onCheckedChange={(checked) => setCookiesAccepted(checked === true)}
+                      />
+                      <label
+                        htmlFor="cookies"
+                        className="text-xs sm:text-sm text-muted-foreground leading-tight cursor-pointer"
+                      >
+                        Acepto el uso de{" "}
+                        <Link to="/cookies" className="text-primary hover:underline" target="_blank">
+                          Cookies
+                        </Link>{" "}
+                        <span className="text-destructive">*</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full text-sm sm:text-base"
+                  >
+                    {isSubmitting ? (
+                      <>Enviando...</>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" />
+                        Enviar mensaje
+                      </>
+                    )}
+                  </Button>
+                </form>
               </div>
             </motion.div>
           </div>

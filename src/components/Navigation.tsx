@@ -102,16 +102,9 @@ const Navigation = () => {
           }`}
         style={{ top: "64px", zIndex: 60 }}
       >
-        {/* Backdrop with smooth fade */}
+        {/* Menu panel with solid background */}
         <div
-          className={`absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50 backdrop-blur-lg transition-opacity duration-500 ${isOpen ? "opacity-100" : "opacity-0"
-            }`}
-          onClick={() => setIsOpen(false)}
-        />
-
-        {/* Menu panel with smooth slide */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 overflow-y-auto transition-transform duration-500 ease-out ${isOpen ? "translate-y-0" : "-translate-y-full"
+          className={`absolute inset-0 bg-background overflow-y-auto transition-transform duration-500 ease-out ${isOpen ? "translate-y-0" : "-translate-y-full"
             }`}
         >
           <div className="container mx-auto px-4 py-4 min-h-full flex flex-col">
