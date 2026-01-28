@@ -107,18 +107,15 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto mb-6 sm:mb-8 md:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto mb-6 sm:mb-8 md:mb-12">
             {TRAINING_PLANS.map((plan, index) => {
               // Simple descriptions for the index page
               const descriptions: Record<string, string> = {
                 Básico:
                   "Para gente principiante o que quiera empezar a entrenar de forma estructurada",
-                Profesional:
+                Avanzado:
                   "Para deportistas que buscan maximizar su rendimiento con seguimiento completo",
-                Élite: "Para atletas de alto nivel que requieren programación avanzada y detallada",
                 Opositores: "Para personas preparando oposiciones con pruebas físicas específicas",
-                Readaptación:
-                  "Para deportistas recuperándose de lesiones que quieren volver a competir",
               };
 
               return (

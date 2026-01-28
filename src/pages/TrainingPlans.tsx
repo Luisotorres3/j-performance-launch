@@ -125,7 +125,7 @@ const TrainingPlans = () => {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 w-full">
             {TRAINING_PLANS.map((plan, index) => (
               <motion.div
                 key={index}

@@ -74,7 +74,7 @@ const PackCard = ({
     : borderColors[index % borderColors.length];
   const ringColor = ringColors[index % ringColors.length];
   const buttonBorderColor = buttonBorderColors[index % buttonBorderColors.length];
-  const isPopular = title === "Profesional";
+  const isPopular = title === "Avanzado";
 
   return (
     <div

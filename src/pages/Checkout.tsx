@@ -21,7 +21,7 @@ const Checkout = () => {
   const [selectedPeriod, setSelectedPeriod] = useState<"mensual" | "trimestral" | "semestral">(
     initialPlanData?.period || "mensual"
   );
-  const [selectedPlanType, setSelectedPlanType] = useState(initialPlanData?.title || "Profesional");
+  const [selectedPlanType, setSelectedPlanType] = useState(initialPlanData?.title || "Avanzado");
 
   const updatePlanData = (planTitle: string, period: "mensual" | "trimestral" | "semestral") => {
     const plan = TRAINING_PLANS.find((p) => p.title === planTitle);
@@ -170,10 +170,8 @@ const Checkout = () => {
                         className="w-full px-3 py-2 text-sm rounded-lg border-2 border-input bg-background focus:border-primary focus:outline-none transition-colors"
                       >
                         <option value="Básico">Básico</option>
-                        <option value="Profesional">Profesional</option>
-                        <option value="Élite">Élite</option>
+                        <option value="Avanzado">Avanzado</option>
                         <option value="Opositores">Opositores</option>
-                        <option value="Readaptación">Readaptación</option>
                       </select>
                     </div>
 
