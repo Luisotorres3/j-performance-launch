@@ -1,215 +1,109 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
-import { SiTiktok, SiWhatsapp, SiTelegram } from "react-icons/si";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, ArrowUpRight } from "lucide-react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@/components/ui/dialog";
+import BrandLogo from "@/components/BrandLogo";
 import { CONTACT_INFO } from "@/constants/contact";
-
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const links = [
+  { to: "/", label: "Inicio" },
+  { to: "/planes", label: "Planes" },
+  { to: "/futbolistas", label: "Clientes" },
+  { to: "/retos", label: "Retos" },
+  { to: "/contacto", label: "Contacto" },
+];
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  const links = [
-    { to: "/", label: "Inicio", emoji: "🏠" },
-    { to: "/planes", label: "Planes", emoji: "💪" },
-    { to: "/reviews", label: "Mis clientes", emoji: "⭐" },
-    { to: "/blog", label: "Blog", emoji: "📝" },
-    { to: "/contacto", label: "Contacto", emoji: "📧" },
-  ];
-
-  const isActive = (path: string) => {
-    // For home page, match exactly
-    if (path === "/") {
-      return location.pathname === "/" || location.pathname === "";
-    }
-    // For other pages, check if pathname starts with the path
-    return location.pathname === path;
-  };
-
+  useEffect(() => setOpen(false), [location.pathname]);
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b-2 border-border shadow-sm">
-        <div className="container mx-auto px-2 sm:px-4">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
-            <Link
-              to="/"
-              className="flex items-center gap-2 sm:gap-3 text-lg sm:text-2xl font-bold text-foreground"
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              <img
-                src={logo}
-                alt="J Performance logo"
-                className="h-16 sm:h-20 md:h-24 w-auto inline-block"
-              />
-              <span>
-                <span className="text-primary">J</span> Performance System
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {links.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`text-sm font-medium transition-all duration-200 hover:text-primary hover:scale-105 relative pb-1 ${isActive(link.to)
-                      ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-                      : "text-muted-foreground hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-0.5 hover:after:bg-primary/50"
-                    }`}
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Button asChild size="sm">
-                <Link to="/contacto" onClick={() => window.scrollTo(0, 0)}>
-                  Comenzar
-                </Link>
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-foreground p-2 hover:bg-muted rounded-lg transition-colors relative z-[70]"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Navigation - Full screen overlay with smooth transitions */}
-      <div
-        className={`fixed left-0 right-0 bottom-0 md:hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        style={{ top: "64px", zIndex: 60 }}
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={(e) => {
+          const target =
+            document.getElementById("main-content") ?? document.querySelector("main, section");
+          if (target instanceof HTMLElement) {
+            e.preventDefault();
+            target.tabIndex = -1;
+            target.focus();
+            target.scrollIntoView();
+          }
+        }}
       >
-        {/* Menu panel with solid background */}
-        <div
-          className={`absolute inset-0 bg-background overflow-y-auto transition-transform duration-500 ease-out ${isOpen ? "translate-y-0" : "-translate-y-full"
-            }`}
-        >
-          <div className="container mx-auto px-4 py-4 min-h-full flex flex-col">
-            {/* Navigation Links */}
-            <div className="flex-1 flex flex-col justify-center gap-2 py-2">
-              {links.map((link, index) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="text-xl font-bold transition-all duration-300 px-5 py-4 rounded-xl text-foreground active:scale-95 flex items-center gap-3"
-                  onClick={() => {
-                    setIsOpen(false);
-                    window.scrollTo(0, 0);
-                  }}
-                  style={{
-                    transitionDelay: isOpen ? `${index * 60}ms` : "0ms",
-                    transform: isOpen ? "translateX(0)" : "translateX(-20px)",
-                    opacity: isOpen ? 1 : 0,
-                  }}
-                >
-                  <span className="text-2xl">{link.emoji}</span>
-                  {link.label}
-                </Link>
-              ))}
-
-              {/* Social Media Links */}
-              <div
-                className="flex items-center justify-center gap-3 mt-4 pt-4 border-t border-border/30"
-                style={{
-                  transitionDelay: isOpen ? `${links.length * 60}ms` : "0ms",
-                  transform: isOpen ? "translateX(0)" : "translateX(-20px)",
-                  opacity: isOpen ? 1 : 0,
-                  transition: "all 300ms ease-out",
-                }}
-              >
-                <a
-                  href={CONTACT_INFO.social.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 text-foreground rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 active:scale-95"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={22} />
-                </a>
-                <a
-                  href={CONTACT_INFO.social.tiktok.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 text-foreground rounded-full bg-gradient-to-r from-cyan-500/20 to-pink-500/20 hover:from-cyan-500/30 hover:to-pink-500/30 transition-all duration-300 active:scale-95"
-                  aria-label="TikTok"
-                >
-                  <SiTiktok size={20} />
-                </a>
-                <a
-                  href={CONTACT_INFO.whatsapp.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 text-foreground rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 hover:from-green-500/30 hover:to-emerald-500/30 transition-all duration-300 active:scale-95"
-                  aria-label="WhatsApp"
-                >
-                  <SiWhatsapp size={22} />
-                </a>
-                <a
-                  href={CONTACT_INFO.social.telegram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 text-foreground rounded-full bg-gradient-to-r from-blue-500/20 to-sky-500/20 hover:from-blue-500/30 hover:to-sky-500/30 transition-all duration-300 active:scale-95"
-                  aria-label="Telegram"
-                >
-                  <SiTelegram size={22} />
-                </a>
-              </div>
-            </div>
-
-            {/* CTA Button at bottom with glow effect */}
-            <div
-              className="mt-auto px-2 pb-2"
-              style={{
-                transitionDelay: isOpen ? "400ms" : "0ms",
-                transform: isOpen ? "translateY(0)" : "translateY(20px)",
-                opacity: isOpen ? 1 : 0,
-                transition: "all 500ms ease-out",
-              }}
-            >
-              <Button
-                asChild
-                size="lg"
-                className="w-full text-lg font-bold py-6 rounded-2xl shadow-2xl shadow-primary/50 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-700 transform hover:scale-105 active:scale-95 hover:shadow-primary/70 hover:shadow-3xl"
-              >
-                <Link
-                  to="/contacto"
-                  onClick={() => {
-                    setIsOpen(false);
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <span className="relative z-10">Comenzar Ahora</span>
-                </Link>
-              </Button>
-            </div>
+        Saltar al contenido
+      </a>
+      <header
+        className="site-header header-solid"
+      >
+        <nav className="v2-container nav-layout" aria-label="Navegación principal">
+          <Link to="/" className="brand" aria-label="J Performance System — Inicio">
+            <BrandLogo variant="white" decorative />
+            <span>
+              J PERFORMANCE<small>SYSTEM</small>
+            </span>
+          </Link>
+          <div className="desktop-nav">
+            {links.map((link) => (
+              <NavLink key={link.to} to={link.to} end={link.to === "/"}>
+                {link.label}
+              </NavLink>
+            ))}
           </div>
-        </div>
-      </div>
+          <Link className="nav-cta" to="/planes">
+            Empezar <ArrowUpRight size={17} />
+          </Link>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <button className="menu-trigger" aria-label="Abrir menú">
+                <Menu size={24} />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="mobile-menu">
+              <DialogTitle className="mobile-menu-brand">
+                <BrandLogo variant="white" decorative />
+                <span>
+                  J PERFORMANCE<small>EL SIGUIENTE PASO ES TUYO</small>
+                </span>
+              </DialogTitle>
+              <DialogDescription className="sr-only">
+                Navega por los planes, clientes, retos y contacto de Juan Pasquau.
+              </DialogDescription>
+              <div className="mobile-menu-links">
+                {links.map((link, i) => (
+                  <DialogClose asChild key={link.to}>
+                    <NavLink end={link.to === "/"} to={link.to}>
+                      <span>0{i + 1}</span>
+                      {link.label}
+                      <ArrowUpRight />
+                    </NavLink>
+                  </DialogClose>
+                ))}
+              </div>
+              <DialogClose asChild>
+                <Link className="v2-button" to="/planes">
+                  Empieza tu cambio <ArrowUpRight size={20} />
+                </Link>
+              </DialogClose>
+              <a
+                className="mobile-social"
+                href={CONTACT_INFO.social.instagram.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram / @jperformancesystem
+              </a>
+            </DialogContent>
+          </Dialog>
+        </nav>
+      </header>
     </>
   );
-};
-
-export default Navigation;
+}

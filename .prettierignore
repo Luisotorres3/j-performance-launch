@@ -13,4 +13,5 @@ bun.lockb
 # Other
 .git
 coverage
+qa.local
 *.log

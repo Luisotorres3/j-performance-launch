@@ -1,0 +1,313 @@
+/* Shared spacing follows a Fibonacci scale; editorial columns use 1:1.618. */
+:root {
+  --space-xs: 8px;
+  --space-sm: 13px;
+  --space-md: 21px;
+  --space-lg: 34px;
+  --space-xl: 55px;
+  --content-width: 1280px;
+  --page-gutter: 34px;
+}
+.v2-container {
+  width: min(calc(100% - var(--page-gutter) * 2), var(--content-width));
+}
+:is(h1, h2, h3, h4, button, input, textarea, select, .eyebrow) { letter-spacing: 0; }
+:is(h1, h2, h3, h4) { text-wrap: balance; }
+p { line-height: 1.618; }
+.section-space,
+.home-v2 .section-space,
+.faq-section,
+.home-v2 .faq-section { padding-block: var(--space-xl); }
+.section-top,
+.home-v2 .section-top,
+.home-preview-heading,
+.home-v2 .home-preview-heading { margin-bottom: var(--space-lg); gap: var(--space-lg); }
+.inner-page-title,
+.plans-catalog-header,
+.checkout-title { margin-bottom: var(--space-md); }
+.inner-page,
+.plans-section.plans-standalone,
+.challenges-page > .challenges-section,
+.checkout-v2 > #main-content,
+.legal-v2 > #main-content { padding-top: 120px; }
+.display-heading { font-size: 48px; line-height: 1.15; letter-spacing: 0; }
+.home-v2 .hero-title { text-wrap: balance; }
+.home-v2 .title-mask > span { overflow-wrap: break-word; }
+.home-v2 .display-heading { line-height: 1.15; }
+.faq-intro .display-heading { font-size: 34px; margin-top: var(--space-sm); }
+.faq-intro p:not(.eyebrow) { font-size: 16px; line-height: 1.618; max-width: 42ch; }
+.faq-list button { min-height: 64px; padding-block: var(--space-md); font-size: 16px; line-height: 1.5; }
+.faq-answer { font-size: 16px; line-height: 1.618; }
+.faq-answer > div { padding-bottom: var(--space-md); }
+.eyebrow,
+.home-v2 .eyebrow,
+.plans-section .plan-catalog .plan-detail-top .eyebrow { font-size: 12px; letter-spacing: 0; }
+.home-v2 .chapter-connector { gap: var(--space-sm); padding-block: var(--space-sm); }
+.home-v2 .chapter-connector > span { font-size: 12px; max-width: none; color: #425469; opacity: 1; }
+.home-v2 .chapter-connector button { font-size: 13px; text-align: right; }
+.home-v2 #capitulo-metodo .method-rally strong { color: hsl(var(--navy)); }
+.home-v2 .method-stage-nav button { color: #526477; }
+.home-v2 .method-stage-nav button[aria-current] { color: #765500; font-weight: 700; }
+.home-v2 .method-compact .step-detail { font-size: 12px; letter-spacing: 0; }
+.home-v2 .method-compact .step-detail > span { background: #edf3fa; border-color: #d4dee8; }
+.home-v2 .home-challenge-end { font-size: 12px; }
+.home-v2 .brand-hero .action-visual figcaption .action-photo-index { font-size: 12px; letter-spacing: 0; }
+.home-v2 .site-footer .brand small { color: #795800; }
+.home-plan-paths,
+.home-challenge-grid,
+.challenge-explorer .challenge-grid { gap: var(--space-md); }
+.home-plan-path,
+.home-challenge,
+.home-method-steps li { border-radius: 8px; }
+.home-plan-path { padding: var(--space-lg); }
+.plans-section .plan-comparison { gap: var(--space-lg); }
+.plans-section .plan-option { min-height: 88px; }
+.plans-section .plan-catalog .plan-option-name { font-size: 20px; line-height: 1.4; }
+.plans-section .plan-option-price small,
+.plan-duration-selector small,
+.payment-bank small { font-size: 12px; }
+.plans-section .plan-catalog .plan-photo-detail { padding: var(--space-lg); }
+.plans-section .plan-catalog .plan-detail > p,
+.plans-section .plan-catalog .plan-features li { font-size: 16px; line-height: 1.618; }
+.plans-section .plan-catalog .interview-note { font-size: 13px; line-height: 1.5; }
+.plan-duration-selector { margin-bottom: var(--space-md); }
+.payment-banner { margin-top: var(--space-lg); border-radius: 8px; }
+.challenge-explorer .challenge-card { padding: var(--space-md); }
+.challenge-explorer .challenge-card > p { font-size: 16px; }
+.challenge-explorer .challenge-focus,
+.challenge-type-label,
+.running-event-info p,
+.event-pending-date { font-size: 13px; line-height: 1.618; }
+.running-events-list > li { padding-block: var(--space-md); gap: var(--space-md); }
+.clients-grid-v2 { gap: var(--space-lg) var(--space-md); }
+.clients-grid-v2 .athlete-caption h2 { font-size: 21px; line-height: 1.35; overflow-wrap: anywhere; }
+.client-source { display: inline-flex; align-items: center; min-height: 32px; font-size: 12px; }
+.checkout-v2 > #main-content > .container { max-width: 1280px; padding-inline: var(--page-gutter); }
+.checkout-layout { gap: var(--space-lg); }
+.checkout-v2 :is(input:not([type="checkbox"]):not([type="radio"]), select) { min-height: 44px; font-size: 16px; }
+.checkout-v2 textarea { min-height: 110px; font-size: 16px; line-height: 1.6; }
+.checkout-v2 [role="checkbox"],
+.contact-v2 [role="checkbox"] { flex-shrink: 0; }
+.checkout-v2 label,
+.contact-v2 label { line-height: 1.5; }
+.legal-v2 > #main-content > .container { max-width: 80ch; padding-inline: var(--page-gutter); }
+.legal-v2 #main-content :is(p, li) { font-size: 16px; line-height: 1.7; }
+.legal-v2 #main-content h2 { font-size: 24px; line-height: 1.35; margin-bottom: var(--space-sm); }
+.legal-v2 #main-content h3 { font-size: 20px; line-height: 1.4; }
+.legal-v2 #main-content section + section { margin-top: var(--space-lg); }
+.legal-v2 #main-content a { text-decoration: underline; text-underline-offset: 3px; }
+.site-footer { padding-block: var(--space-xl) var(--space-lg); }
+.footer-main { gap: var(--space-lg); }
+.footer-main > div > a:not(.brand) { display: flex; align-items: center; min-height: 44px; }
+.footer-socials a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.footer-bottom { flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-lg); }
+.footer-bottom > div { gap: 4px var(--space-md); }
+.footer-bottom a,
+.footer-bottom button { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }
+.footer-bottom > span { font-size: 12px; letter-spacing: 0; }
+.footer-bottom .footer-attribution a { min-height: 24px; padding: 0; }
+.footer-attribution { font-size: 13px; gap: 4px; }
+.footer-bottom .footer-developer,
+.footer-bottom .footer-developer a { font-size: 12px; font-weight: 400; }
+.footer-bottom .footer-developer a { text-decoration: none; }
+.footer-bottom .footer-developer a:hover,
+.footer-bottom .footer-developer a:focus-visible { text-decoration: underline; }
+.text-button { min-height: 44px; line-height: 1.5; }
+.v2-button { white-space: normal; line-height: 1.5; min-height: 48px; }
+.menu-trigger { min-width: 44px; min-height: 44px; }
+.editorial-empty { min-height: calc(100svh - 200px); padding-block: 120px var(--space-xl); }
+:focus-visible { outline: 3px solid #2867a6; outline-offset: 4px; }
+.site-header :focus-visible,
+.mobile-menu :focus-visible,
+.site-footer :focus-visible,
+.plan-photo-detail :focus-visible { outline-color: #f3bc30; }
+.home-v2 .site-footer :focus-visible { outline-color: #2867a6; }
+@media (min-width: 1101px) {
+  .plans-section .plan-catalog,
+  .faq-layout,
+  .home-v2 .method-compact .method-layout,
+  .checkout-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); }
+  .faq-layout { gap: var(--space-xl); }
+  .checkout-layout > div { grid-column: auto; }
+}
+@media (max-width: 1100px) {
+  :root { --page-gutter: 24px; }
+  .plans-section .plan-comparison { gap: var(--space-md); }
+  .footer-main { gap: var(--space-md); }
+}
+@media (max-width: 850px) {
+  .faq-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); }
+  .checkout-layout { grid-template-columns: minmax(0, 1fr); }
+  .checkout-layout > div { grid-column: auto; }
+}
+@media (max-width: 600px) {
+  :root { --page-gutter: 20px; }
+  .section-space,
+  .home-v2 .section-space,
+  .faq-section,
+  .home-v2 .faq-section { padding-block: var(--space-lg); }
+  .inner-page,
+  .plans-section.plans-standalone,
+  .challenges-page > .challenges-section,
+  .checkout-v2 > #main-content,
+  .legal-v2 > #main-content { padding-top: 94px; }
+  .section-top,
+  .home-v2 .section-top,
+  .home-preview-heading,
+  .home-v2 .home-preview-heading { margin-bottom: var(--space-md); gap: var(--space-md); }
+  .display-heading,
+  .faq-intro .display-heading { font-size: 30px; }
+  .home-v2 .brand-hero .action-title { font-size: 44px; }
+  .home-v2 .chapter-connector { align-items: center; }
+  .home-v2 .chapter-connector > span { max-width: 42%; }
+  .home-v2 .chapter-connector button { max-width: 58%; font-size: 12px; }
+  .home-plan-path,
+  .plans-section .plan-catalog .plan-photo-detail { padding: var(--space-md); }
+  .plans-section .plan-catalog .plan-option-name { font-size: 18px; }
+  .faq-list button { font-size: 15px; gap: var(--space-sm); }
+  .site-footer { padding-block: var(--space-lg) 89px; }
+  .footer-main { gap: var(--space-lg); }
+  .footer-bottom { padding-bottom: 0; }
+  .clients-grid-v2 { gap: var(--space-md) var(--space-sm); }
+  .clients-grid-v2 .athlete-caption h2 { font-size: 18px; }
+  .editorial-empty { padding-top: 94px; }
+}
+@media (max-width: 380px) {
+  .home-v2 .brand-hero .action-title { font-size: 36px; }
+}
+
+/* Compact mobile layouts keep content readable without desktop-sized surfaces. */
+@media (max-width: 850px) {
+  .clients-grid-v2,
+  .home-v2 .athlete-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+  .home-v2 .athlete-track { overflow: visible; scroll-snap-type: none; padding-bottom: 0; }
+  .clients-grid-v2 > article,
+  .home-v2 .athlete-card { min-width: 0; }
+  .clients-grid-v2 .athlete-photo,
+  .home-v2 .athlete-photo { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 600px) {
+  :root { --page-gutter: 16px; }
+  .section-space,
+  .home-v2 .section-space,
+  .faq-section,
+  .home-v2 .faq-section { padding-block: 28px; }
+  .section-top,
+  .home-v2 .section-top,
+  .home-preview-heading,
+  .home-v2 .home-preview-heading { margin-bottom: 18px; gap: 12px; }
+  .display-heading,
+  .home-v2 .display-heading,
+  .faq-intro .display-heading { font-size: 28px; line-height: 1.2; }
+  .inner-page-title h1,
+  .plans-catalog-header h1,
+  .contact-page-title h1,
+  .checkout-title h1,
+  .legal-v2 h1 { font-size: 26px; }
+  .home-v2 .brand-hero .action-title { font-size: 40px; margin-block: 14px; }
+  .home-v2 .brand-hero .hero-statement { font-size: 20px; margin-bottom: 12px; }
+  .home-v2 .brand-hero .action-visual { max-width: 220px; margin-top: 20px; }
+  .home-v2 .brand-hero .action-visual figcaption { padding: 10px 12px; }
+  .home-v2 .brand-hero .action-visual figcaption strong { font-size: 18px; }
+  .home-v2 .hero-actions { gap: 8px; }
+  .home-v2 .chapter-connector { min-height: 52px; padding-block: 6px; }
+  .home-v2 .chapter-connector button { gap: 8px; }
+  .clients-grid-v2 .athlete-caption,
+  .home-v2 .athlete-caption { padding-block: 10px; align-items: start; }
+  .clients-grid-v2 .athlete-caption h2,
+  .home-v2 .athlete-caption h3 { font-size: 16px; line-height: 1.35; overflow-wrap: anywhere; }
+  .athlete-number { top: 8px; left: 8px; padding: 4px 6px; font-size: 11px; }
+  .athlete-discipline { top: 8px; right: 8px; padding: 4px 6px; font-size: 11px; }
+  .home-v2 .method-compact .method-step { padding: 16px; min-height: 0; }
+  .home-v2 .method-compact .method-step h3 { font-size: 22px; margin-block: 10px; }
+  .home-v2 .method-compact .method-step p { font-size: 15px; line-height: 1.55; }
+  .home-v2 .method-compact .step-detail { margin-top: 12px; gap: 6px; }
+  .home-v2 .method-compact .step-detail > span { padding: 4px 6px; }
+  .home-plan-path { padding: 18px; gap: 12px; }
+  .home-plan-path h3 { font-size: 22px; }
+  .home-plan-brands { min-height: 44px; }
+  .home-partner-feature { padding: 16px 0; }
+  .home-v2 .home-partner-feature { border-left: 0; border-top: 1px solid #dce3e7; }
+  .home-partner-feature .home-partner-logo { max-width: 240px; margin-block: 16px; }
+  .plans-section .plan-catalog .plan-option { min-height: 64px; padding: 10px 12px; }
+  .plans-section .plan-catalog .plan-option-name { font-size: 16px; }
+  .plans-section .plan-catalog .plan-option-price { font-size: 22px; }
+  .plans-section .plan-catalog .plan-photo-detail { min-height: 0; padding: 18px; }
+  .plans-section .plan-catalog .plan-detail h3 { font-size: 26px; margin-top: 12px; }
+  .plans-section .plan-catalog .plan-detail-price { margin-top: 16px; }
+  .plans-section .plan-catalog .plan-detail-price strong { font-size: 40px; }
+  .plans-section .plan-catalog .plan-detail > p,
+  .plans-section .plan-catalog .plan-features li { font-size: 15px; line-height: 1.55; }
+  .plans-section .plan-catalog .plan-features { margin-block: 16px; gap: 10px; }
+  .plan-savings-amount { font-size: 16px; padding: 6px 10px; }
+  .plan-photo-detail .welcome-gift { padding-block: 12px; margin-bottom: 16px; }
+  .welcome-gift-option p strong { font-size: 18px; }
+  .welcome-gift-options { gap: 12px; }
+  .plan-photo-detail .welcome-gift-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+  }
+  .plan-photo-detail .welcome-gift-option p { font-size: 14px; }
+  .payment-banner { margin-top: 24px; padding: 16px 0; }
+  .challenge-type-heading h2 { font-size: 22px; }
+  .challenge-explorer .challenge-tablist { margin-bottom: 20px; }
+  .challenge-tablist [role="tab"] { min-height: 58px; }
+  .challenge-explorer .challenge-card { padding: 18px; }
+  .challenge-explorer .challenge-distance { margin-block: 14px; }
+  .challenge-explorer .challenge-distance strong { font-size: 52px; }
+  .challenge-explorer .challenge-distance > span { font-size: 20px; }
+  .challenge-explorer .challenge-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .challenge-explorer .challenge-card > p { font-size: 15px; margin-bottom: 16px; }
+  .home-challenge { padding: 16px; grid-template-columns: 64px minmax(0, 1fr); gap: 8px 12px; }
+  .home-challenge h3 { font-size: 20px; }
+  .home-challenge > strong { font-size: 42px; }
+  .home-challenge-description { font-size: 14px; margin-bottom: 10px; }
+  .running-event-info h3 { font-size: 18px; }
+  .running-events-list > li { padding-block: 16px; }
+  .faq-layout { gap: 20px; }
+  .faq-intro p:not(.eyebrow),
+  .faq-answer { font-size: 15px; line-height: 1.6; }
+  .faq-list button { padding-block: 14px; min-height: 56px; }
+  .final-cta h2 { font-size: 36px; line-height: 1.15; }
+  .final-bottom > p { font-size: 16px; }
+  .contact-v2 > #main-content > .container { padding-inline: 16px; }
+  .contact-v2 .contact-page-title { margin-bottom: 20px; padding-bottom: 16px; }
+  .contact-layout h2 { font-size: 22px; }
+  .contact-v2 .contact-form { gap: 12px; }
+  .contact-v2 .contact-form textarea { height: 120px; min-height: 120px; }
+  .contact-details { gap: 14px; }
+  .legal-v2 #main-content h2 { font-size: 21px; }
+  .legal-v2 #main-content h3 { font-size: 18px; }
+  .legal-v2 #main-content section + section { margin-top: 24px; }
+  .site-footer { padding-top: 28px; }
+  .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; padding-block: 0; }
+  .footer-main > div { grid-column: auto; min-width: 0; }
+  .footer-main > div:first-child { grid-column: 1 / -1; }
+  .footer-main > div > a:not(.brand) { font-size: 13px; overflow-wrap: anywhere; }
+  .footer-main p { font-size: 14px; }
+  .footer-contact > a { flex-wrap: wrap; }
+  .footer-bottom { margin-top: 24px; gap: 12px; }
+  .footer-bottom .footer-attribution {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 8px 0 0;
+    gap: 4px;
+    text-align: center;
+  }
+  .mobile-menu { padding: 20px; gap: 12px; overflow-y: auto; }
+  .mobile-menu-links a { font-size: 26px; min-height: 48px; padding: 10px 12px; border-radius: 6px; }
+  .mobile-menu-links a.active { border-radius: 6px; }
+}
+@media (max-width: 380px) {
+  .home-v2 .brand-hero .action-title { font-size: 36px; }
+  .clients-grid-v2 .athlete-caption h2,
+  .home-v2 .athlete-caption h3 { font-size: 15px; }
+}

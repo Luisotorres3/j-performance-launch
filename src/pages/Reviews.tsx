@@ -1,24 +1,44 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ClientsSection from "@/components/ClientsSection";
 import clients from "@/data/clients";
-
-const Reviews = () => {
-  // use clients list as the 'Con quién he trabajado' content
-
+import FinalCTA from "@/components/v2/FinalCTA";
+import AthleteMedia from "@/components/v2/AthleteMedia";
+export default function Footballers() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <Navigation />
-
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-section-alt">
-        <div className="container mx-auto px-3 sm:px-4">
-          <ClientsSection clients={clients} />
-        </div>
-      </section>
-
+      <main id="main-content">
+        <section className="inner-page v2-container">
+          <div className="inner-page-title">
+            <h1>Clientes</h1>
+            <p>Clientes con los que he trabajado.</p>
+          </div>
+          <div className="clients-grid-v2">
+            {clients.map((client, i) => (
+              <article key={client.id}>
+                <AthleteMedia client={client} index={i} />
+                <div className="athlete-caption">
+                  <div>
+                    <h2 className="text-2xl font-medium">{client.name}</h2>
+                  </div>
+                </div>
+                {client.source && (
+                  <a
+                    className="client-source"
+                    href={client.source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Fuente de la foto ↗
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+        <FinalCTA />
+      </main>
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default Reviews;
+}

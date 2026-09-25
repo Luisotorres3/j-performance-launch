@@ -1,0 +1,186 @@
+/* Home uses a deliberate light palette, independent of the device theme. */
+.home-v2 {
+  --background: 0 0% 100%;
+  --foreground: 210 15% 13%;
+  --muted-foreground: 210 9% 36%;
+  --border: 210 12% 86%;
+  --chapter-line: 210 12% 86%;
+  --section-off-white: #f2f3f4;
+  background: #fff;
+  color: #1c2329;
+  color-scheme: light;
+}
+.home-v2 .scroll-chapter {
+  position: relative;
+  border-top: 1px solid #cfd7dc;
+}
+.home-v2 .scroll-chapter:first-child { border-top: 0; }
+.home-v2 .scroll-chapter:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -2px;
+  left: max(24px, calc((100% - 1328px) / 2));
+  width: 72px;
+  height: 3px;
+  background: #b7830e;
+}
+.home-v2 #presentacion,
+.home-v2 #presentacion > .chapter-content > section,
+.home-v2 #capitulo-futbolistas,
+.home-v2 #capitulo-futbolistas > .chapter-content > section,
+.home-v2 #capitulo-nutricion,
+.home-v2 #capitulo-nutricion > .chapter-content > section,
+.home-v2 #capitulo-empezar,
+.home-v2 #capitulo-empezar > .chapter-content > section { background: #fff; }
+.home-v2 #capitulo-metodo,
+.home-v2 #capitulo-metodo > .chapter-content > section { background: var(--section-off-white); }
+.home-v2 #capitulo-planes,
+.home-v2 #capitulo-planes > .chapter-content > section { background: var(--section-off-white); }
+.home-v2 #capitulo-retos,
+.home-v2 #capitulo-retos > .chapter-content > section { background: var(--section-off-white); }
+.home-v2 #capitulo-dudas,
+.home-v2 #capitulo-dudas > .chapter-content > section { background: #fff; }
+.home-v2 #capitulo-empezar,
+.home-v2 #capitulo-empezar > .chapter-content > section { background: var(--section-off-white); color: #1c2329; }
+.home-v2 .chapter-connector {
+  position: relative;
+  border-top: 1px solid #ccd5da;
+  background: rgb(255 255 255 / 58%);
+}
+.home-v2 .chapter-progress {
+  background: #b7830e;
+  height: 2px;
+}
+.home-v2 .chapter-connector > span {
+  color: #5b666d;
+  font-weight: 700;
+}
+.home-v2 .chapter-connector button { color: #123a63; }
+.home-v2 #presentacion,
+.home-v2 #capitulo-futbolistas,
+.home-v2 #capitulo-nutricion,
+.home-v2 .performance-hero,
+.home-v2 .hero-stage,
+.home-v2 .results-section,
+.home-v2 .home-partners,
+.home-v2 .final-cta {
+  background: #fff;
+  color: #1c2329;
+  --chapter-line: 210 12% 86%;
+}
+.home-v2 #capitulo-metodo .home-method,
+.home-v2 #capitulo-metodo .method-compact {
+  background: var(--section-off-white);
+  color: #1c2329;
+}
+.home-v2 #capitulo-metodo .home-method .eyebrow,
+.home-v2 #capitulo-metodo .home-method .display-heading span,
+.home-v2 #capitulo-metodo .method-intro > .eyebrow,
+.home-v2 #capitulo-metodo .method-compact .display-heading .muted-type { color: #153f69; }
+.home-v2 #capitulo-metodo .method-compact .method-intro > p:not(.eyebrow),
+.home-v2 #capitulo-metodo .method-compact .method-dial small,
+.home-v2 #capitulo-metodo .method-compact .method-step p { color: #505b63; }
+.home-v2 #capitulo-metodo .method-compact .method-current,
+.home-v2 #capitulo-metodo .method-rally { color: #173653; }
+.home-v2 #capitulo-metodo .method-compact .method-dial > span,
+.home-v2 #capitulo-metodo .method-compact .step-label > span:first-child { color: #765500; }
+.home-v2 #capitulo-metodo .method-compact .method-track { background: #cfdae5; }
+.home-v2 #capitulo-metodo .method-compact .method-step {
+  background: #fff;
+  color: #1c2329;
+  border-color: #cfdae5;
+  box-shadow: 0 8px 24px #0a27470d;
+}
+.home-v2 #capitulo-metodo .method-compact .method-step.is-active {
+  background: #edf3fa;
+  border-color: #153f69;
+}
+.home-v2 #capitulo-metodo .method-compact .step-label,
+.home-v2 #capitulo-metodo .method-compact .is-active .step-label { color: #294761; }
+.home-v2 #capitulo-metodo .method-step-icon { color: #153f69; }
+.home-v2 #capitulo-metodo .method-compact .step-detail { color: #365875; }
+.home-v2 #capitulo-metodo .home-method-steps li {
+  background: #fff;
+  color: #1c2329;
+  border-color: #a9790b;
+  box-shadow: 0 8px 24px #0a27470d;
+}
+.home-v2 #capitulo-metodo .home-method-steps p { color: #505b63; }
+.home-v2 #capitulo-metodo .home-step-top { color: #765500; }
+.home-v2 .action-hero .hero-copy .eyebrow,
+.home-v2 .hero-title,
+.home-v2 .hero-statement { color: #1c2329; }
+.home-v2 .hero-gold-line { color: #936500; }
+.home-v2 .action-hero .hero-description { color: #505b63; }
+.home-v2 .hero-qualification { color: #6c5000; }
+.home-v2 .hero-actions .text-button { color: #263c49; }
+.home-v2 .brand-hero .action-visual { background: #fff; }
+.home-v2 .brand-hero .action-visual::after { background: none; }
+.home-v2 .brand-hero .action-visual figcaption {
+  background: #fff;
+  color: #1c2329;
+  border-color: #bd890a;
+}
+.home-v2 .brand-hero .action-visual figcaption > span { color: #505b63; }
+.home-v2 .brand-hero .action-visual figcaption .action-photo-index { color: #795800; }
+.home-v2 .performance-mosaic { background: #f1f5f9; color: #173653; border-color: #d4dee8; }
+.home-v2 .mosaic-tile { background: transparent; border-color: #d4dee8; color: #173653; }
+.home-v2 .mosaic-tile:nth-child(even) { background: #fff; }
+.home-v2 .mosaic-tile :is(.mosaic-index, svg) { color: #315879; }
+.home-v2 .performance-hero .proof-strip { background: #fff; color: #1c2329; border-color: #e0e4e7; }
+.home-v2 .performance-hero .proof-stat { border-color: #e0e4e7; }
+.home-v2 .performance-hero .proof-layout > p,
+.home-v2 .performance-hero .proof-stat span { color: #505b63; }
+.home-v2 .performance-hero .proof-layout > p strong,
+.home-v2 .performance-hero .proof-stat strong { color: #1c2329; }
+.home-v2 .chapter-connector { color: #505b63; border-color: #e0e4e7; }
+.home-v2 .results-section .muted-type,
+.home-v2 .results-section .section-aside p { color: #505b63; }
+.home-v2 .results-section .eyebrow,
+.home-v2 .results-section .text-button { color: #153f69; }
+.home-v2 .results-section .athlete-caption { color: #1c2329; border-color: #dce3e0; }
+.home-v2 .results-section .client-source { color: #505b63; }
+.home-v2 .home-plan-path,
+.home-v2 .home-plan-joint {
+  background: #f6f8f9;
+  color: #1c2329;
+  border: 1px solid #dce3e7;
+  border-top: 3px solid #b98a19;
+  border-radius: 8px;
+}
+.home-v2 .home-plan-path p { color: #505b63; }
+.home-v2 .home-plan-brands { color: #795800; }
+.home-v2 .home-path-cta { color: #153f69; border-color: #dce3e7; }
+.home-v2 .home-partner-strip .eyebrow,
+.home-v2 .home-partner-strip .display-heading span { color: #153f69; }
+.home-v2 .home-partner-strip p:not(.eyebrow) { color: #505b63; }
+.home-v2 .home-partner-feature { background: transparent; border: 0; border-left: 1px solid #dce3e7; border-radius: 0; }
+.home-v2 .home-partner-feature .text-button { color: #153f69; }
+.home-v2 .home-partner-invite { border-color: #dce3e7; }
+.home-v2 .home-challenge,
+.home-v2 .home-challenge:nth-child(2) { background: #f2f6fa; color: #1c2329; border: 1px solid #d4dee8; border-top: 3px solid #153f69; border-radius: 8px; }
+.home-v2 .home-challenge:nth-child(2) { background: #fff; border-top-color: #153f69; }
+.home-v2 .home-challenge > strong { color: #123a63; }
+.home-v2 .home-challenge-description,
+.home-v2 .home-challenge-end { color: #505b63; }
+.home-v2 .final-cta { border-top: 1px solid #d6aa36; }
+.home-v2 .final-cta .eyebrow,
+.home-v2 .final-cta h2 span { color: #153f69; }
+.home-v2 .final-cta h2 { color: #0a2747; }
+.home-v2 .final-bottom p { color: #505b63; }
+.home-v2 .finish-lines { display: none; }
+.home-v2 .site-footer { background: #fff; color: #1c2329; border-top: 1px solid #dce3e7; }
+.home-v2 .footer-main p,
+.home-v2 .footer-main .eyebrow,
+.home-v2 .footer-socials a,
+.home-v2 .footer-bottom { color: #505b63; }
+.home-v2 .footer-bottom { border-color: #dce3e7; }
+.home-v2 :focus-visible { outline-color: #d29e20; }
+@media (max-width: 600px) {
+  .home-v2 .scroll-chapter:not(:first-child)::before {
+    left: 20px;
+    width: 54px;
+  }
+  .home-v2 .chapter-connector { background: rgb(255 255 255 / 72%); }
+}

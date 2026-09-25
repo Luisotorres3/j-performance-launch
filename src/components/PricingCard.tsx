@@ -62,7 +62,7 @@ const PricingCard = ({
               <div className="text-center">
                 <div className="text-base sm:text-xl text-muted-foreground">{label}</div>
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
-                  {value.toFixed(2)}€
+                  {Math.round(value)}€
                 </div>
               </div>
             );
