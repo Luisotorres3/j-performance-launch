@@ -1,0 +1,79 @@
+name: Publish website
+run-name: Publish ${{ inputs.version }} to GitHub Pages
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "main: latest / v2.0.0: V2 release / v1-pages-snapshot: restore exact V1"
+        required: true
+        type: choice
+        default: main
+        options:
+          - main
+          - v2.0.0
+          - v1-pages-snapshot
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.version }}
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        if: inputs.version != 'v1-pages-snapshot'
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        if: inputs.version != 'v1-pages-snapshot'
+      - run: npm run typecheck && npm run lint -- --quiet && npm run build
+        if: inputs.version != 'v1-pages-snapshot'
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
+          VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ vars.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ vars.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ vars.VITE_EMAILJS_TEMPLATE_ID }}
+      - run: npx playwright install --with-deps chromium && npm run test:site
+        if: inputs.version != 'v1-pages-snapshot'
+      - uses: actions/configure-pages@v5
+      - name: Checkout V1 preview source
+        uses: actions/checkout@v6
+        if: inputs.version != 'v1-pages-snapshot'
+        with:
+          ref: v1.0.0
+          path: qa.local/v1-source
+          persist-credentials: false
+      - name: Build V1 preview with isolated assets
+        if: inputs.version != 'v1-pages-snapshot'
+        working-directory: qa.local/v1-source
+        run: node ../../node_modules/vite/bin/vite.js build --base=/v1/
+      - name: Include V1 preview
+        if: inputs.version != 'v1-pages-snapshot'
+        run: node scripts/package-v1.mjs
+      - name: Verify preserved V1
+        if: inputs.version == 'v1-pages-snapshot'
+        run: test -f index.html && test -f CNAME
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ inputs.version == 'v1-pages-snapshot' && '.' || 'dist' }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
