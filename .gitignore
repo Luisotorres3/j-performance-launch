@@ -21,6 +21,7 @@ dist-ssr
 /scripts/capture-story.mjs
 /scripts/render-story.py
 /scripts/verify-story.py
+/scripts/*-immersive.*
 /video-output*/
 /qa.local/
 
