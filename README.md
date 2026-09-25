@@ -1,6 +1,9 @@
 <div align="center">
 
-<img src="src/assets/jps-dark.webp" alt="J Performance System" width="220" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/jps-white.webp" />
+  <img src="src/assets/jps-dark.webp" alt="J Performance System" width="220" />
+</picture>
 
 # J Performance System
 
