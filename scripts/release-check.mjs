@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { chromium } from "playwright";
@@ -123,6 +124,25 @@ try {
       assert.equal(await page.locator('[data-testid="checkout-total"]').innerText(), total);
     }
     console.log(`PASS ${width}: routes, accessibility, plans, gifts and checkout`);
+  }
+  if (existsSync("dist/v1/index.html")) {
+    for (const route of ["/v1/", "/v1/#/planes", "/v1/#/contacto"]) {
+      await page.goto(`${base}${route}`);
+      await page.locator(route === "/v1/" ? "h2" : "h1").first().waitFor();
+      assert((await page.locator("#root").innerText()).length > 100);
+      await page.waitForTimeout(300);
+      const broken = await page
+        .locator("img")
+        .evaluateAll((nodes) =>
+          nodes.filter((n) => n.complete && !n.naturalWidth).map((n) => n.src)
+        );
+      assert.deepEqual(broken, [], `V1 assets: ${route}`);
+      assert.equal(
+        await page.locator('meta[name="robots"]').getAttribute("content"),
+        "noindex,nofollow"
+      );
+    }
+    console.log("PASS V1 preview: home, plans, contact and assets");
   }
   assert.deepEqual(errors, []);
   const metadata = JSON.parse(await readFile("src/data/seo.json", "utf8"));

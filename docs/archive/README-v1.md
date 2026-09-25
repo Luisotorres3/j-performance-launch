@@ -15,11 +15,13 @@
 Este proyecto está construido con tecnologías web modernas para garantizar rendimiento, escalabilidad y una excelente experiencia de usuario:
 
 #### **Core**
+
 - **[Vite](https://vitejs.dev/)** `v5.4.19` - Build tool ultrarrápido y servidor de desarrollo
 - **[React](https://react.dev/)** `v18.3.1` - Biblioteca de interfaz de usuario
 - **[TypeScript](https://www.typescriptlang.org/)** `v5.8.3` - JavaScript con tipos para mayor seguridad
 
 #### **Estilización y UI**
+
 - **[Tailwind CSS](https://tailwindcss.com/)** `v3.4.17` - Framework CSS utility-first
 - **[shadcn/ui](https://ui.shadcn.com/)** - Componentes reutilizables basados en Radix UI
 - **[Radix UI](https://www.radix-ui.com/)** - Componentes primitivos accesibles y sin estilos
@@ -27,14 +29,17 @@ Este proyecto está construido con tecnologías web modernas para garantizar ren
 - **[Framer Motion](https://www.framer.com/motion/)** `v12.23.24` - Animaciones fluidas y profesionales
 
 #### **Routing y Estado**
+
 - **[React Router DOM](https://reactrouter.com/)** `v6.30.1` - Enrutamiento del lado del cliente
 - **[TanStack Query](https://tanstack.com/query)** `v5.83.0` - Gestión de estado asíncrono
 
 #### **Formularios y Validación**
+
 - **[React Hook Form](https://react-hook-form.com/)** `v7.61.1` - Gestión de formularios performante
 - **[Zod](https://zod.dev/)** `v3.25.76` - Validación de esquemas TypeScript-first
 
 #### **Herramientas de Desarrollo**
+
 - **[ESLint](https://eslint.org/)** `v9.32.0` - Linter para código limpio
 - **[PostCSS](https://postcss.org/)** - Transformaciones CSS
 - **[gh-pages](https://www.npmjs.com/package/gh-pages)** `v6.3.0` - Despliegue automatizado a GitHub Pages
@@ -107,17 +112,20 @@ j-performance-launch/
 #### Instalación
 
 1. **Clonar el repositorio**
+
    ```bash
    git clone https://github.com/Luisotorres3/j-performance-launch.git
    cd j-performance-launch
    ```
 
 2. **Instalar dependencias**
+
    ```bash
    npm install
    ```
 
 3. **Iniciar el servidor de desarrollo**
+
    ```bash
    npm run dev
    ```
@@ -142,11 +150,12 @@ Este proyecto está configurado para desplegarse automáticamente en GitHub Page
 #### Configuración Inicial
 
 1. **Verificar la configuración en `vite.config.ts`**
-   
+
    El proyecto ya tiene configurado el `base` path para GitHub Pages:
+
    ```typescript
    export default defineConfig({
-     base: "/j-performance-launch/",  // Debe coincidir con el nombre del repo
+     base: "/j-performance-launch/", // Debe coincidir con el nombre del repo
      // ... otras configuraciones
    });
    ```
@@ -171,6 +180,7 @@ npm run deploy
 ```
 
 El script `deploy` automáticamente:
+
 - Toma el contenido de la carpeta `/dist`
 - Lo publica en la rama `gh-pages`
 - GitHub Pages detecta los cambios y actualiza el sitio
@@ -184,36 +194,37 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 ```
 
 #### Verificar el Despliegue
 
 Después del despliegue, tu sitio estará disponible en:
+
 ```
 https://luisotorres3.github.io/j-performance-launch/
 ```
@@ -269,11 +280,13 @@ Todos los derechos reservados © 2024 J Performance Systems
 This project is built with modern web technologies to ensure performance, scalability, and an excellent user experience:
 
 #### **Core**
+
 - **[Vite](https://vitejs.dev/)** `v5.4.19` - Ultra-fast build tool and dev server
 - **[React](https://react.dev/)** `v18.3.1` - User interface library
 - **[TypeScript](https://www.typescriptlang.org/)** `v5.8.3` - JavaScript with types for better safety
 
 #### **Styling and UI**
+
 - **[Tailwind CSS](https://tailwindcss.com/)** `v3.4.17` - Utility-first CSS framework
 - **[shadcn/ui](https://ui.shadcn.com/)** - Reusable components based on Radix UI
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible, unstyled primitive components
@@ -281,14 +294,17 @@ This project is built with modern web technologies to ensure performance, scalab
 - **[Framer Motion](https://www.framer.com/motion/)** `v12.23.24` - Smooth, professional animations
 
 #### **Routing and State**
+
 - **[React Router DOM](https://reactrouter.com/)** `v6.30.1` - Client-side routing
 - **[TanStack Query](https://tanstack.com/query)** `v5.83.0` - Asynchronous state management
 
 #### **Forms and Validation**
+
 - **[React Hook Form](https://react-hook-form.com/)** `v7.61.1` - Performant form management
 - **[Zod](https://zod.dev/)** `v3.25.76` - TypeScript-first schema validation
 
 #### **Development Tools**
+
 - **[ESLint](https://eslint.org/)** `v9.32.0` - Linter for clean code
 - **[PostCSS](https://postcss.org/)** - CSS transformations
 - **[gh-pages](https://www.npmjs.com/package/gh-pages)** `v6.3.0` - Automated deployment to GitHub Pages
@@ -361,17 +377,20 @@ j-performance-launch/
 #### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Luisotorres3/j-performance-launch.git
    cd j-performance-launch
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -396,11 +415,12 @@ This project is configured for automatic deployment to GitHub Pages.
 #### Initial Setup
 
 1. **Verify the configuration in `vite.config.ts`**
-   
+
    The project already has the `base` path configured for GitHub Pages:
+
    ```typescript
    export default defineConfig({
-     base: "/j-performance-launch/",  // Must match the repo name
+     base: "/j-performance-launch/", // Must match the repo name
      // ... other configurations
    });
    ```
@@ -425,6 +445,7 @@ npm run deploy
 ```
 
 The `deploy` script automatically:
+
 - Takes the content from the `/dist` folder
 - Publishes it to the `gh-pages` branch
 - GitHub Pages detects the changes and updates the site
@@ -438,36 +459,37 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 ```
 
 #### Verify Deployment
 
 After deployment, your site will be available at:
+
 ```
 https://luisotorres3.github.io/j-performance-launch/
 ```

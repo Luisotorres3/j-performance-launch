@@ -42,8 +42,6 @@ jobs:
           VITE_EMAILJS_PUBLIC_KEY: ${{ vars.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_EMAILJS_SERVICE_ID: ${{ vars.VITE_EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ vars.VITE_EMAILJS_TEMPLATE_ID }}
-      - run: npx playwright install --with-deps chromium && npm run test:site
-        if: inputs.version != 'v1-pages-snapshot'
       - uses: actions/configure-pages@v5
       - name: Checkout V1 preview source
         uses: actions/checkout@v6
@@ -59,6 +57,8 @@ jobs:
       - name: Include V1 preview
         if: inputs.version != 'v1-pages-snapshot'
         run: node scripts/package-v1.mjs
+      - run: npx playwright install --with-deps chromium && npm run test:site
+        if: inputs.version != 'v1-pages-snapshot'
       - name: Verify preserved V1
         if: inputs.version == 'v1-pages-snapshot'
         run: test -f index.html && test -f CNAME
