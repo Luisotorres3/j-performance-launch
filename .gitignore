@@ -15,11 +15,56 @@ dist-ssr
 .env.*
 !.env.example
 
+# Local reviews and one-off media tooling (not part of the website)
+/V2-CONTENIDO-PENDIENTE.md
+/V2-LOCAL-REVIEW.md
+/scripts/capture-story.mjs
+/scripts/render-story.py
+/scripts/verify-story.py
+/video-output*/
+/qa.local/
+
+# npm is the repository's package manager
+/bun.lockb
+/bun.lock
+/yarn.lock
+/pnpm-lock.yaml
+
+# Test reports, caches and generated metadata
+/coverage/
+/playwright-report/
+/test-results/
+/blob-report/
+.vite/
+.cache/
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# Local credentials and machine configuration
+.envrc
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+.codex/
+.claude/
+
+# Local deployment archives and temporary files
+/*.zip
+/*.tar
+/*.tar.gz
+*.tmp
+*.bak
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.suo
 *.ntvs*
 *.njsproj
