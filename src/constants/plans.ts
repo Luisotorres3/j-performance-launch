@@ -1,92 +1,98 @@
-/**
- * Training plans data
- * Centralized configuration for all training plan types
- */
+import { JOINT_PACKS } from "@/data/nutrition";
+export type PlanPeriod = "mensual" | "trimestral" | "semestral";
 
 export interface Plan {
   title: string;
-  originalPrice: number;
-  price: number;
-  savings: number;
-  giftTrimestral?: string;
-  giftSemestral?: string;
-  popular?: boolean;
+  discipline: "running" | "strength" | "hybrid" | "opposition" | "nutrition";
+  description: string;
+  prices: Partial<Record<PlanPeriod, number>>;
   features: string[];
+  detailsPending?: boolean;
+  semestralSplit?: boolean;
+  separatePrice?: number;
 }
 
+// Precios base mensuales; las duraciones largas aplican el descuento del periodo.
 export const TRAINING_PLANS: Plan[] = [
   {
-    title: "Básico",
-    originalPrice: 60,
-    price: 49,
-    savings: 10,
-    giftTrimestral: "500g Proteína ",
-    giftSemestral: "500gr Proteína + 100g Creatina",
+    title: "Running",
+    discipline: "running",
+    description: "Un plan de carrera centrado en tu objetivo.",
+    prices: { mensual: 35 },
     features: [
-      "Entrenamiento profesional",
-      "Control de cargas",
-      "Planificación versátil y contrastada",
-      "Revisiones y actualizaciones periódicas",
-      "Método probado para empezar a mejorar desde cualquier nivel",
-      "Revisión técnica",
+      "Entrenamiento para corredores",
+      "Planificación semanal",
+      "Ajustes individualizados a edad, peso, género…",
     ],
   },
   {
-    title: "Avanzado",
-    originalPrice: 90,
-    price: 69,
-    savings: 15,
-    giftTrimestral: "500gr Proteína + 100g Creatina",
-    giftSemestral: "1kg Proteína + 100g Creatina",
-    popular: true,
+    title: "Fuerza · Gimnasio",
+    discipline: "strength",
+    description: "Tu entrenamiento de fuerza, centrado en el gimnasio.",
+    prices: { mensual: 49 },
     features: [
-      "Incluye todas las características del plan Básico",
-      "Nutrición controlada",
-      "Control del rendimiento",
-      "Gestión de hábitos",
-      "Videollamada mensual para evaluar la evolución de la programación",
+      "Planes de entrenamiento de fuerza",
+      "Software personalizado para seguimiento del entrenamiento",
+      "Ajustes de la carga de entrenamiento individualizados",
+      "Planificación para todo tipo de objetivos y deportistas",
+      "Seguimiento diario y trato directo cliente-entrenador",
     ],
+  },
+  {
+    title: "Fuerza · Gimnasio + correr",
+    discipline: "hybrid",
+    description: "Combina el trabajo de fuerza en el gimnasio con tus sesiones de carrera.",
+    prices: { mensual: 55 },
+    features: ["Combina los planes de “Running” y “Fuerza Gimnasio”"],
   },
   {
     title: "Opositores",
-    originalPrice: 70,
-    price: 59,
-    savings: 10,
-    giftTrimestral: "500gr Proteína + 100g Creatina",
-    giftSemestral: "1kg Proteína + 100g Creatina",
+    discipline: "opposition",
+    description: "Preparación específica para las pruebas físicas de tu oposición.",
+    prices: { mensual: 60 },
     features: [
-      "Entrenamiento + nutrición adaptado a tus pruebas físicas y a tu nivel de base",
-      "Mediciones programadas de marcas",
-      "Análisis de fortalezas y debilidades",
-      "Control de la técnica",
-      "Ayuda con la gestión del conjunto de la oposición",
+      "Planificación adaptada a cada oposición: Bomberos, Guardia Civil, Policía Nacional o Local y Militares.",
+      "Planificación y preparación de todas las disciplinas físicas.",
+      "Seguimiento diario y trato directo opositor-entrenador",
     ],
   },
 ];
 
-/**
- * Utility function to calculate period-based pricing
- */
-export const getPeriodPrice = (
-  basePrice: number,
-  period: "mensual" | "trimestral" | "semestral"
-): number => {
-  if (period === "mensual") return basePrice;
-  if (period === "trimestral") return Math.round(basePrice * 0.9); // -10%
-  if (period === "semestral") return Math.round(basePrice * 0.83); // -17%
-  return basePrice;
+export const PERIOD_LABELS: Record<PlanPeriod, string> = {
+  mensual: "1 mes",
+  trimestral: "3 meses",
+  semestral: "6 meses",
 };
 
-/**
- * Get total price for multi-month periods
- */
-export const getTotalPrice = (
-  basePrice: number,
-  period: "mensual" | "trimestral" | "semestral"
-): number | undefined => {
-  if (period === "mensual") return undefined;
-  const monthlyPrice = getPeriodPrice(basePrice, period);
-  if (period === "trimestral") return monthlyPrice * 3;
-  if (period === "semestral") return monthlyPrice * 6;
-  return undefined;
+export const ALL_PLANS: Plan[] = [...TRAINING_PLANS, ...JOINT_PACKS];
+export const PERIOD_OPTIONS = {
+  mensual: { months: 1, discount: 0 },
+  trimestral: { months: 3, discount: 10 },
+  semestral: { months: 6, discount: 20 },
+} as const;
+export const getAvailablePeriods = (plan: Plan): PlanPeriod[] =>
+  (["mensual", "trimestral", "semestral"] as const).filter(
+    (period) => plan.prices[period] !== undefined || plan.prices.mensual !== undefined
+  );
+export const getPlanTotal = (plan: Plan, period: PlanPeriod): number => {
+  const price = plan.prices[period];
+  if (price === undefined && plan.prices.mensual !== undefined) {
+    const { months, discount } = PERIOD_OPTIONS[period];
+    const monthlyCents = Math.round(plan.prices.mensual * 100);
+    return Math.round((monthlyCents * months * (100 - discount)) / 10000);
+  }
+  if (price === undefined) throw new Error(`Duración no disponible para ${plan.title}`);
+  return price;
 };
+export const formatPrice = (price: number): string =>
+  price.toLocaleString("es-ES", {
+    minimumFractionDigits: Number.isInteger(price) ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+export const resolvePlan = (title: unknown): Plan | undefined =>
+  ALL_PLANS.find((plan) => plan.title === title);
+
+export const WELCOME_GIFTS = {
+  trimestral: { protein: "500 g", creatine: "500 g" },
+  semestral: { protein: "2 kg", creatine: "1 kg" },
+} as const;

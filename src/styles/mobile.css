@@ -1,0 +1,164 @@
+/* Keep the values banner below the first viewport at every screen size. */
+.brand-hero .hero-stage {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-shrink: 0;
+}
+
+/* Mobile navigation fills the visual viewport, including browser safe areas. */
+.mobile-menu {
+  inset: 0;
+  transform: none;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  background: hsl(var(--navy));
+  color: hsl(var(--paper));
+  overscroll-behavior-y: contain;
+  animation: none;
+}
+.mobile-menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding-right: 46px;
+  flex-shrink: 0;
+  font: 400 20px / 1.2 var(--display-font);
+  letter-spacing: 0.025em;
+}
+.mobile-menu-brand img { width: 44px; height: 44px; flex-shrink: 0; }
+.mobile-menu-brand small {
+  display: block;
+  font: 500 9px / 1.6 Arial, sans-serif;
+  letter-spacing: 0.1em;
+  color: hsl(var(--gold));
+  margin-top: 5px;
+}
+.mobile-menu > button:last-child {
+  top: max(25px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  background: hsl(var(--paper) / 0.08);
+  border: 1px solid hsl(var(--paper) / 0.25);
+  border-radius: 50%;
+  opacity: 1;
+  color: hsl(var(--gold));
+}
+.mobile-menu > button:last-child svg { width: 22px; height: 22px; }
+.mobile-menu-links { gap: 6px; margin-block: auto; }
+.mobile-menu-links a {
+  min-height: 52px;
+  padding: clamp(10px, 1.8vh, 18px) 16px;
+  border: 1px solid hsl(var(--paper) / 0.13);
+  border-radius: 12px;
+  font-size: clamp(25px, 4.3vh, 36px);
+  line-height: 1.1;
+  color: hsl(var(--paper));
+}
+.mobile-menu-links a span { color: hsl(var(--paper) / 0.7); }
+.mobile-menu-links a.active {
+  background: hsl(var(--gold));
+  color: hsl(var(--ink));
+  border-color: hsl(var(--gold));
+  border-radius: 12px;
+}
+.mobile-menu-links a.active span { color: hsl(var(--ink)); }
+.mobile-menu > .v2-button {
+  background: hsl(var(--paper));
+  color: hsl(var(--navy));
+  border-color: hsl(var(--paper));
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 14px 18px;
+  flex-shrink: 0;
+}
+.mobile-menu .mobile-social {
+  color: hsl(var(--paper) / 0.8);
+  text-align: center;
+  padding-block: 8px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  margin-top: -8px;
+}
+@media (max-height: 600px) {
+  .mobile-menu { gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); }
+  .mobile-menu-links { margin-block: 0; }
+  .mobile-menu-links a { padding-block: 10px; font-size: 25px; }
+}
+@media (max-width: 600px) {
+  .chapter-content > section { min-height: 0; }
+  .section-space { padding-block: 38px; }
+  .chapter-connector { min-height: 52px; padding-block: 4px; }
+  .chapter-connector button { min-height: 44px; }
+  .section-top { gap: 16px; margin-bottom: 24px; }
+  .display-heading { font-size: clamp(30px, 8.5vw, 40px); line-height: 1.08; }
+  .eyebrow { margin-bottom: 12px; font-size: 10px; }
+  .hero-description,
+  .section-aside p,
+  .trainer-copy > p:not(.eyebrow),
+  .faq-intro p:not(.eyebrow),
+  .faq-answer,
+  .nutrition-copy,
+  .challenge-intro { font-size: 15px; line-height: 1.6; }
+  .brand-hero .hero-stage { padding-top: 92px; padding-bottom: 24px; }
+  .brand-hero .hero-copy { padding-block: 0; }
+  .brand-hero .action-title { font-size: clamp(50px, 14vw, 72px); margin-block: 14px; }
+  .brand-hero .hero-statement { font-size: 18px; margin-bottom: 12px; }
+  .brand-hero .hero-description { font-size: 15px; line-height: 1.6; }
+  .brand-hero .hero-actions { margin-top: 18px; gap: 8px; }
+  .brand-hero .hero-actions .v2-button { padding-block: 14px; min-height: 48px; }
+  .brand-hero .hero-actions .text-button { min-height: 44px; }
+  .brand-hero .action-visual { max-width: 280px; margin: 16px auto 0; }
+  .proof-strip { padding-block: 18px; }
+  .method-compact .method-layout { gap: 24px; }
+  .method-compact .method-intro > p:not(.eyebrow) { font-size: 15px; line-height: 1.6; }
+  .method-compact .method-step { min-height: 0; padding: 20px; }
+  .method-compact .method-step h3 { font-size: 26px; margin-block: 12px; }
+  .method-compact .method-step p { font-size: 15px; line-height: 1.6; }
+  .method-compact .step-detail { margin-top: 14px; gap: 6px; }
+  .method-compact .step-detail > span { padding: 5px 7px; }
+  .method-compact .method-steps { gap: 12px; }
+  .plan-option { min-height: 72px; padding-block: 12px; }
+  .plan-option-name { font-size: 20px; }
+  .plan-option-price { font-size: 22px; }
+  .plan-detail { padding: 22px 18px; }
+  .plan-detail h3 { font-size: 30px; }
+  .plan-detail-price strong { font-size: 46px; }
+  .collaborations-grid, .challenge-grid { gap: 16px; margin-top: 24px; }
+  .partner-card { padding: 20px; }
+  .partner-card h3 { font-size: 24px; }
+  .partner-card > p:not(.eyebrow) { font-size: 15px; line-height: 1.6; }
+  .partner-logo-surface { padding: 20px 12px; margin-bottom: 18px; }
+  .partner-invitation-mark { min-height: 44px; margin-bottom: 16px; }
+  .partner-invitation-mark svg { width: 32px; height: 32px; }
+  .partner-actions { gap: 8px; margin-top: 18px; }
+  .partner-actions .v2-button { min-height: 48px; padding-block: 14px; }
+  .trainer-layout { gap: 24px; }
+  .trainer-natural-photo .trainer-portrait-frame,
+  .trainer-natural-photo .natural-portrait-caption { max-width: 260px; }
+  .challenge-card { padding: 20px; }
+  .challenge-distance { margin-block: 14px; }
+  .challenge-distance strong { font-size: 58px; }
+  .challenge-card h3 { font-size: 25px; margin-bottom: 10px; }
+  .challenge-card > p { font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+  .challenge-focus { margin-block: 0 14px; font-size: 11px; }
+  .challenge-card .v2-button { min-height: 48px; padding-block: 12px; margin-top: 0; }
+  .challenge-event { min-height: 44px; margin-top: 4px; }
+  .challenge-note { margin-top: 18px; line-height: 1.6; }
+  .faq-layout { gap: 24px; }
+  .faq-list button { font-size: 16px; padding-block: 16px; }
+  .final-cta { padding-block: 44px; }
+  .footer-main { gap: 24px; padding-block: 32px; }
+  .contact-v2 input, .contact-v2 textarea,
+  .checkout-v2 input, .checkout-v2 textarea { font-size: 16px; }
+}

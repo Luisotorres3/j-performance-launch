@@ -1,6 +1,6 @@
 export const CONTACT_INFO = {
-  phone: "+34 618179652",
-  phoneFormatted: "+34 618 179 652",
+  phone: "+34618179652",
+  phoneFormatted: "+34 618 17 96 52",
   phoneWhatsApp: "34618179652",
   email: "jperformancesystem@gmail.com",
   location: "Andalucía, España",

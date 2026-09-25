@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -6,8 +7,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQ = () => {
+const FAQ = ({ compact = false }: { compact?: boolean }) => {
+  const reduced = useReducedMotion();
   const faqs = [
+    {
+      question: "¿Tengo que pagar antes de la entrevista?",
+      answer:
+        "No. Primero reservas la entrevista con Juan. Revisamos tus objetivos, el plan y las condiciones. Si decides continuar, el pago se realiza después.",
+    },
     {
       question: "¿Cómo funcionan los entrenamientos online?",
       answer:
@@ -40,46 +47,59 @@ const FAQ = () => {
     },
   ];
 
+  const visibleFaqs = compact
+    ? [
+        {
+          question: "¿Necesito experiencia para empezar?",
+          answer:
+            "No. Partimos de tu nivel, tu objetivo y tu disponibilidad para encontrar una forma de entrenar que encaje contigo.",
+        },
+        {
+          question: "¿Cómo entrenamos a distancia?",
+          answer:
+            "Recibes tu programa en Hevy y mantienes comunicación directa con Juan. Revisamos tu técnica y tu evolución para ajustar el entrenamiento.",
+        },
+        {
+          question: "¿Cuál es el primer paso?",
+          answer:
+            "Hablar con Juan sobre tu objetivo. En la entrevista revisáis el plan y las condiciones antes de decidir si continúas y realizar el pago.",
+        },
+      ]
+    : faqs;
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-3 sm:px-4">
+    <section className="faq-section">
+      <div className="v2-container faq-layout">
         <motion.div
-          className="text-center mb-12 sm:mb-16 px-2"
-          initial={{ opacity: 0, y: 30 }}
+          className="faq-intro"
+          initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Preguntas Frecuentes</h2>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
-            Resuelve tus dudas sobre mis servicios de entrenamiento personal
-          </p>
+          <p className="eyebrow">07 / ANTES DE EMPEZAR</p>
+          <h2 className="display-heading">
+            Las cosas claras.
+            <br />
+            <span className="muted-type">Desde el principio.</span>
+          </h2>
+          <p>Todo lo que necesitas saber para dar el siguiente paso con confianza.</p>
+          <Link to="/contacto" className="text-button mt-5">
+            ¿Hablamos de tu caso? ↗
+          </Link>
         </motion.div>
 
         <motion.div
-          className="max-w-5xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+          className="min-w-0"
+          initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full bg-card/50 backdrop-blur-sm rounded-xl border border-border shadow-sm"
-          >
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border-b border-border last:border-b-0 px-6"
-              >
-                <AccordionTrigger className="text-left hover:text-primary transition-colors py-5 text-base sm:text-lg font-semibold">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed text-sm sm:text-base pb-5">
-                  {faq.answer}
-                </AccordionContent>
+          <Accordion type="single" collapsible className="faq-list">
+            {visibleFaqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent className="faq-answer">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

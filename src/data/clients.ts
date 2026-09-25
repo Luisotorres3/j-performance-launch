@@ -14,8 +14,31 @@ import antonGarda from "@/assets/clients/anton_garda.webp";
 import fabioGonzalez from "@/assets/clients/fabio_gonzalez.webp";
 import rodriParafita from "@/assets/clients/rodri_parafita.webp";
 import braisLema from "@/assets/clients/brais_lema.webp";
+import antonioPerez from "@/assets/clients/antonio_perez.webp";
 
-export const clients = [
+export interface Client {
+  id: number;
+  name: string;
+  currentClub: string;
+  previousClubs: string[];
+  photo?: string;
+  discipline?: string;
+  bio?: string;
+  source?: { label: string; url: string };
+}
+
+export const clients: Client[] = [
+  {
+    id: 15,
+    name: "Antonio Pérez",
+    currentClub: "FC Barcelona",
+    previousClubs: ["Jaén Paraíso Interior"],
+    discipline: "Fútbol sala",
+    photo: antonioPerez,
+    bio: "Cierre del Barça e internacional con España. Nacido en Jaén el 19 de octubre de 2000, se formó en Jaén Paraíso Interior y llegó al FC Barcelona en 2022. Debutó con la selección absoluta en noviembre de 2021. Destaca por su aportación defensiva y su disparo exterior.",
+    // Referencia: https://www.fcbarcelona.es/es/futbol-sala/primer-equipo/jugadores/2665481/antonio-perez
+    // Cliente confirmado por Juan; foto y perfil deportivo de la ficha oficial del club.
+  },
   {
     id: 1,
     name: "Lucho García",

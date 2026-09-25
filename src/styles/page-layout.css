@@ -1,0 +1,252 @@
+.challenge-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-bottom: 1px solid hsl(var(--border));
+  margin-bottom: 24px;
+}
+.challenge-categories button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.challenge-categories button:hover {
+  color: hsl(var(--primary));
+}
+.running-events-list {
+  border-top: 1px solid hsl(var(--border));
+}
+.running-events-list > li {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding-block: 22px;
+  border-bottom: 1px solid hsl(var(--border));
+}
+.running-events-list time {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--primary));
+}
+.running-event-info {
+  min-width: 0;
+}
+.running-event-info h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+.running-event-info p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+}
+.running-event-info p span {
+  padding-left: 8px;
+  border-left: 1px solid hsl(var(--border));
+}
+.running-events-list .text-button {
+  min-height: 44px;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .challenge-categories {
+    gap: 16px;
+  }
+  .running-events-list > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding-block: 18px;
+  }
+  .running-events-list .text-button {
+    justify-self: start;
+  }
+}
+.challenge-category {
+  scroll-margin-top: 108px;
+}
+.challenge-category + .challenge-category {
+  margin-top: 40px;
+}
+.challenge-category > h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: 0;
+}
+.strength-challenge .challenge-distance strong {
+  font-size: 80px;
+  letter-spacing: 0;
+}
+.strength-challenge .challenge-distance > span {
+  font-size: 22px;
+}
+.strength-challenge.challenge-card {
+  border-radius: 8px;
+}
+.strength-challenge .challenge-location {
+  flex-wrap: wrap;
+}
+/* Keep route headings secondary to the page's working content. */
+.inner-page,
+.contact-v2 > section,
+.checkout-v2 > section,
+.legal-v2 > section,
+.challenges-page > .challenges-section,
+.plans-section.plans-standalone {
+  padding-top: 108px;
+}
+.inner-page-title,
+.checkout-title,
+.contact-page-title,
+.plans-catalog-header {
+  margin-bottom: 24px;
+}
+.contact-page-title {
+  max-width: 1152px;
+  margin-inline: auto;
+  text-align: left;
+}
+.inner-page-title h1,
+.contact-page-title h1,
+.checkout-title h1,
+.legal-v2 h1,
+.plans-catalog-header h1,
+.editorial-empty h1 {
+  font: 400 34px / 1.2 var(--display-font);
+  letter-spacing: 0;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.inner-page-title > p:last-child,
+.contact-page-title > p,
+.checkout-title > p,
+.plans-catalog-header p {
+  margin: 0;
+  max-width: 680px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+.legal-v2 h1 {
+  margin-bottom: 20px;
+}
+.editorial-empty {
+  padding-block: 108px 64px;
+  min-height: 55vh;
+}
+.editorial-empty > .eyebrow {
+  margin-bottom: 12px;
+}
+.editorial-empty > p:not(.eyebrow) {
+  margin-block: 12px 24px;
+}
+.home-v2 .brand-hero .hero-stage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-block: 116px 48px;
+}
+.home-v2 .brand-hero .action-layout {
+  min-height: 540px;
+}
+.home-v2 .brand-hero .action-title {
+  font-size: 96px;
+  line-height: 1.04;
+  margin-block: 24px;
+  letter-spacing: 0;
+}
+.home-v2 .brand-hero .action-visual {
+  top: max(108px, calc(50% - 225px));
+  width: min(42%, 560px);
+  left: auto;
+}
+.home-v2 .brand-hero .hero-statement {
+  font-size: 24px;
+}
+.home-v2 .brand-hero .hero-gold-line {
+  font-size: 1em;
+}
+.home-v2 .display-heading {
+  font-size: 52px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+.home-v2 .section-top,
+.home-v2 .home-preview-heading {
+  margin-bottom: 24px;
+}
+@media (max-width: 1100px) {
+  .home-v2 .brand-hero .action-title {
+    font-size: 72px;
+  }
+}
+@media (max-width: 850px) {
+  .home-v2 .brand-hero .hero-stage {
+    padding-block: 100px 28px;
+  }
+  .home-v2 .brand-hero .action-layout {
+    min-height: 0;
+  }
+  .home-v2 .brand-hero .action-visual {
+    inset: auto;
+    width: min(100% - 40px, 380px);
+    margin-top: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .inner-page,
+  .contact-v2 > section,
+  .checkout-v2 > section,
+  .legal-v2 > section,
+  .challenges-page > .challenges-section,
+  .plans-section.plans-standalone {
+    padding-top: 88px;
+  }
+  .inner-page-title,
+  .contact-page-title,
+  .checkout-title,
+  .plans-catalog-header {
+    margin-bottom: 20px;
+  }
+  .inner-page-title h1,
+  .contact-page-title h1,
+  .checkout-title h1,
+  .legal-v2 h1,
+  .plans-catalog-header h1,
+  .editorial-empty h1 {
+    font-size: 28px;
+  }
+  .editorial-empty {
+    padding-block: 88px 44px;
+  }
+  .home-v2 .brand-hero .hero-stage {
+    padding-top: 88px;
+  }
+  .home-v2 .brand-hero .action-title {
+    font-size: 54px;
+    margin-block: 14px;
+  }
+  .home-v2 .display-heading {
+    font-size: 36px;
+  }
+}
+@media (max-width: 360px) {
+  .home-v2 .brand-hero .action-title {
+    font-size: 46px;
+  }
+  .home-v2 .display-heading {
+    font-size: 32px;
+  }
+}

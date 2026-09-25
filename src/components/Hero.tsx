@@ -66,7 +66,7 @@ const Hero = () => {
                 Juan Pasquau
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
-                Entrenador de alto rendimiento especializado en fuerza, atletismo y preparación
+                Entrenador especializado en fuerza, atletismo y preparación
                 física para opositores y deportistas que buscan resultados serios.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4">
